@@ -2,12 +2,29 @@
 __pycache__/
 *.pyc
 
-# Local scripts and output files
-read_pdfs.py
-pdf_output.txt
+# IDEs
+.vscode/
+.idea/
+
+# Archive
+_archive/
 
 # Virtual Environment
 venv/
 .venv/
 env/
 .env/
+
+# Utility / scratch files (git-ignored)
+read_pdfs.py
+pdf_output.txt
+temp.txt
+
+# Report outputs — keep directory, ignore generated files
+reports/*.txt
+reports/*.json
+!reports/.gitkeep
+
+# LLM layer outputs (Step 2)
+llm/*.py
+!llm/.gitkeep

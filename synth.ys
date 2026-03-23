@@ -1,4 +1,0 @@
-read_verilog circuit.v
-synth
-write_verilog circuit_netlist.v
-write_json circuit.json

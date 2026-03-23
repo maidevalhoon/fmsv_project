@@ -1,0 +1,3 @@
+read_verilog benchmarks/c17.v
+write_verilog benchmarks/netlists/c17_netlist.v
+write_json benchmarks/json/c17.json
