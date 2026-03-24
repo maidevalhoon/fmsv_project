@@ -82,11 +82,11 @@ def build_miter(module_data: dict, fault_net: str, fault_value: int):
 
     # ── Step 3 ──────────────────────────────────────────────────────────────
     # Build FAULTY circuit CNF.
-    #   var_offset = good_next - 1  so faulty variables start right after good.
+    #   var_offset = good_next  so faulty variables start right after good.
     #   skip_gate  = driving_gate   so that gate's Tseitin clauses are omitted.
     faulty_clauses, faulty_map, faulty_next = build_circuit_cnf(
         cells,
-        var_offset=good_next - 1,
+        var_offset=good_next,
         skip_gate=driving_gate,
     )
 
@@ -134,26 +134,24 @@ def build_miter(module_data: dict, fault_net: str, fault_value: int):
     next_free_var = faulty_next
     d_vars = []
     for net_id in output_nets:
-        if net_id in good_map and net_id in faulty_map:
-            gy = good_map[net_id]
-            fy = faulty_map[net_id]
-            d  = next_free_var
-            next_free_var += 1
-            d_vars.append(d)
+        if net_id not in good_map or net_id not in faulty_map:
+            continue
+        gv, fv = good_map[net_id], faulty_map[net_id]
+        dv = next_free_var
+        next_free_var += 1
+        d_vars.append(dv)
+        miter_clauses += [
+            [-gv, -fv, -dv],
+            [ gv,  fv, -dv],
+            [ gv, -fv,  dv],
+            [-gv,  fv,  dv],
+        ]
 
-            # D = gy ⊕ fy
-            # (¬gy ∨ ¬fy ∨ ¬D)  both 1 → D=0
-            # ( gy ∨  fy ∨ ¬D)  both 0 → D=0
-            # ( gy ∨ ¬fy ∨  D)  gy=0, fy=1 → D=1
-            # (¬gy ∨  fy ∨  D)  gy=1, fy=0 → D=1
-            miter_clauses.append([-gy, -fy, -d])
-            miter_clauses.append([ gy,  fy, -d])
-            miter_clauses.append([ gy, -fy,  d])
-            miter_clauses.append([-gy,  fy,  d])
-
-    # Force at least one output to differ (OR over all D variables)
-    if d_vars:
-        miter_clauses.append(d_vars[:])       # shallow copy for safety
+    if not d_vars:
+        return None, good_map, faulty_map, next_free_var, {
+            "error": "No output nets found in both good and faulty maps"
+        }
+    miter_clauses.append(d_vars)
 
     # ── Assemble & return ───────────────────────────────────────────────────
     all_clauses = good_clauses + faulty_clauses + miter_clauses

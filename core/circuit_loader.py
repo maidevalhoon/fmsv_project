@@ -52,6 +52,11 @@ def load_circuit(json_file: str):
 
     module_name = list(modules.keys())[0]
     module_data = modules[module_name]
+
+    warnings = validate_netlist(module_data)
+    for w in warnings:
+        print(f"[WARN] {w}")
+
     return module_name, module_data
 
 
@@ -120,7 +125,9 @@ def enumerate_all_nets(module_data: dict) -> list:
     # Collect from ports
     for port_data in module_data.get("ports", {}).values():
         for bit in port_data.get("bits", []):
-            nets.add(str(bit))
+            s = str(bit)
+            if s not in ("0", "1", "x", "z"):
+                nets.add(s)
 
     # Collect from cell connections
     for cell_data in module_data.get("cells", {}).values():
@@ -153,6 +160,46 @@ def find_driving_gate(module_data: dict, fault_net: str):
         if fault_net in [str(b) for b in output_bits]:
             return cell_name
     return None
+
+
+# ---------------------------------------------------------------------------
+# Netlist validation
+# ---------------------------------------------------------------------------
+
+def validate_netlist(module_data: dict) -> list[str]:
+    """
+    Check the netlist for common problems.
+    Returns a list of warning strings. Empty list means all checks passed.
+    """
+    warnings = []
+    ports = module_data.get("ports", {})
+    cells = module_data.get("cells", {})
+
+    inputs  = [p for p, d in ports.items() if d["direction"] == "input"]
+    outputs = [p for p, d in ports.items() if d["direction"] == "output"]
+
+    if not inputs:
+        warnings.append("No input ports found")
+    if not outputs:
+        warnings.append("No output ports found")
+    if not cells:
+        warnings.append("No cells (gates) found — netlist may be empty")
+
+    known_types = {
+        "$_AND_", "$_OR_", "$_NOT_", "$_BUF_",
+        "$_NAND_", "$_NOR_", "$_XOR_", "$_XNOR_", "$_MUX_",
+        "$and", "$or", "$not", "$buf",
+        "$nand", "$nor", "$xor", "$xnor", "$mux",
+    }
+    unknown = set()
+    for cell_name, cell_data in cells.items():
+        gt = cell_data.get("type", "")
+        if gt not in known_types:
+            unknown.add(gt)
+    if unknown:
+        warnings.append(f"Unrecognized gate types (will be skipped in CNF): {sorted(unknown)}")
+
+    return warnings
 
 
 # ---------------------------------------------------------------------------
