@@ -1,0 +1,1292 @@
+================================================================================
+  CONDENSED SUMMARY REPORT
+  Source: c1355_insights.txt
+================================================================================
+
+1. CIRCUIT OVERVIEW
+------------------------------------------------------------
+  Module       : c1355
+  Input nets   : ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42']
+  Output nets  : ['43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74']
+  Gate count   : 974
+  Gate types   : ['$and', '$not', '$or']
+
+  Net ID → Name Mapping:
+    Net    2 → N1                   [IN]
+    Net    3 → N8                   [IN]
+    Net    4 → N15                  [IN]
+    Net    5 → N22                  [IN]
+    Net    6 → N29                  [IN]
+    Net    7 → N36                  [IN]
+    Net    8 → N43                  [IN]
+    Net    9 → N50                  [IN]
+    Net   10 → N57                  [IN]
+    Net   11 → N64                  [IN]
+    Net   12 → N71                  [IN]
+    Net   13 → N78                  [IN]
+    Net   14 → N85                  [IN]
+    Net   15 → N92                  [IN]
+    Net   16 → N99                  [IN]
+    Net   17 → N106                 [IN]
+    Net   18 → N113                 [IN]
+    Net   19 → N120                 [IN]
+    Net   20 → N127                 [IN]
+    Net   21 → N134                 [IN]
+    Net   22 → N141                 [IN]
+    Net   23 → N148                 [IN]
+    Net   24 → N155                 [IN]
+    Net   25 → N162                 [IN]
+    Net   26 → N169                 [IN]
+    Net   27 → N176                 [IN]
+    Net   28 → N183                 [IN]
+    Net   29 → N190                 [IN]
+    Net   30 → N197                 [IN]
+    Net   31 → N204                 [IN]
+    Net   32 → N211                 [IN]
+    Net   33 → N218                 [IN]
+    Net   34 → N225                 [IN]
+    Net   35 → N226                 [IN]
+    Net   36 → N227                 [IN]
+    Net   37 → N228                 [IN]
+    Net   38 → N229                 [IN]
+    Net   39 → N230                 [IN]
+    Net   40 → N231                 [IN]
+    Net   41 → N232                 [IN]
+    Net   42 → N233                 [IN]
+    Net   43 → N1324                [OUT]
+    Net   44 → N1325                [OUT]
+    Net   45 → N1326                [OUT]
+    Net   46 → N1327                [OUT]
+    Net   47 → N1328                [OUT]
+    Net   48 → N1329                [OUT]
+    Net   49 → N1330                [OUT]
+    Net   50 → N1331                [OUT]
+    Net   51 → N1332                [OUT]
+    Net   52 → N1333                [OUT]
+    Net   53 → N1334                [OUT]
+    Net   54 → N1335                [OUT]
+    Net   55 → N1336                [OUT]
+    Net   56 → N1337                [OUT]
+    Net   57 → N1338                [OUT]
+    Net   58 → N1339                [OUT]
+    Net   59 → N1340                [OUT]
+    Net   60 → N1341                [OUT]
+    Net   61 → N1342                [OUT]
+    Net   62 → N1343                [OUT]
+    Net   63 → N1344                [OUT]
+    Net   64 → N1345                [OUT]
+    Net   65 → N1346                [OUT]
+    Net   66 → N1347                [OUT]
+    Net   67 → N1348                [OUT]
+    Net   68 → N1349                [OUT]
+    Net   69 → N1350                [OUT]
+    Net   70 → N1351                [OUT]
+    Net   71 → N1352                [OUT]
+    Net   72 → N1353                [OUT]
+    Net   73 → N1354                [OUT]
+    Net   74 → N1355                [OUT]
+    Net   75 → N281                 [INT]
+    Net   76 → $and$benchmarks/c1355.v:100$93_Y [INT]
+    Net   77 → $and$benchmarks/c1355.v:101$95_Y [INT]
+    Net   78 → N284                 [INT]
+    Net   79 → $and$benchmarks/c1355.v:102$97_Y [INT]
+    Net   80 → $and$benchmarks/c1355.v:103$99_Y [INT]
+    Net   81 → N287                 [INT]
+    Net   82 → $and$benchmarks/c1355.v:104$101_Y [INT]
+    Net   83 → $and$benchmarks/c1355.v:105$103_Y [INT]
+    Net   84 → N290                 [INT]
+    Net   85 → $and$benchmarks/c1355.v:106$105_Y [INT]
+    Net   86 → $and$benchmarks/c1355.v:107$107_Y [INT]
+    Net   87 → N293                 [INT]
+    Net   88 → $and$benchmarks/c1355.v:108$109_Y [INT]
+    Net   89 → $and$benchmarks/c1355.v:109$111_Y [INT]
+    Net   90 → N296                 [INT]
+    Net   91 → $and$benchmarks/c1355.v:110$113_Y [INT]
+    Net   92 → $and$benchmarks/c1355.v:111$115_Y [INT]
+    Net   93 → N299                 [INT]
+    Net   94 → $and$benchmarks/c1355.v:112$117_Y [INT]
+    Net   95 → $and$benchmarks/c1355.v:113$119_Y [INT]
+    Net   96 → N302                 [INT]
+    Net   97 → $and$benchmarks/c1355.v:114$121_Y [INT]
+    Net   98 → $and$benchmarks/c1355.v:115$123_Y [INT]
+    Net   99 → N305                 [INT]
+    Net  100 → $and$benchmarks/c1355.v:116$125_Y [INT]
+    Net  101 → $and$benchmarks/c1355.v:117$127_Y [INT]
+    Net  102 → N308                 [INT]
+    Net  103 → $and$benchmarks/c1355.v:118$129_Y [INT]
+    Net  104 → $and$benchmarks/c1355.v:119$131_Y [INT]
+    Net  105 → N311                 [INT]
+    Net  106 → $and$benchmarks/c1355.v:120$133_Y [INT]
+    Net  107 → $and$benchmarks/c1355.v:121$135_Y [INT]
+    Net  108 → N314                 [INT]
+    Net  109 → $and$benchmarks/c1355.v:122$137_Y [INT]
+    Net  110 → $and$benchmarks/c1355.v:123$139_Y [INT]
+    Net  111 → N317                 [INT]
+    Net  112 → $and$benchmarks/c1355.v:124$141_Y [INT]
+    Net  113 → $and$benchmarks/c1355.v:125$143_Y [INT]
+    Net  114 → N320                 [INT]
+    Net  115 → $and$benchmarks/c1355.v:126$145_Y [INT]
+    Net  116 → $and$benchmarks/c1355.v:127$147_Y [INT]
+    Net  117 → N323                 [INT]
+    Net  118 → $and$benchmarks/c1355.v:128$149_Y [INT]
+    Net  119 → $and$benchmarks/c1355.v:129$151_Y [INT]
+    Net  120 → N326                 [INT]
+    Net  121 → $and$benchmarks/c1355.v:130$153_Y [INT]
+    Net  122 → $and$benchmarks/c1355.v:131$155_Y [INT]
+    Net  123 → N329                 [INT]
+    Net  124 → $and$benchmarks/c1355.v:132$157_Y [INT]
+    Net  125 → $and$benchmarks/c1355.v:133$159_Y [INT]
+    Net  126 → N332                 [INT]
+    Net  127 → $and$benchmarks/c1355.v:134$161_Y [INT]
+    Net  128 → $and$benchmarks/c1355.v:135$163_Y [INT]
+    Net  129 → N335                 [INT]
+    Net  130 → $and$benchmarks/c1355.v:136$165_Y [INT]
+    Net  131 → $and$benchmarks/c1355.v:137$167_Y [INT]
+    Net  132 → N338                 [INT]
+    Net  133 → $and$benchmarks/c1355.v:138$169_Y [INT]
+    Net  134 → $and$benchmarks/c1355.v:139$171_Y [INT]
+    Net  135 → N341                 [INT]
+    Net  136 → $and$benchmarks/c1355.v:140$173_Y [INT]
+    Net  137 → $and$benchmarks/c1355.v:141$175_Y [INT]
+    Net  138 → N344                 [INT]
+    Net  139 → $and$benchmarks/c1355.v:142$177_Y [INT]
+    Net  140 → $and$benchmarks/c1355.v:143$179_Y [INT]
+    Net  141 → N347                 [INT]
+    Net  142 → $and$benchmarks/c1355.v:144$181_Y [INT]
+    Net  143 → $and$benchmarks/c1355.v:145$183_Y [INT]
+    Net  144 → N350                 [INT]
+    Net  145 → $and$benchmarks/c1355.v:146$185_Y [INT]
+    Net  146 → $and$benchmarks/c1355.v:147$187_Y [INT]
+    Net  147 → N353                 [INT]
+    Net  148 → $and$benchmarks/c1355.v:148$189_Y [INT]
+    Net  149 → $and$benchmarks/c1355.v:149$191_Y [INT]
+    Net  150 → N356                 [INT]
+    Net  151 → $and$benchmarks/c1355.v:150$193_Y [INT]
+    Net  152 → $and$benchmarks/c1355.v:151$195_Y [INT]
+    Net  153 → N359                 [INT]
+    Net  154 → $and$benchmarks/c1355.v:152$197_Y [INT]
+    Net  155 → $and$benchmarks/c1355.v:153$199_Y [INT]
+    Net  156 → N362                 [INT]
+    Net  157 → N363                 [INT]
+    Net  158 → $and$benchmarks/c1355.v:154$201_Y [INT]
+    Net  159 → N364                 [INT]
+    Net  160 → N365                 [INT]
+    Net  161 → $and$benchmarks/c1355.v:155$203_Y [INT]
+    Net  162 → N366                 [INT]
+    Net  163 → N367                 [INT]
+    Net  164 → $and$benchmarks/c1355.v:156$205_Y [INT]
+    Net  165 → N368                 [INT]
+    Net  166 → N369                 [INT]
+    Net  167 → $and$benchmarks/c1355.v:157$207_Y [INT]
+    Net  168 → N370                 [INT]
+    Net  169 → N371                 [INT]
+    Net  170 → $and$benchmarks/c1355.v:158$209_Y [INT]
+    Net  171 → N372                 [INT]
+    Net  172 → N373                 [INT]
+    Net  173 → $and$benchmarks/c1355.v:159$211_Y [INT]
+    Net  174 → N374                 [INT]
+    Net  175 → N375                 [INT]
+    Net  176 → $and$benchmarks/c1355.v:160$213_Y [INT]
+    Net  177 → N376                 [INT]
+    Net  178 → N377                 [INT]
+    Net  179 → $and$benchmarks/c1355.v:161$215_Y [INT]
+    Net  180 → N378                 [INT]
+    Net  181 → N379                 [INT]
+    Net  182 → $and$benchmarks/c1355.v:162$217_Y [INT]
+    Net  183 → N380                 [INT]
+    Net  184 → N381                 [INT]
+    Net  185 → $and$benchmarks/c1355.v:163$219_Y [INT]
+    Net  186 → N382                 [INT]
+    Net  187 → N383                 [INT]
+    Net  188 → $and$benchmarks/c1355.v:164$221_Y [INT]
+    Net  189 → N384                 [INT]
+    Net  190 → N385                 [INT]
+    Net  191 → $and$benchmarks/c1355.v:165$223_Y [INT]
+    Net  192 → N386                 [INT]
+    Net  193 → N387                 [INT]
+    Net  194 → $and$benchmarks/c1355.v:166$225_Y [INT]
+    Net  195 → N388                 [INT]
+    Net  196 → N389                 [INT]
+    Net  197 → $and$benchmarks/c1355.v:167$227_Y [INT]
+    Net  198 → N390                 [INT]
+    Net  199 → N391                 [INT]
+    Net  200 → $and$benchmarks/c1355.v:168$229_Y [INT]
+    Net  201 → N392                 [INT]
+    Net  202 → N393                 [INT]
+    Net  203 → $and$benchmarks/c1355.v:169$231_Y [INT]
+    Net  204 → N394                 [INT]
+    Net  205 → N395                 [INT]
+    Net  206 → $and$benchmarks/c1355.v:170$233_Y [INT]
+    Net  207 → N396                 [INT]
+    Net  208 → N397                 [INT]
+    Net  209 → $and$benchmarks/c1355.v:171$235_Y [INT]
+    Net  210 → N398                 [INT]
+    Net  211 → N399                 [INT]
+    Net  212 → $and$benchmarks/c1355.v:172$237_Y [INT]
+    Net  213 → N400                 [INT]
+    Net  214 → N401                 [INT]
+    Net  215 → $and$benchmarks/c1355.v:173$239_Y [INT]
+    Net  216 → N402                 [INT]
+    Net  217 → N403                 [INT]
+    Net  218 → $and$benchmarks/c1355.v:174$241_Y [INT]
+    Net  219 → N404                 [INT]
+    Net  220 → N405                 [INT]
+    Net  221 → $and$benchmarks/c1355.v:175$243_Y [INT]
+    Net  222 → N406                 [INT]
+    Net  223 → N407                 [INT]
+    Net  224 → $and$benchmarks/c1355.v:176$245_Y [INT]
+    Net  225 → N408                 [INT]
+    Net  226 → N409                 [INT]
+    Net  227 → $and$benchmarks/c1355.v:177$247_Y [INT]
+    Net  228 → N410                 [INT]
+    Net  229 → N411                 [INT]
+    Net  230 → $and$benchmarks/c1355.v:178$249_Y [INT]
+    Net  231 → N412                 [INT]
+    Net  232 → N413                 [INT]
+    Net  233 → $and$benchmarks/c1355.v:179$251_Y [INT]
+    Net  234 → N414                 [INT]
+    Net  235 → N415                 [INT]
+    Net  236 → $and$benchmarks/c1355.v:180$253_Y [INT]
+    Net  237 → N416                 [INT]
+    Net  238 → N417                 [INT]
+    Net  239 → $and$benchmarks/c1355.v:181$255_Y [INT]
+    Net  240 → N418                 [INT]
+    Net  241 → N419                 [INT]
+    Net  242 → $and$benchmarks/c1355.v:182$257_Y [INT]
+    Net  243 → N420                 [INT]
+    Net  244 → N421                 [INT]
+    Net  245 → $and$benchmarks/c1355.v:183$259_Y [INT]
+    Net  246 → N422                 [INT]
+    Net  247 → N423                 [INT]
+    Net  248 → $and$benchmarks/c1355.v:184$261_Y [INT]
+    Net  249 → N424                 [INT]
+    Net  250 → N425                 [INT]
+    Net  251 → $and$benchmarks/c1355.v:185$263_Y [INT]
+    Net  252 → N426                 [INT]
+    Net  253 → N429                 [INT]
+    Net  254 → $and$benchmarks/c1355.v:186$265_Y [INT]
+    Net  255 → N432                 [INT]
+    Net  256 → N435                 [INT]
+    Net  257 → $and$benchmarks/c1355.v:187$267_Y [INT]
+    Net  258 → N438                 [INT]
+    Net  259 → N441                 [INT]
+    Net  260 → $and$benchmarks/c1355.v:188$269_Y [INT]
+    Net  261 → N444                 [INT]
+    Net  262 → N447                 [INT]
+    Net  263 → $and$benchmarks/c1355.v:189$271_Y [INT]
+    Net  264 → N450                 [INT]
+    Net  265 → N453                 [INT]
+    Net  266 → $and$benchmarks/c1355.v:190$273_Y [INT]
+    Net  267 → N456                 [INT]
+    Net  268 → N459                 [INT]
+    Net  269 → $and$benchmarks/c1355.v:191$275_Y [INT]
+    Net  270 → N462                 [INT]
+    Net  271 → N465                 [INT]
+    Net  272 → $and$benchmarks/c1355.v:192$277_Y [INT]
+    Net  273 → N468                 [INT]
+    Net  274 → N471                 [INT]
+    Net  275 → $and$benchmarks/c1355.v:193$279_Y [INT]
+    Net  276 → N474                 [INT]
+    Net  277 → N477                 [INT]
+    Net  278 → $and$benchmarks/c1355.v:194$281_Y [INT]
+    Net  279 → N480                 [INT]
+    Net  280 → N483                 [INT]
+    Net  281 → $and$benchmarks/c1355.v:195$283_Y [INT]
+    Net  282 → N486                 [INT]
+    Net  283 → N489                 [INT]
+    Net  284 → $and$benchmarks/c1355.v:196$285_Y [INT]
+    Net  285 → N492                 [INT]
+    Net  286 → N495                 [INT]
+    Net  287 → $and$benchmarks/c1355.v:197$287_Y [INT]
+    Net  288 → N498                 [INT]
+    Net  289 → N501                 [INT]
+    Net  290 → $and$benchmarks/c1355.v:198$289_Y [INT]
+    Net  291 → N504                 [INT]
+    Net  292 → N507                 [INT]
+    Net  293 → $and$benchmarks/c1355.v:199$291_Y [INT]
+    Net  294 → N510                 [INT]
+    Net  295 → N513                 [INT]
+    Net  296 → $and$benchmarks/c1355.v:200$293_Y [INT]
+    Net  297 → N516                 [INT]
+    Net  298 → N519                 [INT]
+    Net  299 → $and$benchmarks/c1355.v:201$295_Y [INT]
+    Net  300 → N522                 [INT]
+    Net  301 → $and$benchmarks/c1355.v:202$297_Y [INT]
+    Net  302 → $and$benchmarks/c1355.v:203$299_Y [INT]
+    Net  303 → N525                 [INT]
+    Net  304 → $and$benchmarks/c1355.v:204$301_Y [INT]
+    Net  305 → $and$benchmarks/c1355.v:205$303_Y [INT]
+    Net  306 → N528                 [INT]
+    Net  307 → $and$benchmarks/c1355.v:206$305_Y [INT]
+    Net  308 → $and$benchmarks/c1355.v:207$307_Y [INT]
+    Net  309 → N531                 [INT]
+    Net  310 → $and$benchmarks/c1355.v:208$309_Y [INT]
+    Net  311 → $and$benchmarks/c1355.v:209$311_Y [INT]
+    Net  312 → N534                 [INT]
+    Net  313 → $and$benchmarks/c1355.v:210$313_Y [INT]
+    Net  314 → $and$benchmarks/c1355.v:211$315_Y [INT]
+    Net  315 → N537                 [INT]
+    Net  316 → $and$benchmarks/c1355.v:212$317_Y [INT]
+    Net  317 → $and$benchmarks/c1355.v:213$319_Y [INT]
+    Net  318 → N540                 [INT]
+    Net  319 → $and$benchmarks/c1355.v:214$321_Y [INT]
+    Net  320 → $and$benchmarks/c1355.v:215$323_Y [INT]
+    Net  321 → N543                 [INT]
+    Net  322 → $and$benchmarks/c1355.v:216$325_Y [INT]
+    Net  323 → $and$benchmarks/c1355.v:217$327_Y [INT]
+    Net  324 → N546                 [INT]
+    Net  325 → $and$benchmarks/c1355.v:218$329_Y [INT]
+    Net  326 → $and$benchmarks/c1355.v:219$331_Y [INT]
+    Net  327 → N549                 [INT]
+    Net  328 → $and$benchmarks/c1355.v:220$333_Y [INT]
+    Net  329 → $and$benchmarks/c1355.v:221$335_Y [INT]
+    Net  330 → N552                 [INT]
+    Net  331 → $and$benchmarks/c1355.v:222$337_Y [INT]
+    Net  332 → $and$benchmarks/c1355.v:223$339_Y [INT]
+    Net  333 → N555                 [INT]
+    Net  334 → $and$benchmarks/c1355.v:224$341_Y [INT]
+    Net  335 → $and$benchmarks/c1355.v:225$343_Y [INT]
+    Net  336 → N558                 [INT]
+    Net  337 → $and$benchmarks/c1355.v:226$345_Y [INT]
+    Net  338 → $and$benchmarks/c1355.v:227$347_Y [INT]
+    Net  339 → N561                 [INT]
+    Net  340 → $and$benchmarks/c1355.v:228$349_Y [INT]
+    Net  341 → $and$benchmarks/c1355.v:229$351_Y [INT]
+    Net  342 → N564                 [INT]
+    Net  343 → $and$benchmarks/c1355.v:230$353_Y [INT]
+    Net  344 → $and$benchmarks/c1355.v:231$355_Y [INT]
+    Net  345 → N567                 [INT]
+    Net  346 → $and$benchmarks/c1355.v:232$357_Y [INT]
+    Net  347 → $and$benchmarks/c1355.v:233$359_Y [INT]
+    Net  348 → N570                 [INT]
+    Net  349 → N571                 [INT]
+    Net  350 → $and$benchmarks/c1355.v:234$361_Y [INT]
+    Net  351 → N572                 [INT]
+    Net  352 → N573                 [INT]
+    Net  353 → $and$benchmarks/c1355.v:235$363_Y [INT]
+    Net  354 → N574                 [INT]
+    Net  355 → N575                 [INT]
+    Net  356 → $and$benchmarks/c1355.v:236$365_Y [INT]
+    Net  357 → N576                 [INT]
+    Net  358 → N577                 [INT]
+    Net  359 → $and$benchmarks/c1355.v:237$367_Y [INT]
+    Net  360 → N578                 [INT]
+    Net  361 → N579                 [INT]
+    Net  362 → $and$benchmarks/c1355.v:238$369_Y [INT]
+    Net  363 → N580                 [INT]
+    Net  364 → N581                 [INT]
+    Net  365 → $and$benchmarks/c1355.v:239$371_Y [INT]
+    Net  366 → N582                 [INT]
+    Net  367 → N583                 [INT]
+    Net  368 → $and$benchmarks/c1355.v:240$373_Y [INT]
+    Net  369 → N584                 [INT]
+    Net  370 → N585                 [INT]
+    Net  371 → $and$benchmarks/c1355.v:241$375_Y [INT]
+    Net  372 → N586                 [INT]
+    Net  373 → N587                 [INT]
+    Net  374 → $and$benchmarks/c1355.v:242$377_Y [INT]
+    Net  375 → N588                 [INT]
+    Net  376 → N589                 [INT]
+    Net  377 → $and$benchmarks/c1355.v:243$379_Y [INT]
+    Net  378 → N590                 [INT]
+    Net  379 → N591                 [INT]
+    Net  380 → $and$benchmarks/c1355.v:244$381_Y [INT]
+    Net  381 → N592                 [INT]
+    Net  382 → N593                 [INT]
+    Net  383 → $and$benchmarks/c1355.v:245$383_Y [INT]
+    Net  384 → N594                 [INT]
+    Net  385 → N595                 [INT]
+    Net  386 → $and$benchmarks/c1355.v:246$385_Y [INT]
+    Net  387 → N596                 [INT]
+    Net  388 → N597                 [INT]
+    Net  389 → $and$benchmarks/c1355.v:247$387_Y [INT]
+    Net  390 → N598                 [INT]
+    Net  391 → N599                 [INT]
+    Net  392 → $and$benchmarks/c1355.v:248$389_Y [INT]
+    Net  393 → N600                 [INT]
+    Net  394 → N601                 [INT]
+    Net  395 → $and$benchmarks/c1355.v:249$391_Y [INT]
+    Net  396 → N602                 [INT]
+    Net  397 → N607                 [INT]
+    Net  398 → $and$benchmarks/c1355.v:250$393_Y [INT]
+    Net  399 → N612                 [INT]
+    Net  400 → N617                 [INT]
+    Net  401 → $and$benchmarks/c1355.v:251$395_Y [INT]
+    Net  402 → $and$benchmarks/c1355.v:252$397_Y [INT]
+    Net  403 → $and$benchmarks/c1355.v:253$399_Y [INT]
+    Net  404 → N622                 [INT]
+    Net  405 → N627                 [INT]
+    Net  406 → $and$benchmarks/c1355.v:254$401_Y [INT]
+    Net  407 → N632                 [INT]
+    Net  408 → N637                 [INT]
+    Net  409 → $and$benchmarks/c1355.v:255$403_Y [INT]
+    Net  410 → $and$benchmarks/c1355.v:256$405_Y [INT]
+    Net  411 → $and$benchmarks/c1355.v:257$407_Y [INT]
+    Net  412 → N666                 [INT]
+    Net  413 → $and$benchmarks/c1355.v:258$409_Y [INT]
+    Net  414 → $and$benchmarks/c1355.v:259$411_Y [INT]
+    Net  415 → N669                 [INT]
+    Net  416 → $and$benchmarks/c1355.v:260$413_Y [INT]
+    Net  417 → $and$benchmarks/c1355.v:261$415_Y [INT]
+    Net  418 → N672                 [INT]
+    Net  419 → $and$benchmarks/c1355.v:262$417_Y [INT]
+    Net  420 → $and$benchmarks/c1355.v:263$419_Y [INT]
+    Net  421 → N675                 [INT]
+    Net  422 → $and$benchmarks/c1355.v:264$421_Y [INT]
+    Net  423 → $and$benchmarks/c1355.v:265$423_Y [INT]
+    Net  424 → N678                 [INT]
+    Net  425 → $and$benchmarks/c1355.v:266$425_Y [INT]
+    Net  426 → $and$benchmarks/c1355.v:267$427_Y [INT]
+    Net  427 → N681                 [INT]
+    Net  428 → $and$benchmarks/c1355.v:268$429_Y [INT]
+    Net  429 → $and$benchmarks/c1355.v:269$431_Y [INT]
+    Net  430 → N684                 [INT]
+    Net  431 → $and$benchmarks/c1355.v:270$433_Y [INT]
+    Net  432 → $and$benchmarks/c1355.v:271$435_Y [INT]
+    Net  433 → N687                 [INT]
+    Net  434 → $and$benchmarks/c1355.v:272$437_Y [INT]
+    Net  435 → $and$benchmarks/c1355.v:273$439_Y [INT]
+    Net  436 → N690                 [INT]
+    Net  437 → N691                 [INT]
+    Net  438 → $and$benchmarks/c1355.v:274$441_Y [INT]
+    Net  439 → N692                 [INT]
+    Net  440 → N693                 [INT]
+    Net  441 → $and$benchmarks/c1355.v:275$443_Y [INT]
+    Net  442 → N694                 [INT]
+    Net  443 → N695                 [INT]
+    Net  444 → $and$benchmarks/c1355.v:276$445_Y [INT]
+    Net  445 → N696                 [INT]
+    Net  446 → N697                 [INT]
+    Net  447 → $and$benchmarks/c1355.v:277$447_Y [INT]
+    Net  448 → N698                 [INT]
+    Net  449 → N699                 [INT]
+    Net  450 → $and$benchmarks/c1355.v:278$449_Y [INT]
+    Net  451 → N700                 [INT]
+    Net  452 → N701                 [INT]
+    Net  453 → $and$benchmarks/c1355.v:279$451_Y [INT]
+    Net  454 → N702                 [INT]
+    Net  455 → N703                 [INT]
+    Net  456 → $and$benchmarks/c1355.v:280$453_Y [INT]
+    Net  457 → N704                 [INT]
+    Net  458 → N705                 [INT]
+    Net  459 → $and$benchmarks/c1355.v:281$455_Y [INT]
+    Net  460 → N242                 [INT]
+    Net  461 → N718                 [INT]
+    Net  462 → $and$benchmarks/c1355.v:282$457_Y [INT]
+    Net  463 → N245                 [INT]
+    Net  464 → N721                 [INT]
+    Net  465 → $and$benchmarks/c1355.v:283$459_Y [INT]
+    Net  466 → N248                 [INT]
+    Net  467 → N724                 [INT]
+    Net  468 → $and$benchmarks/c1355.v:284$461_Y [INT]
+    Net  469 → N251                 [INT]
+    Net  470 → N727                 [INT]
+    Net  471 → $and$benchmarks/c1355.v:285$463_Y [INT]
+    Net  472 → N254                 [INT]
+    Net  473 → N706                 [INT]
+    Net  474 → $and$benchmarks/c1355.v:286$465_Y [INT]
+    Net  475 → N257                 [INT]
+    Net  476 → N709                 [INT]
+    Net  477 → $and$benchmarks/c1355.v:287$467_Y [INT]
+    Net  478 → N260                 [INT]
+    Net  479 → N712                 [INT]
+    Net  480 → $and$benchmarks/c1355.v:288$469_Y [INT]
+    Net  481 → N263                 [INT]
+    Net  482 → N715                 [INT]
+    Net  483 → $and$benchmarks/c1355.v:289$471_Y [INT]
+    Net  484 → N730                 [INT]
+    Net  485 → $and$benchmarks/c1355.v:290$473_Y [INT]
+    Net  486 → $and$benchmarks/c1355.v:291$475_Y [INT]
+    Net  487 → N733                 [INT]
+    Net  488 → $and$benchmarks/c1355.v:292$477_Y [INT]
+    Net  489 → $and$benchmarks/c1355.v:293$479_Y [INT]
+    Net  490 → N736                 [INT]
+    Net  491 → $and$benchmarks/c1355.v:294$481_Y [INT]
+    Net  492 → $and$benchmarks/c1355.v:295$483_Y [INT]
+    Net  493 → N739                 [INT]
+    Net  494 → $and$benchmarks/c1355.v:296$485_Y [INT]
+    Net  495 → $and$benchmarks/c1355.v:297$487_Y [INT]
+    Net  496 → N742                 [INT]
+    Net  497 → $and$benchmarks/c1355.v:298$489_Y [INT]
+    Net  498 → $and$benchmarks/c1355.v:299$491_Y [INT]
+    Net  499 → N745                 [INT]
+    Net  500 → $and$benchmarks/c1355.v:300$493_Y [INT]
+    Net  501 → $and$benchmarks/c1355.v:301$495_Y [INT]
+    Net  502 → N748                 [INT]
+    Net  503 → $and$benchmarks/c1355.v:302$497_Y [INT]
+    Net  504 → $and$benchmarks/c1355.v:303$499_Y [INT]
+    Net  505 → N751                 [INT]
+    Net  506 → $and$benchmarks/c1355.v:304$501_Y [INT]
+    Net  507 → $and$benchmarks/c1355.v:305$503_Y [INT]
+    Net  508 → N754                 [INT]
+    Net  509 → N755                 [INT]
+    Net  510 → $and$benchmarks/c1355.v:306$505_Y [INT]
+    Net  511 → N756                 [INT]
+    Net  512 → N757                 [INT]
+    Net  513 → $and$benchmarks/c1355.v:307$507_Y [INT]
+    Net  514 → N758                 [INT]
+    Net  515 → N759                 [INT]
+    Net  516 → $and$benchmarks/c1355.v:308$509_Y [INT]
+    Net  517 → N760                 [INT]
+    Net  518 → N761                 [INT]
+    Net  519 → $and$benchmarks/c1355.v:309$511_Y [INT]
+    Net  520 → N762                 [INT]
+    Net  521 → N763                 [INT]
+    Net  522 → $and$benchmarks/c1355.v:310$513_Y [INT]
+    Net  523 → N764                 [INT]
+    Net  524 → N765                 [INT]
+    Net  525 → $and$benchmarks/c1355.v:311$515_Y [INT]
+    Net  526 → N766                 [INT]
+    Net  527 → N767                 [INT]
+    Net  528 → $and$benchmarks/c1355.v:312$517_Y [INT]
+    Net  529 → N768                 [INT]
+    Net  530 → N769                 [INT]
+    Net  531 → $and$benchmarks/c1355.v:313$519_Y [INT]
+    Net  532 → N642                 [INT]
+    Net  533 → N770                 [INT]
+    Net  534 → $and$benchmarks/c1355.v:314$521_Y [INT]
+    Net  535 → N645                 [INT]
+    Net  536 → N773                 [INT]
+    Net  537 → $and$benchmarks/c1355.v:315$523_Y [INT]
+    Net  538 → N648                 [INT]
+    Net  539 → N776                 [INT]
+    Net  540 → $and$benchmarks/c1355.v:316$525_Y [INT]
+    Net  541 → N651                 [INT]
+    Net  542 → N779                 [INT]
+    Net  543 → $and$benchmarks/c1355.v:317$527_Y [INT]
+    Net  544 → N654                 [INT]
+    Net  545 → N782                 [INT]
+    Net  546 → $and$benchmarks/c1355.v:318$529_Y [INT]
+    Net  547 → N657                 [INT]
+    Net  548 → N785                 [INT]
+    Net  549 → $and$benchmarks/c1355.v:319$531_Y [INT]
+    Net  550 → N660                 [INT]
+    Net  551 → N788                 [INT]
+    Net  552 → $and$benchmarks/c1355.v:320$533_Y [INT]
+    Net  553 → N663                 [INT]
+    Net  554 → N791                 [INT]
+    Net  555 → $and$benchmarks/c1355.v:321$535_Y [INT]
+    Net  556 → N794                 [INT]
+    Net  557 → $and$benchmarks/c1355.v:322$537_Y [INT]
+    Net  558 → $and$benchmarks/c1355.v:323$539_Y [INT]
+    Net  559 → N797                 [INT]
+    Net  560 → $and$benchmarks/c1355.v:324$541_Y [INT]
+    Net  561 → $and$benchmarks/c1355.v:325$543_Y [INT]
+    Net  562 → N800                 [INT]
+    Net  563 → $and$benchmarks/c1355.v:326$545_Y [INT]
+    Net  564 → $and$benchmarks/c1355.v:327$547_Y [INT]
+    Net  565 → N803                 [INT]
+    Net  566 → $and$benchmarks/c1355.v:328$549_Y [INT]
+    Net  567 → $and$benchmarks/c1355.v:329$551_Y [INT]
+    Net  568 → N806                 [INT]
+    Net  569 → $and$benchmarks/c1355.v:330$553_Y [INT]
+    Net  570 → $and$benchmarks/c1355.v:331$555_Y [INT]
+    Net  571 → N809                 [INT]
+    Net  572 → $and$benchmarks/c1355.v:332$557_Y [INT]
+    Net  573 → $and$benchmarks/c1355.v:333$559_Y [INT]
+    Net  574 → N812                 [INT]
+    Net  575 → $and$benchmarks/c1355.v:334$561_Y [INT]
+    Net  576 → $and$benchmarks/c1355.v:335$563_Y [INT]
+    Net  577 → N815                 [INT]
+    Net  578 → $and$benchmarks/c1355.v:336$565_Y [INT]
+    Net  579 → $and$benchmarks/c1355.v:337$567_Y [INT]
+    Net  580 → N818                 [INT]
+    Net  581 → N819                 [INT]
+    Net  582 → $and$benchmarks/c1355.v:338$569_Y [INT]
+    Net  583 → N820                 [INT]
+    Net  584 → N821                 [INT]
+    Net  585 → $and$benchmarks/c1355.v:339$571_Y [INT]
+    Net  586 → N822                 [INT]
+    Net  587 → N823                 [INT]
+    Net  588 → $and$benchmarks/c1355.v:340$573_Y [INT]
+    Net  589 → N824                 [INT]
+    Net  590 → N825                 [INT]
+    Net  591 → $and$benchmarks/c1355.v:341$575_Y [INT]
+    Net  592 → N828                 [INT]
+    Net  593 → N829                 [INT]
+    Net  594 → $and$benchmarks/c1355.v:342$577_Y [INT]
+    Net  595 → N832                 [INT]
+    Net  596 → N833                 [INT]
+    Net  597 → $and$benchmarks/c1355.v:343$579_Y [INT]
+    Net  598 → N830                 [INT]
+    Net  599 → N831                 [INT]
+    Net  600 → $and$benchmarks/c1355.v:344$581_Y [INT]
+    Net  601 → N826                 [INT]
+    Net  602 → N827                 [INT]
+    Net  603 → $and$benchmarks/c1355.v:345$583_Y [INT]
+    Net  604 → N938                 [INT]
+    Net  605 → N939                 [INT]
+    Net  606 → $and$benchmarks/c1355.v:386$585_Y [INT]
+    Net  607 → N940                 [INT]
+    Net  608 → $and$benchmarks/c1355.v:386$586_Y [INT]
+    Net  609 → N873                 [INT]
+    Net  610 → N978                 [INT]
+    Net  611 → N941                 [INT]
+    Net  612 → N942                 [INT]
+    Net  613 → $and$benchmarks/c1355.v:387$588_Y [INT]
+    Net  614 → N860                 [INT]
+    Net  615 → $and$benchmarks/c1355.v:387$589_Y [INT]
+    Net  616 → N943                 [INT]
+    Net  617 → N979                 [INT]
+    Net  618 → N944                 [INT]
+    Net  619 → N847                 [INT]
+    Net  620 → $and$benchmarks/c1355.v:388$591_Y [INT]
+    Net  621 → N945                 [INT]
+    Net  622 → $and$benchmarks/c1355.v:388$592_Y [INT]
+    Net  623 → N946                 [INT]
+    Net  624 → N980                 [INT]
+    Net  625 → N834                 [INT]
+    Net  626 → N947                 [INT]
+    Net  627 → $and$benchmarks/c1355.v:389$594_Y [INT]
+    Net  628 → N948                 [INT]
+    Net  629 → $and$benchmarks/c1355.v:389$595_Y [INT]
+    Net  630 → N949                 [INT]
+    Net  631 → N981                 [INT]
+    Net  632 → N958                 [INT]
+    Net  633 → N959                 [INT]
+    Net  634 → $and$benchmarks/c1355.v:390$597_Y [INT]
+    Net  635 → N960                 [INT]
+    Net  636 → $and$benchmarks/c1355.v:390$598_Y [INT]
+    Net  637 → N899                 [INT]
+    Net  638 → N982                 [INT]
+    Net  639 → N961                 [INT]
+    Net  640 → N962                 [INT]
+    Net  641 → $and$benchmarks/c1355.v:391$600_Y [INT]
+    Net  642 → N912                 [INT]
+    Net  643 → $and$benchmarks/c1355.v:391$601_Y [INT]
+    Net  644 → N963                 [INT]
+    Net  645 → N983                 [INT]
+    Net  646 → N964                 [INT]
+    Net  647 → N886                 [INT]
+    Net  648 → $and$benchmarks/c1355.v:392$603_Y [INT]
+    Net  649 → N965                 [INT]
+    Net  650 → $and$benchmarks/c1355.v:392$604_Y [INT]
+    Net  651 → N966                 [INT]
+    Net  652 → N984                 [INT]
+    Net  653 → N925                 [INT]
+    Net  654 → N967                 [INT]
+    Net  655 → $and$benchmarks/c1355.v:393$606_Y [INT]
+    Net  656 → N968                 [INT]
+    Net  657 → $and$benchmarks/c1355.v:393$607_Y [INT]
+    Net  658 → N969                 [INT]
+    Net  659 → N985                 [INT]
+    Net  660 → N950                 [INT]
+    Net  661 → $and$benchmarks/c1355.v:396$615_Y [INT]
+    Net  662 → $and$benchmarks/c1355.v:396$616_Y [INT]
+    Net  663 → N951                 [INT]
+    Net  664 → $and$benchmarks/c1355.v:396$617_Y [INT]
+    Net  665 → N986                 [INT]
+    Net  666 → N996                 [INT]
+    Net  667 → N952                 [INT]
+    Net  668 → $and$benchmarks/c1355.v:397$619_Y [INT]
+    Net  669 → N953                 [INT]
+    Net  670 → $and$benchmarks/c1355.v:397$620_Y [INT]
+    Net  671 → $and$benchmarks/c1355.v:397$621_Y [INT]
+    Net  672 → N1001                [INT]
+    Net  673 → N954                 [INT]
+    Net  674 → $and$benchmarks/c1355.v:398$623_Y [INT]
+    Net  675 → $and$benchmarks/c1355.v:398$624_Y [INT]
+    Net  676 → N955                 [INT]
+    Net  677 → $and$benchmarks/c1355.v:398$625_Y [INT]
+    Net  678 → N1006                [INT]
+    Net  679 → N956                 [INT]
+    Net  680 → $and$benchmarks/c1355.v:399$627_Y [INT]
+    Net  681 → N957                 [INT]
+    Net  682 → $and$benchmarks/c1355.v:399$628_Y [INT]
+    Net  683 → $and$benchmarks/c1355.v:399$629_Y [INT]
+    Net  684 → N1011                [INT]
+    Net  685 → N970                 [INT]
+    Net  686 → $and$benchmarks/c1355.v:400$631_Y [INT]
+    Net  687 → $and$benchmarks/c1355.v:400$632_Y [INT]
+    Net  688 → N971                 [INT]
+    Net  689 → $and$benchmarks/c1355.v:400$633_Y [INT]
+    Net  690 → N991                 [INT]
+    Net  691 → N1016                [INT]
+    Net  692 → N972                 [INT]
+    Net  693 → $and$benchmarks/c1355.v:401$635_Y [INT]
+    Net  694 → N973                 [INT]
+    Net  695 → $and$benchmarks/c1355.v:401$636_Y [INT]
+    Net  696 → $and$benchmarks/c1355.v:401$637_Y [INT]
+    Net  697 → N1021                [INT]
+    Net  698 → N974                 [INT]
+    Net  699 → $and$benchmarks/c1355.v:402$639_Y [INT]
+    Net  700 → $and$benchmarks/c1355.v:402$640_Y [INT]
+    Net  701 → N975                 [INT]
+    Net  702 → $and$benchmarks/c1355.v:402$641_Y [INT]
+    Net  703 → N1026                [INT]
+    Net  704 → N976                 [INT]
+    Net  705 → $and$benchmarks/c1355.v:403$643_Y [INT]
+    Net  706 → N977                 [INT]
+    Net  707 → $and$benchmarks/c1355.v:403$644_Y [INT]
+    Net  708 → $and$benchmarks/c1355.v:403$645_Y [INT]
+    Net  709 → N1031                [INT]
+    Net  710 → N1036                [INT]
+    Net  711 → N1039                [INT]
+    Net  712 → N1042                [INT]
+    Net  713 → N1045                [INT]
+    Net  714 → N1048                [INT]
+    Net  715 → N1051                [INT]
+    Net  716 → N1054                [INT]
+    Net  717 → N1057                [INT]
+    Net  718 → N1060                [INT]
+    Net  719 → N1063                [INT]
+    Net  720 → N1066                [INT]
+    Net  721 → N1069                [INT]
+    Net  722 → N1072                [INT]
+    Net  723 → N1075                [INT]
+    Net  724 → N1078                [INT]
+    Net  725 → N1081                [INT]
+    Net  726 → N1084                [INT]
+    Net  727 → N1087                [INT]
+    Net  728 → N1090                [INT]
+    Net  729 → N1093                [INT]
+    Net  730 → N1096                [INT]
+    Net  731 → N1099                [INT]
+    Net  732 → N1102                [INT]
+    Net  733 → N1105                [INT]
+    Net  734 → N1108                [INT]
+    Net  735 → N1111                [INT]
+    Net  736 → N1114                [INT]
+    Net  737 → N1117                [INT]
+    Net  738 → N1120                [INT]
+    Net  739 → N1123                [INT]
+    Net  740 → N1126                [INT]
+    Net  741 → N1129                [INT]
+    Net  742 → $and$benchmarks/c1355.v:436$679_Y [INT]
+    Net  743 → $and$benchmarks/c1355.v:437$681_Y [INT]
+    Net  744 → $and$benchmarks/c1355.v:438$683_Y [INT]
+    Net  745 → $and$benchmarks/c1355.v:439$685_Y [INT]
+    Net  746 → $and$benchmarks/c1355.v:440$687_Y [INT]
+    Net  747 → $and$benchmarks/c1355.v:441$689_Y [INT]
+    Net  748 → $and$benchmarks/c1355.v:442$691_Y [INT]
+    Net  749 → $and$benchmarks/c1355.v:443$693_Y [INT]
+    Net  750 → $and$benchmarks/c1355.v:444$695_Y [INT]
+    Net  751 → $and$benchmarks/c1355.v:445$697_Y [INT]
+    Net  752 → $and$benchmarks/c1355.v:446$699_Y [INT]
+    Net  753 → $and$benchmarks/c1355.v:447$701_Y [INT]
+    Net  754 → $and$benchmarks/c1355.v:448$703_Y [INT]
+    Net  755 → $and$benchmarks/c1355.v:449$705_Y [INT]
+    Net  756 → $and$benchmarks/c1355.v:450$707_Y [INT]
+    Net  757 → $and$benchmarks/c1355.v:451$709_Y [INT]
+    Net  758 → $and$benchmarks/c1355.v:452$711_Y [INT]
+    Net  759 → $and$benchmarks/c1355.v:453$713_Y [INT]
+    Net  760 → $and$benchmarks/c1355.v:454$715_Y [INT]
+    Net  761 → $and$benchmarks/c1355.v:455$717_Y [INT]
+    Net  762 → $and$benchmarks/c1355.v:456$719_Y [INT]
+    Net  763 → $and$benchmarks/c1355.v:457$721_Y [INT]
+    Net  764 → $and$benchmarks/c1355.v:458$723_Y [INT]
+    Net  765 → $and$benchmarks/c1355.v:459$725_Y [INT]
+    Net  766 → $and$benchmarks/c1355.v:460$727_Y [INT]
+    Net  767 → $and$benchmarks/c1355.v:461$729_Y [INT]
+    Net  768 → $and$benchmarks/c1355.v:462$731_Y [INT]
+    Net  769 → $and$benchmarks/c1355.v:463$733_Y [INT]
+    Net  770 → $and$benchmarks/c1355.v:464$735_Y [INT]
+    Net  771 → $and$benchmarks/c1355.v:465$737_Y [INT]
+    Net  772 → $and$benchmarks/c1355.v:466$739_Y [INT]
+    Net  773 → $and$benchmarks/c1355.v:467$741_Y [INT]
+    Net  774 → N1132                [INT]
+    Net  775 → $and$benchmarks/c1355.v:468$743_Y [INT]
+    Net  776 → $and$benchmarks/c1355.v:469$745_Y [INT]
+    Net  777 → N1135                [INT]
+    Net  778 → $and$benchmarks/c1355.v:470$747_Y [INT]
+    Net  779 → $and$benchmarks/c1355.v:471$749_Y [INT]
+    Net  780 → N1138                [INT]
+    Net  781 → $and$benchmarks/c1355.v:472$751_Y [INT]
+    Net  782 → $and$benchmarks/c1355.v:473$753_Y [INT]
+    Net  783 → N1141                [INT]
+    Net  784 → $and$benchmarks/c1355.v:474$755_Y [INT]
+    Net  785 → $and$benchmarks/c1355.v:475$757_Y [INT]
+    Net  786 → N1144                [INT]
+    Net  787 → $and$benchmarks/c1355.v:476$759_Y [INT]
+    Net  788 → $and$benchmarks/c1355.v:477$761_Y [INT]
+    Net  789 → N1147                [INT]
+    Net  790 → $and$benchmarks/c1355.v:478$763_Y [INT]
+    Net  791 → $and$benchmarks/c1355.v:479$765_Y [INT]
+    Net  792 → N1150                [INT]
+    Net  793 → $and$benchmarks/c1355.v:480$767_Y [INT]
+    Net  794 → $and$benchmarks/c1355.v:481$769_Y [INT]
+    Net  795 → N1153                [INT]
+    Net  796 → $and$benchmarks/c1355.v:482$771_Y [INT]
+    Net  797 → $and$benchmarks/c1355.v:483$773_Y [INT]
+    Net  798 → N1156                [INT]
+    Net  799 → $and$benchmarks/c1355.v:484$775_Y [INT]
+    Net  800 → $and$benchmarks/c1355.v:485$777_Y [INT]
+    Net  801 → N1159                [INT]
+    Net  802 → $and$benchmarks/c1355.v:486$779_Y [INT]
+    Net  803 → $and$benchmarks/c1355.v:487$781_Y [INT]
+    Net  804 → N1162                [INT]
+    Net  805 → $and$benchmarks/c1355.v:488$783_Y [INT]
+    Net  806 → $and$benchmarks/c1355.v:489$785_Y [INT]
+    Net  807 → N1165                [INT]
+    Net  808 → $and$benchmarks/c1355.v:490$787_Y [INT]
+    Net  809 → $and$benchmarks/c1355.v:491$789_Y [INT]
+    Net  810 → N1168                [INT]
+    Net  811 → $and$benchmarks/c1355.v:492$791_Y [INT]
+    Net  812 → $and$benchmarks/c1355.v:493$793_Y [INT]
+    Net  813 → N1171                [INT]
+    Net  814 → $and$benchmarks/c1355.v:494$795_Y [INT]
+    Net  815 → $and$benchmarks/c1355.v:495$797_Y [INT]
+    Net  816 → N1174                [INT]
+    Net  817 → $and$benchmarks/c1355.v:496$799_Y [INT]
+    Net  818 → $and$benchmarks/c1355.v:497$801_Y [INT]
+    Net  819 → N1177                [INT]
+    Net  820 → $and$benchmarks/c1355.v:498$803_Y [INT]
+    Net  821 → $and$benchmarks/c1355.v:499$805_Y [INT]
+    Net  822 → N1180                [INT]
+    Net  823 → $and$benchmarks/c1355.v:500$807_Y [INT]
+    Net  824 → $and$benchmarks/c1355.v:501$809_Y [INT]
+    Net  825 → N1183                [INT]
+    Net  826 → $and$benchmarks/c1355.v:502$811_Y [INT]
+    Net  827 → $and$benchmarks/c1355.v:503$813_Y [INT]
+    Net  828 → N1186                [INT]
+    Net  829 → $and$benchmarks/c1355.v:504$815_Y [INT]
+    Net  830 → $and$benchmarks/c1355.v:505$817_Y [INT]
+    Net  831 → N1189                [INT]
+    Net  832 → $and$benchmarks/c1355.v:506$819_Y [INT]
+    Net  833 → $and$benchmarks/c1355.v:507$821_Y [INT]
+    Net  834 → N1192                [INT]
+    Net  835 → $and$benchmarks/c1355.v:508$823_Y [INT]
+    Net  836 → $and$benchmarks/c1355.v:509$825_Y [INT]
+    Net  837 → N1195                [INT]
+    Net  838 → $and$benchmarks/c1355.v:510$827_Y [INT]
+    Net  839 → $and$benchmarks/c1355.v:511$829_Y [INT]
+    Net  840 → N1198                [INT]
+    Net  841 → $and$benchmarks/c1355.v:512$831_Y [INT]
+    Net  842 → $and$benchmarks/c1355.v:513$833_Y [INT]
+    Net  843 → N1201                [INT]
+    Net  844 → $and$benchmarks/c1355.v:514$835_Y [INT]
+    Net  845 → $and$benchmarks/c1355.v:515$837_Y [INT]
+    Net  846 → N1204                [INT]
+    Net  847 → $and$benchmarks/c1355.v:516$839_Y [INT]
+    Net  848 → $and$benchmarks/c1355.v:517$841_Y [INT]
+    Net  849 → N1207                [INT]
+    Net  850 → $and$benchmarks/c1355.v:518$843_Y [INT]
+    Net  851 → $and$benchmarks/c1355.v:519$845_Y [INT]
+    Net  852 → N1210                [INT]
+    Net  853 → $and$benchmarks/c1355.v:520$847_Y [INT]
+    Net  854 → $and$benchmarks/c1355.v:521$849_Y [INT]
+    Net  855 → N1213                [INT]
+    Net  856 → $and$benchmarks/c1355.v:522$851_Y [INT]
+    Net  857 → $and$benchmarks/c1355.v:523$853_Y [INT]
+    Net  858 → N1216                [INT]
+    Net  859 → $and$benchmarks/c1355.v:524$855_Y [INT]
+    Net  860 → $and$benchmarks/c1355.v:525$857_Y [INT]
+    Net  861 → N1219                [INT]
+    Net  862 → $and$benchmarks/c1355.v:526$859_Y [INT]
+    Net  863 → $and$benchmarks/c1355.v:527$861_Y [INT]
+    Net  864 → N1222                [INT]
+    Net  865 → $and$benchmarks/c1355.v:528$863_Y [INT]
+    Net  866 → $and$benchmarks/c1355.v:529$865_Y [INT]
+    Net  867 → N1225                [INT]
+    Net  868 → $and$benchmarks/c1355.v:530$867_Y [INT]
+    Net  869 → $and$benchmarks/c1355.v:531$869_Y [INT]
+    Net  870 → N1228                [INT]
+    Net  871 → N1229                [INT]
+    Net  872 → $and$benchmarks/c1355.v:532$871_Y [INT]
+    Net  873 → N1230                [INT]
+    Net  874 → N1231                [INT]
+    Net  875 → $and$benchmarks/c1355.v:533$873_Y [INT]
+    Net  876 → N1232                [INT]
+    Net  877 → N1233                [INT]
+    Net  878 → $and$benchmarks/c1355.v:534$875_Y [INT]
+    Net  879 → N1234                [INT]
+    Net  880 → N1235                [INT]
+    Net  881 → $and$benchmarks/c1355.v:535$877_Y [INT]
+    Net  882 → N1236                [INT]
+    Net  883 → N1237                [INT]
+    Net  884 → $and$benchmarks/c1355.v:536$879_Y [INT]
+    Net  885 → N1238                [INT]
+    Net  886 → N1239                [INT]
+    Net  887 → $and$benchmarks/c1355.v:537$881_Y [INT]
+    Net  888 → N1240                [INT]
+    Net  889 → N1241                [INT]
+    Net  890 → $and$benchmarks/c1355.v:538$883_Y [INT]
+    Net  891 → N1242                [INT]
+    Net  892 → N1243                [INT]
+    Net  893 → $and$benchmarks/c1355.v:539$885_Y [INT]
+    Net  894 → N1244                [INT]
+    Net  895 → N1245                [INT]
+    Net  896 → $and$benchmarks/c1355.v:540$887_Y [INT]
+    Net  897 → N1246                [INT]
+    Net  898 → N1247                [INT]
+    Net  899 → $and$benchmarks/c1355.v:541$889_Y [INT]
+    Net  900 → N1248                [INT]
+    Net  901 → N1249                [INT]
+    Net  902 → $and$benchmarks/c1355.v:542$891_Y [INT]
+    Net  903 → N1250                [INT]
+    Net  904 → N1251                [INT]
+    Net  905 → $and$benchmarks/c1355.v:543$893_Y [INT]
+    Net  906 → N1252                [INT]
+    Net  907 → N1253                [INT]
+    Net  908 → $and$benchmarks/c1355.v:544$895_Y [INT]
+    Net  909 → N1254                [INT]
+    Net  910 → N1255                [INT]
+    Net  911 → $and$benchmarks/c1355.v:545$897_Y [INT]
+    Net  912 → N1256                [INT]
+    Net  913 → N1257                [INT]
+    Net  914 → $and$benchmarks/c1355.v:546$899_Y [INT]
+    Net  915 → N1258                [INT]
+    Net  916 → N1259                [INT]
+    Net  917 → $and$benchmarks/c1355.v:547$901_Y [INT]
+    Net  918 → N1260                [INT]
+    Net  919 → N1261                [INT]
+    Net  920 → $and$benchmarks/c1355.v:548$903_Y [INT]
+    Net  921 → N1262                [INT]
+    Net  922 → N1263                [INT]
+    Net  923 → $and$benchmarks/c1355.v:549$905_Y [INT]
+    Net  924 → N1264                [INT]
+    Net  925 → N1265                [INT]
+    Net  926 → $and$benchmarks/c1355.v:550$907_Y [INT]
+    Net  927 → N1266                [INT]
+    Net  928 → N1267                [INT]
+    Net  929 → $and$benchmarks/c1355.v:551$909_Y [INT]
+    Net  930 → N1268                [INT]
+    Net  931 → N1269                [INT]
+    Net  932 → $and$benchmarks/c1355.v:552$911_Y [INT]
+    Net  933 → N1270                [INT]
+    Net  934 → N1271                [INT]
+    Net  935 → $and$benchmarks/c1355.v:553$913_Y [INT]
+    Net  936 → N1272                [INT]
+    Net  937 → N1273                [INT]
+    Net  938 → $and$benchmarks/c1355.v:554$915_Y [INT]
+    Net  939 → N1274                [INT]
+    Net  940 → N1275                [INT]
+    Net  941 → $and$benchmarks/c1355.v:555$917_Y [INT]
+    Net  942 → N1276                [INT]
+    Net  943 → N1277                [INT]
+    Net  944 → $and$benchmarks/c1355.v:556$919_Y [INT]
+    Net  945 → N1278                [INT]
+    Net  946 → N1279                [INT]
+    Net  947 → $and$benchmarks/c1355.v:557$921_Y [INT]
+    Net  948 → N1280                [INT]
+    Net  949 → N1281                [INT]
+    Net  950 → $and$benchmarks/c1355.v:558$923_Y [INT]
+    Net  951 → N1282                [INT]
+    Net  952 → N1283                [INT]
+    Net  953 → $and$benchmarks/c1355.v:559$925_Y [INT]
+    Net  954 → N1284                [INT]
+    Net  955 → N1285                [INT]
+    Net  956 → $and$benchmarks/c1355.v:560$927_Y [INT]
+    Net  957 → N1286                [INT]
+    Net  958 → N1287                [INT]
+    Net  959 → $and$benchmarks/c1355.v:561$929_Y [INT]
+    Net  960 → N1288                [INT]
+    Net  961 → N1289                [INT]
+    Net  962 → $and$benchmarks/c1355.v:562$931_Y [INT]
+    Net  963 → N1290                [INT]
+    Net  964 → N1291                [INT]
+    Net  965 → $and$benchmarks/c1355.v:563$933_Y [INT]
+    Net  966 → $and$benchmarks/c1355.v:58$9_Y [INT]
+    Net  967 → $and$benchmarks/c1355.v:59$11_Y [INT]
+    Net  968 → $and$benchmarks/c1355.v:60$13_Y [INT]
+    Net  969 → $and$benchmarks/c1355.v:61$15_Y [INT]
+    Net  970 → $and$benchmarks/c1355.v:62$17_Y [INT]
+    Net  971 → $and$benchmarks/c1355.v:63$19_Y [INT]
+    Net  972 → $and$benchmarks/c1355.v:64$21_Y [INT]
+    Net  973 → $and$benchmarks/c1355.v:65$23_Y [INT]
+    Net  974 → $and$benchmarks/c1355.v:66$25_Y [INT]
+    Net  975 → $and$benchmarks/c1355.v:67$27_Y [INT]
+    Net  976 → $and$benchmarks/c1355.v:68$29_Y [INT]
+    Net  977 → $and$benchmarks/c1355.v:69$31_Y [INT]
+    Net  978 → $and$benchmarks/c1355.v:70$33_Y [INT]
+    Net  979 → $and$benchmarks/c1355.v:71$35_Y [INT]
+    Net  980 → $and$benchmarks/c1355.v:72$37_Y [INT]
+    Net  981 → $and$benchmarks/c1355.v:73$39_Y [INT]
+    Net  982 → $and$benchmarks/c1355.v:74$41_Y [INT]
+    Net  983 → $and$benchmarks/c1355.v:75$43_Y [INT]
+    Net  984 → $and$benchmarks/c1355.v:76$45_Y [INT]
+    Net  985 → $and$benchmarks/c1355.v:77$47_Y [INT]
+    Net  986 → $and$benchmarks/c1355.v:78$49_Y [INT]
+    Net  987 → $and$benchmarks/c1355.v:79$51_Y [INT]
+    Net  988 → $and$benchmarks/c1355.v:80$53_Y [INT]
+    Net  989 → $and$benchmarks/c1355.v:81$55_Y [INT]
+    Net  990 → $and$benchmarks/c1355.v:82$57_Y [INT]
+    Net  991 → $and$benchmarks/c1355.v:83$59_Y [INT]
+    Net  992 → $and$benchmarks/c1355.v:84$61_Y [INT]
+    Net  993 → $and$benchmarks/c1355.v:85$63_Y [INT]
+    Net  994 → $and$benchmarks/c1355.v:86$65_Y [INT]
+    Net  995 → $and$benchmarks/c1355.v:87$67_Y [INT]
+    Net  996 → $and$benchmarks/c1355.v:88$69_Y [INT]
+    Net  997 → $and$benchmarks/c1355.v:89$71_Y [INT]
+    Net  998 → N266                 [INT]
+    Net  999 → $and$benchmarks/c1355.v:90$73_Y [INT]
+    Net 1000 → $and$benchmarks/c1355.v:91$75_Y [INT]
+    Net 1001 → N269                 [INT]
+    Net 1002 → $and$benchmarks/c1355.v:92$77_Y [INT]
+    Net 1003 → $and$benchmarks/c1355.v:93$79_Y [INT]
+    Net 1004 → N272                 [INT]
+    Net 1005 → $and$benchmarks/c1355.v:94$81_Y [INT]
+    Net 1006 → $and$benchmarks/c1355.v:95$83_Y [INT]
+    Net 1007 → N275                 [INT]
+    Net 1008 → $and$benchmarks/c1355.v:96$85_Y [INT]
+    Net 1009 → $and$benchmarks/c1355.v:97$87_Y [INT]
+    Net 1010 → N278                 [INT]
+    Net 1011 → $and$benchmarks/c1355.v:98$89_Y [INT]
+    Net 1012 → $and$benchmarks/c1355.v:99$91_Y [INT]
+    Net 1013 → $or$benchmarks/c1355.v:394$609_Y [INT]
+    Net 1014 → $or$benchmarks/c1355.v:394$610_Y [INT]
+    Net 1015 → $or$benchmarks/c1355.v:395$612_Y [INT]
+    Net 1016 → $or$benchmarks/c1355.v:395$613_Y [INT]
+
+2. FAULT COVERAGE SUMMARY
+------------------------------------------------------------
+  Total faults         : 2030
+  Detectable   (SAT)   : 2030
+  Undetectable (UNSAT) : 0
+  Skipped              : 0
+  Fault coverage       : 100.0%  (2030/2030 tested)
+
+================================================================================
+  COMPUTED STATISTICS (from per-fault data)
+================================================================================
+  Detectable faults    : 2030
+  Undetectable faults  : 0
+  Coverage             : 100.0%
+
+  Solve time  — avg: 6.188 ms  max: 62.284 ms  min: 0.115 ms
+  Decisions   — avg: 1538.4  max: 11091  min: 67
+  Conflicts   — avg: 470.5  max: 4631  min: 0
+
+--------------------------------------------------------------------------------
+  TOP 10 HARDEST FAULTS  (by SAT decisions)
+--------------------------------------------------------------------------------
+  [1] SA1@net864  (wire 'N1222')  ← most decisions
+    Gate      : $not$benchmarks/c1355.v:466$740  [$not]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 62.284 ms
+    CNF size  : 2062 vars, 5142 clauses
+    Decisions : 11091  Conflicts: 4631  Props: 586743
+    Test vector: N1=1, N8=0, N15=0, N22=0, N29=0, N36=1, N43=1, N50=1, N57=0, N64=1, N71=0, N78=1, N85=1, N92=0, N99=1, N106=0, N113=1, N120=1, N127=1, N134=1, N141=1, N148=0, N155=0, N162=1, N169=1, N176=0, N183=0, N190=1, N197=1, N204=1, N211=1, N218=0, N225=0, N226=0, N227=0, N228=0, N229=0, N230=0, N231=1, N232=0, N233=0
+    Output diff: N1324: good=1 faulty=1, N1325: good=0 faulty=0, N1326: good=0 faulty=0, N1327: good=0 faulty=0, N1328: good=0 faulty=0, N1329: good=1 faulty=1, N1330: good=1 faulty=1, N1331: good=1 faulty=1, N1332: good=0 faulty=0, N1333: good=1 faulty=1, N1334: good=0 faulty=0, N1335: good=1 faulty=1, N1336: good=1 faulty=1, N1337: good=0 faulty=0, N1338: good=1 faulty=1, N1339: good=0 faulty=0, N1340: good=1 faulty=1, N1341: good=1 faulty=1, N1342: good=1 faulty=1, N1343: good=1 faulty=1, N1344: good=1 faulty=1, N1345: good=0 faulty=0, N1346: good=0 faulty=0, N1347: good=1 faulty=1, N1348: good=1 faulty=1, N1349: good=0 faulty=0, N1350: good=0 faulty=0, N1351: good=1 faulty=1, N1352: good=1 faulty=1, N1353: good=1 faulty=1, N1354: good=0 faulty=1, N1355: good=0 faulty=0
+
+  [2] SA0@net727  (wire 'N1087')  ← most decisions
+    Gate      : $and$benchmarks/c1355.v:421$664  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 45.920 ms
+    CNF size  : 2062 vars, 5141 clauses
+    Decisions : 9045  Conflicts: 3501  Props: 438761
+    Test vector: N1=0, N8=0, N15=1, N22=1, N29=0, N36=0, N43=1, N50=1, N57=1, N64=0, N71=0, N78=0, N85=0, N92=0, N99=1, N106=0, N113=0, N120=0, N127=1, N134=0, N141=0, N148=1, N155=0, N162=0, N169=0, N176=0, N183=0, N190=1, N197=1, N204=0, N211=1, N218=1, N225=0, N226=0, N227=0, N228=0, N229=1, N230=0, N231=1, N232=1, N233=1
+    Output diff: N1324: good=0 faulty=0, N1325: good=0 faulty=0, N1326: good=1 faulty=1, N1327: good=1 faulty=1, N1328: good=0 faulty=0, N1329: good=0 faulty=0, N1330: good=1 faulty=1, N1331: good=1 faulty=1, N1332: good=1 faulty=1, N1333: good=0 faulty=0, N1334: good=0 faulty=0, N1335: good=0 faulty=0, N1336: good=0 faulty=0, N1337: good=0 faulty=0, N1338: good=1 faulty=1, N1339: good=0 faulty=0, N1340: good=0 faulty=0, N1341: good=1 faulty=0, N1342: good=1 faulty=1, N1343: good=0 faulty=0, N1344: good=0 faulty=0, N1345: good=1 faulty=1, N1346: good=0 faulty=0, N1347: good=0 faulty=0, N1348: good=0 faulty=0, N1349: good=0 faulty=0, N1350: good=0 faulty=0, N1351: good=1 faulty=1, N1352: good=1 faulty=1, N1353: good=0 faulty=0, N1354: good=1 faulty=1, N1355: good=1 faulty=1
+
+  [3] SA0@net711  (wire 'N1039')  ← most decisions
+    Gate      : $and$benchmarks/c1355.v:405$648  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 38.312 ms
+    CNF size  : 2062 vars, 5141 clauses
+    Decisions : 8991  Conflicts: 2804  Props: 409531
+    Test vector: N1=0, N8=0, N15=1, N22=1, N29=0, N36=0, N43=0, N50=1, N57=0, N64=0, N71=1, N78=1, N85=1, N92=1, N99=1, N106=1, N113=0, N120=0, N127=0, N134=1, N141=1, N148=0, N155=0, N162=1, N169=1, N176=1, N183=1, N190=1, N197=1, N204=1, N211=0, N218=0, N225=0, N226=0, N227=0, N228=0, N229=1, N230=0, N231=0, N232=0, N233=1
+    Output diff: N1324: good=0 faulty=0, N1325: good=1 faulty=0, N1326: good=1 faulty=1, N1327: good=1 faulty=1, N1328: good=0 faulty=0, N1329: good=0 faulty=0, N1330: good=0 faulty=0, N1331: good=1 faulty=1, N1332: good=0 faulty=0, N1333: good=0 faulty=0, N1334: good=1 faulty=1, N1335: good=1 faulty=1, N1336: good=1 faulty=1, N1337: good=1 faulty=1, N1338: good=1 faulty=1, N1339: good=1 faulty=1, N1340: good=0 faulty=0, N1341: good=0 faulty=0, N1342: good=0 faulty=0, N1343: good=1 faulty=1, N1344: good=1 faulty=1, N1345: good=0 faulty=0, N1346: good=0 faulty=0, N1347: good=1 faulty=1, N1348: good=1 faulty=1, N1349: good=1 faulty=1, N1350: good=1 faulty=1, N1351: good=1 faulty=1, N1352: good=1 faulty=1, N1353: good=1 faulty=1, N1354: good=0 faulty=0, N1355: good=0 faulty=0
+
+  [4] SA1@net828  (wire 'N1186')  ← most decisions
+    Gate      : $not$benchmarks/c1355.v:454$716  [$not]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 41.858 ms
+    CNF size  : 2062 vars, 5142 clauses
+    Decisions : 8695  Conflicts: 3222  Props: 420304
+    Test vector: N1=1, N8=1, N15=0, N22=1, N29=1, N36=1, N43=0, N50=0, N57=1, N64=0, N71=0, N78=1, N85=1, N92=0, N99=1, N106=1, N113=1, N120=0, N127=1, N134=1, N141=1, N148=0, N155=1, N162=0, N169=1, N176=1, N183=1, N190=0, N197=0, N204=0, N211=1, N218=0, N225=0, N226=1, N227=1, N228=0, N229=0, N230=0, N231=0, N232=0, N233=0
+    Output diff: N1324: good=1 faulty=1, N1325: good=1 faulty=1, N1326: good=0 faulty=0, N1327: good=1 faulty=1, N1328: good=1 faulty=1, N1329: good=1 faulty=1, N1330: good=0 faulty=0, N1331: good=0 faulty=0, N1332: good=1 faulty=1, N1333: good=0 faulty=0, N1334: good=0 faulty=0, N1335: good=1 faulty=1, N1336: good=1 faulty=1, N1337: good=0 faulty=0, N1338: good=1 faulty=1, N1339: good=1 faulty=1, N1340: good=1 faulty=1, N1341: good=0 faulty=0, N1342: good=0 faulty=1, N1343: good=1 faulty=1, N1344: good=1 faulty=1, N1345: good=0 faulty=0, N1346: good=1 faulty=1, N1347: good=0 faulty=0, N1348: good=1 faulty=1, N1349: good=1 faulty=1, N1350: good=1 faulty=1, N1351: good=0 faulty=0, N1352: good=0 faulty=0, N1353: good=0 faulty=0, N1354: good=1 faulty=1, N1355: good=0 faulty=0
+
+  [5] SA1@net816  (wire 'N1174')  ← most decisions
+    Gate      : $not$benchmarks/c1355.v:450$708  [$not]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 39.956 ms
+    CNF size  : 2062 vars, 5142 clauses
+    Decisions : 8628  Conflicts: 3111  Props: 423342
+    Test vector: N1=1, N8=1, N15=1, N22=1, N29=1, N36=0, N43=1, N50=1, N57=0, N64=1, N71=1, N78=0, N85=0, N92=1, N99=1, N106=1, N113=0, N120=0, N127=0, N134=1, N141=1, N148=0, N155=0, N162=0, N169=1, N176=0, N183=0, N190=1, N197=1, N204=0, N211=0, N218=1, N225=0, N226=1, N227=0, N228=0, N229=0, N230=0, N231=0, N232=0, N233=1
+    Output diff: N1324: good=1 faulty=1, N1325: good=1 faulty=1, N1326: good=1 faulty=1, N1327: good=1 faulty=1, N1328: good=1 faulty=1, N1329: good=0 faulty=0, N1330: good=1 faulty=1, N1331: good=1 faulty=1, N1332: good=0 faulty=0, N1333: good=1 faulty=1, N1334: good=1 faulty=1, N1335: good=0 faulty=0, N1336: good=0 faulty=0, N1337: good=1 faulty=1, N1338: good=0 faulty=1, N1339: good=1 faulty=1, N1340: good=0 faulty=0, N1341: good=0 faulty=0, N1342: good=0 faulty=0, N1343: good=1 faulty=1, N1344: good=1 faulty=1, N1345: good=0 faulty=0, N1346: good=0 faulty=0, N1347: good=0 faulty=0, N1348: good=1 faulty=1, N1349: good=0 faulty=0, N1350: good=0 faulty=0, N1351: good=1 faulty=1, N1352: good=1 faulty=1, N1353: good=0 faulty=0, N1354: good=0 faulty=0, N1355: good=1 faulty=1
+
+  [6] SA0@net749  (wire '$and$benchmarks/c1355.v:443$693_Y')  ← most decisions
+    Gate      : $and$benchmarks/c1355.v:443$693  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 39.652 ms
+    CNF size  : 2062 vars, 5141 clauses
+    Decisions : 8585  Conflicts: 2961  Props: 410260
+    Test vector: N1=1, N8=0, N15=0, N22=1, N29=1, N36=0, N43=1, N50=1, N57=0, N64=1, N71=0, N78=0, N85=0, N92=1, N99=0, N106=1, N113=1, N120=0, N127=0, N134=0, N141=0, N148=1, N155=1, N162=0, N169=1, N176=0, N183=0, N190=0, N197=1, N204=0, N211=0, N218=1, N225=1, N226=1, N227=1, N228=0, N229=1, N230=0, N231=0, N232=1, N233=1
+    Output diff: N1324: good=1 faulty=1, N1325: good=0 faulty=0, N1326: good=0 faulty=0, N1327: good=1 faulty=1, N1328: good=1 faulty=1, N1329: good=0 faulty=0, N1330: good=1 faulty=1, N1331: good=0 faulty=1, N1332: good=0 faulty=0, N1333: good=1 faulty=1, N1334: good=0 faulty=0, N1335: good=0 faulty=0, N1336: good=0 faulty=0, N1337: good=1 faulty=1, N1338: good=0 faulty=0, N1339: good=1 faulty=1, N1340: good=1 faulty=1, N1341: good=0 faulty=0, N1342: good=0 faulty=0, N1343: good=0 faulty=0, N1344: good=0 faulty=0, N1345: good=1 faulty=1, N1346: good=1 faulty=1, N1347: good=0 faulty=0, N1348: good=1 faulty=1, N1349: good=0 faulty=0, N1350: good=0 faulty=0, N1351: good=0 faulty=0, N1352: good=1 faulty=1, N1353: good=0 faulty=0, N1354: good=0 faulty=0, N1355: good=1 faulty=1
+
+  [7] SA0@net764  (wire '$and$benchmarks/c1355.v:458$723_Y')  ← most decisions
+    Gate      : $and$benchmarks/c1355.v:458$723  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 38.416 ms
+    CNF size  : 2062 vars, 5141 clauses
+    Decisions : 8573  Conflicts: 3012  Props: 418107
+    Test vector: N1=1, N8=0, N15=1, N22=1, N29=0, N36=1, N43=0, N50=1, N57=1, N64=0, N71=0, N78=1, N85=0, N92=0, N99=1, N106=0, N113=1, N120=0, N127=1, N134=0, N141=0, N148=1, N155=1, N162=1, N169=1, N176=0, N183=0, N190=1, N197=1, N204=1, N211=0, N218=1, N225=0, N226=0, N227=0, N228=0, N229=0, N230=1, N231=0, N232=0, N233=1
+    Output diff: N1324: good=1 faulty=1, N1325: good=0 faulty=0, N1326: good=1 faulty=1, N1327: good=1 faulty=1, N1328: good=0 faulty=0, N1329: good=1 faulty=1, N1330: good=0 faulty=0, N1331: good=1 faulty=1, N1332: good=1 faulty=1, N1333: good=0 faulty=0, N1334: good=0 faulty=0, N1335: good=1 faulty=1, N1336: good=0 faulty=0, N1337: good=0 faulty=0, N1338: good=1 faulty=1, N1339: good=0 faulty=0, N1340: good=1 faulty=1, N1341: good=0 faulty=0, N1342: good=1 faulty=1, N1343: good=0 faulty=0, N1344: good=0 faulty=0, N1345: good=1 faulty=1, N1346: good=0 faulty=1, N1347: good=1 faulty=1, N1348: good=1 faulty=1, N1349: good=0 faulty=0, N1350: good=0 faulty=0, N1351: good=1 faulty=1, N1352: good=1 faulty=1, N1353: good=1 faulty=1, N1354: good=0 faulty=0, N1355: good=1 faulty=1
+
+  [8] SA0@net766  (wire '$and$benchmarks/c1355.v:460$727_Y')  ← most decisions
+    Gate      : $and$benchmarks/c1355.v:460$727  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 40.003 ms
+    CNF size  : 2062 vars, 5141 clauses
+    Decisions : 8508  Conflicts: 3084  Props: 417666
+    Test vector: N1=0, N8=0, N15=0, N22=0, N29=1, N36=1, N43=1, N50=1, N57=1, N64=0, N71=1, N78=0, N85=1, N92=0, N99=0, N106=1, N113=1, N120=1, N127=1, N134=1, N141=0, N148=1, N155=1, N162=1, N169=1, N176=1, N183=0, N190=1, N197=1, N204=1, N211=0, N218=1, N225=0, N226=0, N227=0, N228=0, N229=0, N230=0, N231=0, N232=0, N233=1
+    Output diff: N1324: good=0 faulty=0, N1325: good=0 faulty=0, N1326: good=0 faulty=0, N1327: good=0 faulty=0, N1328: good=1 faulty=1, N1329: good=1 faulty=1, N1330: good=1 faulty=1, N1331: good=1 faulty=1, N1332: good=1 faulty=1, N1333: good=0 faulty=0, N1334: good=1 faulty=1, N1335: good=0 faulty=0, N1336: good=1 faulty=1, N1337: good=0 faulty=0, N1338: good=0 faulty=0, N1339: good=1 faulty=1, N1340: good=1 faulty=1, N1341: good=1 faulty=1, N1342: good=1 faulty=1, N1343: good=1 faulty=1, N1344: good=0 faulty=0, N1345: good=1 faulty=1, N1346: good=1 faulty=1, N1347: good=1 faulty=1, N1348: good=0 faulty=1, N1349: good=1 faulty=1, N1350: good=0 faulty=0, N1351: good=1 faulty=1, N1352: good=1 faulty=1, N1353: good=1 faulty=1, N1354: good=0 faulty=0, N1355: good=1 faulty=1
+
+  [9] SA1@net907  (wire 'N1253')  ← most decisions
+    Gate      : $not$benchmarks/c1355.v:493$794  [$not]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 41.372 ms
+    CNF size  : 2062 vars, 5142 clauses
+    Decisions : 8483  Conflicts: 3218  Props: 410691
+    Test vector: N1=0, N8=0, N15=0, N22=0, N29=0, N36=1, N43=0, N50=1, N57=0, N64=1, N71=0, N78=0, N85=0, N92=0, N99=0, N106=1, N113=0, N120=1, N127=0, N134=1, N141=0, N148=0, N155=0, N162=1, N169=0, N176=1, N183=0, N190=0, N197=1, N204=1, N211=1, N218=0, N225=0, N226=0, N227=1, N228=0, N229=1, N230=0, N231=0, N232=0, N233=1
+    Output diff: N1324: good=0 faulty=0, N1325: good=0 faulty=0, N1326: good=0 faulty=0, N1327: good=0 faulty=0, N1328: good=0 faulty=0, N1329: good=1 faulty=1, N1330: good=0 faulty=0, N1331: good=1 faulty=1, N1332: good=0 faulty=0, N1333: good=1 faulty=1, N1334: good=0 faulty=0, N1335: good=0 faulty=0, N1336: good=1 faulty=0, N1337: good=0 faulty=0, N1338: good=0 faulty=0, N1339: good=1 faulty=1, N1340: good=0 faulty=0, N1341: good=1 faulty=1, N1342: good=0 faulty=0, N1343: good=1 faulty=1, N1344: good=0 faulty=0, N1345: good=0 faulty=0, N1346: good=0 faulty=0, N1347: good=1 faulty=1, N1348: good=0 faulty=0, N1349: good=1 faulty=1, N1350: good=0 faulty=0, N1351: good=0 faulty=0, N1352: good=1 faulty=1, N1353: good=1 faulty=1, N1354: good=1 faulty=1, N1355: good=0 faulty=0
+
+  [10] SA0@net754  (wire '$and$benchmarks/c1355.v:448$703_Y')  ← most decisions
+    Gate      : $and$benchmarks/c1355.v:448$703  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 56.062 ms
+    CNF size  : 2062 vars, 5141 clauses
+    Decisions : 8440  Conflicts: 2970  Props: 427203
+    Test vector: N1=0, N8=0, N15=1, N22=1, N29=1, N36=0, N43=0, N50=0, N57=1, N64=0, N71=0, N78=0, N85=1, N92=0, N99=0, N106=0, N113=1, N120=0, N127=1, N134=0, N141=0, N148=0, N155=0, N162=0, N169=0, N176=0, N183=0, N190=1, N197=0, N204=1, N211=0, N218=0, N225=0, N226=0, N227=0, N228=0, N229=0, N230=0, N231=0, N232=0, N233=1
+    Output diff: N1324: good=0 faulty=0, N1325: good=0 faulty=0, N1326: good=1 faulty=1, N1327: good=1 faulty=1, N1328: good=1 faulty=1, N1329: good=0 faulty=0, N1330: good=0 faulty=0, N1331: good=0 faulty=0, N1332: good=1 faulty=1, N1333: good=0 faulty=0, N1334: good=0 faulty=0, N1335: good=0 faulty=0, N1336: good=0 faulty=1, N1337: good=0 faulty=0, N1338: good=0 faulty=0, N1339: good=0 faulty=0, N1340: good=1 faulty=1, N1341: good=0 faulty=0, N1342: good=1 faulty=1, N1343: good=0 faulty=0, N1344: good=0 faulty=0, N1345: good=0 faulty=0, N1346: good=0 faulty=0, N1347: good=0 faulty=0, N1348: good=0 faulty=0, N1349: good=0 faulty=0, N1350: good=0 faulty=0, N1351: good=1 faulty=1, N1352: good=0 faulty=0, N1353: good=1 faulty=1, N1354: good=0 faulty=0, N1355: good=0 faulty=0
+
+
+--------------------------------------------------------------------------------
+  TOP 10 SLOWEST FAULTS  (by solve time)
+--------------------------------------------------------------------------------
+  [1] SA1@net864  (wire 'N1222')  ← slowest
+    Gate      : $not$benchmarks/c1355.v:466$740  [$not]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 62.284 ms
+    CNF size  : 2062 vars, 5142 clauses
+    Decisions : 11091  Conflicts: 4631  Props: 586743
+    Test vector: N1=1, N8=0, N15=0, N22=0, N29=0, N36=1, N43=1, N50=1, N57=0, N64=1, N71=0, N78=1, N85=1, N92=0, N99=1, N106=0, N113=1, N120=1, N127=1, N134=1, N141=1, N148=0, N155=0, N162=1, N169=1, N176=0, N183=0, N190=1, N197=1, N204=1, N211=1, N218=0, N225=0, N226=0, N227=0, N228=0, N229=0, N230=0, N231=1, N232=0, N233=0
+    Output diff: N1324: good=1 faulty=1, N1325: good=0 faulty=0, N1326: good=0 faulty=0, N1327: good=0 faulty=0, N1328: good=0 faulty=0, N1329: good=1 faulty=1, N1330: good=1 faulty=1, N1331: good=1 faulty=1, N1332: good=0 faulty=0, N1333: good=1 faulty=1, N1334: good=0 faulty=0, N1335: good=1 faulty=1, N1336: good=1 faulty=1, N1337: good=0 faulty=0, N1338: good=1 faulty=1, N1339: good=0 faulty=0, N1340: good=1 faulty=1, N1341: good=1 faulty=1, N1342: good=1 faulty=1, N1343: good=1 faulty=1, N1344: good=1 faulty=1, N1345: good=0 faulty=0, N1346: good=0 faulty=0, N1347: good=1 faulty=1, N1348: good=1 faulty=1, N1349: good=0 faulty=0, N1350: good=0 faulty=0, N1351: good=1 faulty=1, N1352: good=1 faulty=1, N1353: good=1 faulty=1, N1354: good=0 faulty=1, N1355: good=0 faulty=0
+
+  [2] SA0@net848  (wire '$and$benchmarks/c1355.v:517$841_Y')  ← slowest
+    Gate      : $and$benchmarks/c1355.v:517$841  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 57.102 ms
+    CNF size  : 2062 vars, 5141 clauses
+    Decisions : 8249  Conflicts: 3042  Props: 434317
+    Test vector: N1=1, N8=0, N15=1, N22=0, N29=0, N36=1, N43=0, N50=0, N57=1, N64=0, N71=1, N78=1, N85=0, N92=1, N99=0, N106=1, N113=1, N120=1, N127=0, N134=0, N141=1, N148=0, N155=0, N162=1, N169=0, N176=0, N183=1, N190=0, N197=0, N204=0, N211=0, N218=0, N225=1, N226=0, N227=0, N228=0, N229=0, N230=1, N231=0, N232=0, N233=0
+    Output diff: N1324: good=1 faulty=1, N1325: good=0 faulty=0, N1326: good=1 faulty=1, N1327: good=0 faulty=0, N1328: good=0 faulty=0, N1329: good=1 faulty=1, N1330: good=0 faulty=0, N1331: good=0 faulty=0, N1332: good=1 faulty=1, N1333: good=0 faulty=0, N1334: good=1 faulty=1, N1335: good=1 faulty=1, N1336: good=0 faulty=0, N1337: good=1 faulty=1, N1338: good=0 faulty=0, N1339: good=1 faulty=1, N1340: good=1 faulty=1, N1341: good=1 faulty=1, N1342: good=0 faulty=0, N1343: good=0 faulty=0, N1344: good=1 faulty=1, N1345: good=0 faulty=0, N1346: good=0 faulty=0, N1347: good=1 faulty=1, N1348: good=1 faulty=0, N1349: good=0 faulty=0, N1350: good=1 faulty=1, N1351: good=0 faulty=0, N1352: good=0 faulty=0, N1353: good=0 faulty=0, N1354: good=0 faulty=0, N1355: good=0 faulty=0
+
+  [3] SA0@net754  (wire '$and$benchmarks/c1355.v:448$703_Y')  ← slowest
+    Gate      : $and$benchmarks/c1355.v:448$703  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 56.062 ms
+    CNF size  : 2062 vars, 5141 clauses
+    Decisions : 8440  Conflicts: 2970  Props: 427203
+    Test vector: N1=0, N8=0, N15=1, N22=1, N29=1, N36=0, N43=0, N50=0, N57=1, N64=0, N71=0, N78=0, N85=1, N92=0, N99=0, N106=0, N113=1, N120=0, N127=1, N134=0, N141=0, N148=0, N155=0, N162=0, N169=0, N176=0, N183=0, N190=1, N197=0, N204=1, N211=0, N218=0, N225=0, N226=0, N227=0, N228=0, N229=0, N230=0, N231=0, N232=0, N233=1
+    Output diff: N1324: good=0 faulty=0, N1325: good=0 faulty=0, N1326: good=1 faulty=1, N1327: good=1 faulty=1, N1328: good=1 faulty=1, N1329: good=0 faulty=0, N1330: good=0 faulty=0, N1331: good=0 faulty=0, N1332: good=1 faulty=1, N1333: good=0 faulty=0, N1334: good=0 faulty=0, N1335: good=0 faulty=0, N1336: good=0 faulty=1, N1337: good=0 faulty=0, N1338: good=0 faulty=0, N1339: good=0 faulty=0, N1340: good=1 faulty=1, N1341: good=0 faulty=0, N1342: good=1 faulty=1, N1343: good=0 faulty=0, N1344: good=0 faulty=0, N1345: good=0 faulty=0, N1346: good=0 faulty=0, N1347: good=0 faulty=0, N1348: good=0 faulty=0, N1349: good=0 faulty=0, N1350: good=0 faulty=0, N1351: good=1 faulty=1, N1352: good=0 faulty=0, N1353: good=1 faulty=1, N1354: good=0 faulty=0, N1355: good=0 faulty=0
+
+  [4] SA0@net718  (wire 'N1060')  ← slowest
+    Gate      : $and$benchmarks/c1355.v:412$655  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 46.562 ms
+    CNF size  : 2062 vars, 5141 clauses
+    Decisions : 8197  Conflicts: 3626  Props: 460045
+    Test vector: N1=0, N8=0, N15=0, N22=0, N29=1, N36=0, N43=1, N50=1, N57=0, N64=1, N71=0, N78=0, N85=0, N92=1, N99=0, N106=0, N113=0, N120=1, N127=1, N134=1, N141=0, N148=0, N155=0, N162=1, N169=1, N176=1, N183=1, N190=1, N197=0, N204=1, N211=0, N218=1, N225=0, N226=1, N227=1, N228=0, N229=1, N230=0, N231=0, N232=1, N233=0
+    Output diff: N1324: good=0 faulty=0, N1325: good=0 faulty=0, N1326: good=0 faulty=0, N1327: good=0 faulty=0, N1328: good=1 faulty=1, N1329: good=0 faulty=0, N1330: good=1 faulty=1, N1331: good=1 faulty=1, N1332: good=1 faulty=0, N1333: good=1 faulty=1, N1334: good=0 faulty=0, N1335: good=0 faulty=0, N1336: good=0 faulty=0, N1337: good=1 faulty=1, N1338: good=0 faulty=0, N1339: good=0 faulty=0, N1340: good=0 faulty=0, N1341: good=1 faulty=1, N1342: good=1 faulty=1, N1343: good=1 faulty=1, N1344: good=0 faulty=0, N1345: good=0 faulty=0, N1346: good=0 faulty=0, N1347: good=1 faulty=1, N1348: good=1 faulty=1, N1349: good=1 faulty=1, N1350: good=1 faulty=1, N1351: good=1 faulty=1, N1352: good=0 faulty=0, N1353: good=1 faulty=1, N1354: good=0 faulty=0, N1355: good=1 faulty=1
+
+  [5] SA0@net727  (wire 'N1087')  ← slowest
+    Gate      : $and$benchmarks/c1355.v:421$664  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 45.920 ms
+    CNF size  : 2062 vars, 5141 clauses
+    Decisions : 9045  Conflicts: 3501  Props: 438761
+    Test vector: N1=0, N8=0, N15=1, N22=1, N29=0, N36=0, N43=1, N50=1, N57=1, N64=0, N71=0, N78=0, N85=0, N92=0, N99=1, N106=0, N113=0, N120=0, N127=1, N134=0, N141=0, N148=1, N155=0, N162=0, N169=0, N176=0, N183=0, N190=1, N197=1, N204=0, N211=1, N218=1, N225=0, N226=0, N227=0, N228=0, N229=1, N230=0, N231=1, N232=1, N233=1
+    Output diff: N1324: good=0 faulty=0, N1325: good=0 faulty=0, N1326: good=1 faulty=1, N1327: good=1 faulty=1, N1328: good=0 faulty=0, N1329: good=0 faulty=0, N1330: good=1 faulty=1, N1331: good=1 faulty=1, N1332: good=1 faulty=1, N1333: good=0 faulty=0, N1334: good=0 faulty=0, N1335: good=0 faulty=0, N1336: good=0 faulty=0, N1337: good=0 faulty=0, N1338: good=1 faulty=1, N1339: good=0 faulty=0, N1340: good=0 faulty=0, N1341: good=1 faulty=0, N1342: good=1 faulty=1, N1343: good=0 faulty=0, N1344: good=0 faulty=0, N1345: good=1 faulty=1, N1346: good=0 faulty=0, N1347: good=0 faulty=0, N1348: good=0 faulty=0, N1349: good=0 faulty=0, N1350: good=0 faulty=0, N1351: good=1 faulty=1, N1352: good=1 faulty=1, N1353: good=0 faulty=0, N1354: good=1 faulty=1, N1355: good=1 faulty=1
+
+  [6] SA0@net797  (wire '$and$benchmarks/c1355.v:483$773_Y')  ← slowest
+    Gate      : $and$benchmarks/c1355.v:483$773  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 44.060 ms
+    CNF size  : 2062 vars, 5141 clauses
+    Decisions : 7743  Conflicts: 3183  Props: 392606
+    Test vector: N1=1, N8=0, N15=0, N22=0, N29=1, N36=0, N43=1, N50=0, N57=1, N64=0, N71=0, N78=0, N85=0, N92=1, N99=1, N106=1, N113=0, N120=0, N127=1, N134=1, N141=0, N148=0, N155=0, N162=1, N169=1, N176=1, N183=0, N190=0, N197=1, N204=0, N211=0, N218=0, N225=0, N226=0, N227=0, N228=0, N229=0, N230=1, N231=1, N232=0, N233=1
+    Output diff: N1324: good=1 faulty=1, N1325: good=0 faulty=0, N1326: good=0 faulty=0, N1327: good=0 faulty=0, N1328: good=1 faulty=1, N1329: good=0 faulty=0, N1330: good=1 faulty=1, N1331: good=1 faulty=0, N1332: good=1 faulty=1, N1333: good=0 faulty=0, N1334: good=0 faulty=0, N1335: good=0 faulty=0, N1336: good=0 faulty=0, N1337: good=1 faulty=1, N1338: good=1 faulty=1, N1339: good=1 faulty=1, N1340: good=0 faulty=0, N1341: good=0 faulty=0, N1342: good=1 faulty=1, N1343: good=1 faulty=1, N1344: good=0 faulty=0, N1345: good=0 faulty=0, N1346: good=0 faulty=0, N1347: good=1 faulty=1, N1348: good=1 faulty=1, N1349: good=1 faulty=1, N1350: good=0 faulty=0, N1351: good=0 faulty=0, N1352: good=1 faulty=1, N1353: good=0 faulty=0, N1354: good=0 faulty=0, N1355: good=0 faulty=0
+
+  [7] SA0@net770  (wire '$and$benchmarks/c1355.v:464$735_Y')  ← slowest
+    Gate      : $and$benchmarks/c1355.v:464$735  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 42.820 ms
+    CNF size  : 2062 vars, 5141 clauses
+    Decisions : 8388  Conflicts: 3455  Props: 438802
+    Test vector: N1=1, N8=1, N15=0, N22=0, N29=0, N36=1, N43=0, N50=0, N57=0, N64=0, N71=0, N78=0, N85=1, N92=0, N99=0, N106=1, N113=1, N120=1, N127=1, N134=1, N141=0, N148=1, N155=1, N162=0, N169=0, N176=1, N183=0, N190=0, N197=1, N204=0, N211=1, N218=0, N225=0, N226=0, N227=1, N228=0, N229=0, N230=1, N231=1, N232=0, N233=1
+    Output diff: N1324: good=1 faulty=1, N1325: good=1 faulty=1, N1326: good=0 faulty=0, N1327: good=0 faulty=0, N1328: good=0 faulty=0, N1329: good=1 faulty=1, N1330: good=0 faulty=0, N1331: good=0 faulty=0, N1332: good=0 faulty=0, N1333: good=0 faulty=0, N1334: good=0 faulty=0, N1335: good=0 faulty=0, N1336: good=1 faulty=1, N1337: good=0 faulty=0, N1338: good=0 faulty=0, N1339: good=1 faulty=1, N1340: good=1 faulty=1, N1341: good=1 faulty=1, N1342: good=1 faulty=1, N1343: good=1 faulty=1, N1344: good=0 faulty=0, N1345: good=1 faulty=1, N1346: good=1 faulty=1, N1347: good=0 faulty=0, N1348: good=0 faulty=0, N1349: good=1 faulty=1, N1350: good=0 faulty=0, N1351: good=0 faulty=0, N1352: good=0 faulty=1, N1353: good=0 faulty=0, N1354: good=1 faulty=1, N1355: good=0 faulty=0
+
+  [8] SA1@net828  (wire 'N1186')  ← slowest
+    Gate      : $not$benchmarks/c1355.v:454$716  [$not]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 41.858 ms
+    CNF size  : 2062 vars, 5142 clauses
+    Decisions : 8695  Conflicts: 3222  Props: 420304
+    Test vector: N1=1, N8=1, N15=0, N22=1, N29=1, N36=1, N43=0, N50=0, N57=1, N64=0, N71=0, N78=1, N85=1, N92=0, N99=1, N106=1, N113=1, N120=0, N127=1, N134=1, N141=1, N148=0, N155=1, N162=0, N169=1, N176=1, N183=1, N190=0, N197=0, N204=0, N211=1, N218=0, N225=0, N226=1, N227=1, N228=0, N229=0, N230=0, N231=0, N232=0, N233=0
+    Output diff: N1324: good=1 faulty=1, N1325: good=1 faulty=1, N1326: good=0 faulty=0, N1327: good=1 faulty=1, N1328: good=1 faulty=1, N1329: good=1 faulty=1, N1330: good=0 faulty=0, N1331: good=0 faulty=0, N1332: good=1 faulty=1, N1333: good=0 faulty=0, N1334: good=0 faulty=0, N1335: good=1 faulty=1, N1336: good=1 faulty=1, N1337: good=0 faulty=0, N1338: good=1 faulty=1, N1339: good=1 faulty=1, N1340: good=1 faulty=1, N1341: good=0 faulty=0, N1342: good=0 faulty=1, N1343: good=1 faulty=1, N1344: good=1 faulty=1, N1345: good=0 faulty=0, N1346: good=1 faulty=1, N1347: good=0 faulty=0, N1348: good=1 faulty=1, N1349: good=1 faulty=1, N1350: good=1 faulty=1, N1351: good=0 faulty=0, N1352: good=0 faulty=0, N1353: good=0 faulty=0, N1354: good=1 faulty=1, N1355: good=0 faulty=0
+
+  [9] SA1@net907  (wire 'N1253')  ← slowest
+    Gate      : $not$benchmarks/c1355.v:493$794  [$not]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 41.372 ms
+    CNF size  : 2062 vars, 5142 clauses
+    Decisions : 8483  Conflicts: 3218  Props: 410691
+    Test vector: N1=0, N8=0, N15=0, N22=0, N29=0, N36=1, N43=0, N50=1, N57=0, N64=1, N71=0, N78=0, N85=0, N92=0, N99=0, N106=1, N113=0, N120=1, N127=0, N134=1, N141=0, N148=0, N155=0, N162=1, N169=0, N176=1, N183=0, N190=0, N197=1, N204=1, N211=1, N218=0, N225=0, N226=0, N227=1, N228=0, N229=1, N230=0, N231=0, N232=0, N233=1
+    Output diff: N1324: good=0 faulty=0, N1325: good=0 faulty=0, N1326: good=0 faulty=0, N1327: good=0 faulty=0, N1328: good=0 faulty=0, N1329: good=1 faulty=1, N1330: good=0 faulty=0, N1331: good=1 faulty=1, N1332: good=0 faulty=0, N1333: good=1 faulty=1, N1334: good=0 faulty=0, N1335: good=0 faulty=0, N1336: good=1 faulty=0, N1337: good=0 faulty=0, N1338: good=0 faulty=0, N1339: good=1 faulty=1, N1340: good=0 faulty=0, N1341: good=1 faulty=1, N1342: good=0 faulty=0, N1343: good=1 faulty=1, N1344: good=0 faulty=0, N1345: good=0 faulty=0, N1346: good=0 faulty=0, N1347: good=1 faulty=1, N1348: good=0 faulty=0, N1349: good=1 faulty=1, N1350: good=0 faulty=0, N1351: good=0 faulty=0, N1352: good=1 faulty=1, N1353: good=1 faulty=1, N1354: good=1 faulty=1, N1355: good=0 faulty=0
+
+  [10] SA1@net949  (wire 'N1281')  ← slowest
+    Gate      : $not$benchmarks/c1355.v:521$850  [$not]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 40.652 ms
+    CNF size  : 2062 vars, 5142 clauses
+    Decisions : 7971  Conflicts: 3280  Props: 398684
+    Test vector: N1=1, N8=1, N15=1, N22=0, N29=1, N36=0, N43=1, N50=0, N57=1, N64=1, N71=0, N78=1, N85=0, N92=1, N99=1, N106=0, N113=0, N120=1, N127=1, N134=0, N141=1, N148=1, N155=0, N162=0, N169=1, N176=1, N183=0, N190=0, N197=1, N204=0, N211=0, N218=0, N225=1, N226=1, N227=0, N228=0, N229=0, N230=0, N231=0, N232=0, N233=1
+    Output diff: N1324: good=1 faulty=1, N1325: good=1 faulty=1, N1326: good=1 faulty=1, N1327: good=0 faulty=0, N1328: good=1 faulty=1, N1329: good=0 faulty=0, N1330: good=1 faulty=1, N1331: good=0 faulty=0, N1332: good=1 faulty=1, N1333: good=1 faulty=1, N1334: good=0 faulty=0, N1335: good=1 faulty=1, N1336: good=0 faulty=0, N1337: good=1 faulty=1, N1338: good=1 faulty=1, N1339: good=0 faulty=0, N1340: good=0 faulty=0, N1341: good=1 faulty=1, N1342: good=1 faulty=1, N1343: good=0 faulty=0, N1344: good=1 faulty=1, N1345: good=1 faulty=1, N1346: good=0 faulty=0, N1347: good=0 faulty=0, N1348: good=1 faulty=1, N1349: good=1 faulty=1, N1350: good=1 faulty=0, N1351: good=0 faulty=0, N1352: good=1 faulty=1, N1353: good=0 faulty=0, N1354: good=0 faulty=0, N1355: good=0 faulty=0
+
+
+--------------------------------------------------------------------------------
+  REDUNDANT (UNDETECTABLE) FAULTS  — 0 total
+--------------------------------------------------------------------------------
+  None — all faults are detectable.
+
+
+4. KEY INSIGHTS FOR LLM GUIDANCE LAYER
+================================================================================
+
+  4.1  SOLVER DIFFICULTY (detectable faults)
+  ────────────────────────────────────────────────────────
+    Avg solve time : 6.188 ms
+    Avg decisions  : 1538.4
+    Avg conflicts  : 470.5
+
+    Hardest fault  : SA1@net864  (decisions=11091)
+    → LLM hints would help most on high-decision faults like this.
+
+  4.2  REDUNDANT FAULTS
+  ────────────────────────────────────────────────────────
+    No redundant faults found.
+
+  4.3  HOW LLM HINTS MAP TO PYSAT MECHANISMS
+  ────────────────────────────────────────────────────────
+
+    Option A — ASSUMPTIONS  (soft, per-query, retractable)
+      Best for partial input assignments the LLM is unsure about.
+      The solver can still backtrack past them.
+
+        from pysat.solvers import Glucose3
+        solver = Glucose3()
+        for clause in all_clauses:
+            solver.add_clause(clause)
+        # LLM predicts net "2" is likely 1:
+        guess_var = good_map["2"]
+        sat = solver.solve(assumptions=[guess_var])
+
+    Option B — HARD CLAUSES  (permanent, strongest bias)
+      Only for high-confidence LLM predictions.
+      Incorrect unit clauses will cause UNSAT immediately.
+
+        solver.add_clause([good_map["2"]])   # force net "2" = 1
+
+    Recommended hybrid: use assumptions first; escalate to hard
+    clauses only if the LLM confidence score exceeds a threshold.
+
+  4.4  BASELINE METRICS FOR STEP 2 COMPARISON
+  ────────────────────────────────────────────────────────
+    Record per fault: decisions, conflicts, propagations,
+    solve_time_sec, status.  Step 2 will compare these
+    against LLM-guided runs to measure improvement.
+
+================================================================================
+  END OF CONDENSED SUMMARY
+================================================================================

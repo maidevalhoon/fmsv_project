@@ -21,8 +21,7 @@ pdf_output.txt
 temp.txt
 
 # Report outputs — keep directory, ignore generated files
-reports/*.txt
-reports/*.json
+
 !reports/.gitkeep
 
 # LLM layer outputs (Step 2)

@@ -1,0 +1,472 @@
+================================================================================
+  SOLVER INSIGHTS REPORT — Step 1 Analysis for LLM Guidance Layer
+================================================================================
+
+1. CIRCUIT OVERVIEW
+------------------------------------------------------------
+  Module       : c17
+  Input nets   : ['2', '3', '4', '5', '6']
+  Output nets  : ['7', '8']
+  Gate count   : 12
+  Gate types   : ['$and', '$not']
+
+  Net ID → Name Mapping:
+    Net    2 → N1                   [IN]
+    Net    3 → N2                   [IN]
+    Net    4 → N3                   [IN]
+    Net    5 → N6                   [IN]
+    Net    6 → N7                   [IN]
+    Net    7 → N22                  [OUT]
+    Net    8 → N23                  [OUT]
+    Net    9 → $and$c17.v:16$1_Y    [INT]
+    Net   10 → $and$c17.v:17$3_Y    [INT]
+    Net   11 → N11                  [INT]
+    Net   12 → $and$c17.v:18$5_Y    [INT]
+    Net   13 → $and$c17.v:19$7_Y    [INT]
+    Net   14 → N10                  [INT]
+    Net   15 → N16                  [INT]
+    Net   16 → $and$c17.v:20$9_Y    [INT]
+    Net   17 → N19                  [INT]
+    Net   18 → $and$c17.v:21$11_Y   [INT]
+
+2. FAULT COVERAGE SUMMARY
+------------------------------------------------------------
+  Total faults         : 34
+  Detectable   (SAT)   : 34
+  Undetectable (UNSAT) : 0
+  Skipped              : 0
+  Fault coverage       : 100.0%  (34/34 tested)
+
+3. PER-FAULT DETAILED RESULTS
+------------------------------------------------------------
+
+  Fault #1: SA0@net2  (wire 'N1')
+    Driving gate   : —  [PRIMARY_INPUT]
+    Status         : DETECTABLE
+    Solve time     : 0.033 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=7, conflicts=0, propagations=37
+    Test vector    : N1=1, N2=0, N3=1, N6=1, N7=0
+    Output 'N22': good=1  faulty=0
+    Output 'N23': good=0  faulty=0
+
+  Fault #2: SA1@net2  (wire 'N1')
+    Driving gate   : —  [PRIMARY_INPUT]
+    Status         : DETECTABLE
+    Solve time     : 0.016 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=6, conflicts=1, propagations=37
+    Test vector    : N1=0, N2=0, N3=1, N6=0, N7=0
+    Output 'N22': good=0  faulty=1
+    Output 'N23': good=0  faulty=0
+
+  Fault #3: SA0@net3  (wire 'N2')
+    Driving gate   : —  [PRIMARY_INPUT]
+    Status         : DETECTABLE
+    Solve time     : 0.013 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=6, conflicts=2, propagations=68
+    Test vector    : N1=0, N2=1, N3=1, N6=0, N7=1
+    Output 'N22': good=1  faulty=0
+    Output 'N23': good=1  faulty=1
+
+  Fault #4: SA1@net3  (wire 'N2')
+    Driving gate   : —  [PRIMARY_INPUT]
+    Status         : DETECTABLE
+    Solve time     : 0.013 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=8, conflicts=2, propagations=66
+    Test vector    : N1=1, N2=0, N3=0, N6=1, N7=1
+    Output 'N22': good=0  faulty=1
+    Output 'N23': good=1  faulty=1
+
+  Fault #5: SA0@net4  (wire 'N3')
+    Driving gate   : —  [PRIMARY_INPUT]
+    Status         : DETECTABLE
+    Solve time     : 0.008 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=5, conflicts=0, propagations=37
+    Test vector    : N1=1, N2=0, N3=1, N6=0, N7=0
+    Output 'N22': good=1  faulty=0
+    Output 'N23': good=0  faulty=0
+
+  Fault #6: SA1@net4  (wire 'N3')
+    Driving gate   : —  [PRIMARY_INPUT]
+    Status         : DETECTABLE
+    Solve time     : 0.008 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=6, conflicts=1, propagations=37
+    Test vector    : N1=1, N2=0, N3=0, N6=0, N7=0
+    Output 'N22': good=0  faulty=1
+    Output 'N23': good=0  faulty=0
+
+  Fault #7: SA0@net5  (wire 'N6')
+    Driving gate   : —  [PRIMARY_INPUT]
+    Status         : DETECTABLE
+    Solve time     : 0.021 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=11, conflicts=7, propagations=127
+    Test vector    : N1=0, N2=0, N3=1, N6=1, N7=1
+    Output 'N22': good=0  faulty=0
+    Output 'N23': good=0  faulty=1
+
+  Fault #8: SA1@net5  (wire 'N6')
+    Driving gate   : —  [PRIMARY_INPUT]
+    Status         : DETECTABLE
+    Solve time     : 0.023 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=13, conflicts=8, propagations=120
+    Test vector    : N1=0, N2=0, N3=1, N6=0, N7=1
+    Output 'N22': good=0  faulty=0
+    Output 'N23': good=1  faulty=0
+
+  Fault #9: SA0@net6  (wire 'N7')
+    Driving gate   : —  [PRIMARY_INPUT]
+    Status         : DETECTABLE
+    Solve time     : 0.016 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=12, conflicts=5, propagations=92
+    Test vector    : N1=0, N2=0, N3=1, N6=0, N7=1
+    Output 'N22': good=0  faulty=0
+    Output 'N23': good=1  faulty=0
+
+  Fault #10: SA1@net6  (wire 'N7')
+    Driving gate   : —  [PRIMARY_INPUT]
+    Status         : DETECTABLE
+    Solve time     : 0.027 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=16, conflicts=11, propagations=168
+    Test vector    : N1=1, N2=0, N3=1, N6=0, N7=0
+    Output 'N22': good=1  faulty=1
+    Output 'N23': good=0  faulty=1
+
+  Fault #11: SA0@net7  (wire 'N22')
+    Driving gate   : $not$c17.v:20$10  [$not]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.008 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=7, conflicts=0, propagations=37
+    Test vector    : N1=1, N2=0, N3=1, N6=1, N7=0
+    Output 'N22': good=1  faulty=0
+    Output 'N23': good=0  faulty=0
+
+  Fault #12: SA1@net7  (wire 'N22')
+    Driving gate   : $not$c17.v:20$10  [$not]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.009 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=10, conflicts=1, propagations=53
+    Test vector    : N1=0, N2=0, N3=1, N6=1, N7=0
+    Output 'N22': good=0  faulty=1
+    Output 'N23': good=0  faulty=0
+
+  Fault #13: SA0@net8  (wire 'N23')
+    Driving gate   : $not$c17.v:21$12  [$not]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.014 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=12, conflicts=3, propagations=65
+    Test vector    : N1=0, N2=1, N3=0, N6=0, N7=0
+    Output 'N22': good=1  faulty=1
+    Output 'N23': good=1  faulty=0
+
+  Fault #14: SA1@net8  (wire 'N23')
+    Driving gate   : $not$c17.v:21$12  [$not]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.012 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=9, conflicts=3, propagations=108
+    Test vector    : N1=0, N2=0, N3=1, N6=0, N7=0
+    Output 'N22': good=0  faulty=0
+    Output 'N23': good=0  faulty=1
+
+  Fault #15: SA0@net9  (wire '$and$c17.v:16$1_Y')
+    Driving gate   : $and$c17.v:16$1  [$and]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.007 ms
+    CNF size       : 36 vars, 77 clauses
+    Solver stats   : decisions=7, conflicts=0, propagations=37
+    Test vector    : N1=1, N2=0, N3=1, N6=1, N7=0
+    Output 'N22': good=1  faulty=0
+    Output 'N23': good=0  faulty=0
+
+  Fault #16: SA1@net9  (wire '$and$c17.v:16$1_Y')
+    Driving gate   : $and$c17.v:16$1  [$and]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.007 ms
+    CNF size       : 36 vars, 77 clauses
+    Solver stats   : decisions=7, conflicts=0, propagations=37
+    Test vector    : N1=0, N2=0, N3=1, N6=1, N7=0
+    Output 'N22': good=0  faulty=1
+    Output 'N23': good=0  faulty=0
+
+  Fault #17: SA0@net10  (wire '$and$c17.v:17$3_Y')
+    Driving gate   : $and$c17.v:17$3  [$and]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.017 ms
+    CNF size       : 36 vars, 77 clauses
+    Solver stats   : decisions=11, conflicts=7, propagations=127
+    Test vector    : N1=0, N2=0, N3=1, N6=1, N7=1
+    Output 'N22': good=0  faulty=0
+    Output 'N23': good=0  faulty=1
+
+  Fault #18: SA1@net10  (wire '$and$c17.v:17$3_Y')
+    Driving gate   : $and$c17.v:17$3  [$and]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.016 ms
+    CNF size       : 36 vars, 77 clauses
+    Solver stats   : decisions=9, conflicts=2, propagations=67
+    Test vector    : N1=0, N2=1, N3=1, N6=0, N7=0
+    Output 'N22': good=1  faulty=0
+    Output 'N23': good=1  faulty=0
+
+  Fault #19: SA0@net11  (wire 'N11')
+    Driving gate   : $not$c17.v:17$4  [$not]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.012 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=8, conflicts=2, propagations=67
+    Test vector    : N1=0, N2=0, N3=1, N6=0, N7=1
+    Output 'N22': good=0  faulty=0
+    Output 'N23': good=1  faulty=0
+
+  Fault #20: SA1@net11  (wire 'N11')
+    Driving gate   : $not$c17.v:17$4  [$not]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.015 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=11, conflicts=7, propagations=128
+    Test vector    : N1=0, N2=0, N3=1, N6=1, N7=1
+    Output 'N22': good=0  faulty=0
+    Output 'N23': good=0  faulty=1
+
+  Fault #21: SA0@net12  (wire '$and$c17.v:18$5_Y')
+    Driving gate   : $and$c17.v:18$5  [$and]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.009 ms
+    CNF size       : 36 vars, 77 clauses
+    Solver stats   : decisions=6, conflicts=2, propagations=68
+    Test vector    : N1=0, N2=1, N3=1, N6=0, N7=1
+    Output 'N22': good=1  faulty=0
+    Output 'N23': good=1  faulty=1
+
+  Fault #22: SA1@net12  (wire '$and$c17.v:18$5_Y')
+    Driving gate   : $and$c17.v:18$5  [$and]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.008 ms
+    CNF size       : 36 vars, 77 clauses
+    Solver stats   : decisions=6, conflicts=1, propagations=46
+    Test vector    : N1=0, N2=0, N3=1, N6=0, N7=1
+    Output 'N22': good=0  faulty=1
+    Output 'N23': good=1  faulty=1
+
+  Fault #23: SA0@net13  (wire '$and$c17.v:19$7_Y')
+    Driving gate   : $and$c17.v:19$7  [$and]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.013 ms
+    CNF size       : 36 vars, 77 clauses
+    Solver stats   : decisions=12, conflicts=5, propagations=93
+    Test vector    : N1=0, N2=0, N3=1, N6=0, N7=1
+    Output 'N22': good=0  faulty=0
+    Output 'N23': good=1  faulty=0
+
+  Fault #24: SA1@net13  (wire '$and$c17.v:19$7_Y')
+    Driving gate   : $and$c17.v:19$7  [$and]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.012 ms
+    CNF size       : 36 vars, 77 clauses
+    Solver stats   : decisions=11, conflicts=3, propagations=99
+    Test vector    : N1=0, N2=0, N3=1, N6=0, N7=0
+    Output 'N22': good=0  faulty=0
+    Output 'N23': good=0  faulty=1
+
+  Fault #25: SA0@net14  (wire 'N10')
+    Driving gate   : $not$c17.v:16$2  [$not]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.007 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=7, conflicts=0, propagations=37
+    Test vector    : N1=0, N2=0, N3=1, N6=1, N7=0
+    Output 'N22': good=0  faulty=1
+    Output 'N23': good=0  faulty=0
+
+  Fault #26: SA1@net14  (wire 'N10')
+    Driving gate   : $not$c17.v:16$2  [$not]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.007 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=7, conflicts=0, propagations=37
+    Test vector    : N1=1, N2=0, N3=1, N6=1, N7=0
+    Output 'N22': good=1  faulty=0
+    Output 'N23': good=0  faulty=0
+
+  Fault #27: SA0@net15  (wire 'N16')
+    Driving gate   : $not$c17.v:18$6  [$not]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.008 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=6, conflicts=1, propagations=46
+    Test vector    : N1=0, N2=0, N3=1, N6=0, N7=1
+    Output 'N22': good=0  faulty=1
+    Output 'N23': good=1  faulty=1
+
+  Fault #28: SA1@net15  (wire 'N16')
+    Driving gate   : $not$c17.v:18$6  [$not]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.009 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=6, conflicts=2, propagations=68
+    Test vector    : N1=0, N2=1, N3=1, N6=0, N7=1
+    Output 'N22': good=1  faulty=0
+    Output 'N23': good=1  faulty=1
+
+  Fault #29: SA0@net16  (wire '$and$c17.v:20$9_Y')
+    Driving gate   : $and$c17.v:20$9  [$and]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.008 ms
+    CNF size       : 36 vars, 77 clauses
+    Solver stats   : decisions=9, conflicts=1, propagations=52
+    Test vector    : N1=0, N2=0, N3=1, N6=1, N7=0
+    Output 'N22': good=0  faulty=1
+    Output 'N23': good=0  faulty=0
+
+  Fault #30: SA1@net16  (wire '$and$c17.v:20$9_Y')
+    Driving gate   : $and$c17.v:20$9  [$and]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.006 ms
+    CNF size       : 36 vars, 77 clauses
+    Solver stats   : decisions=7, conflicts=0, propagations=37
+    Test vector    : N1=1, N2=0, N3=1, N6=1, N7=0
+    Output 'N22': good=1  faulty=0
+    Output 'N23': good=0  faulty=0
+
+  Fault #31: SA0@net17  (wire 'N19')
+    Driving gate   : $not$c17.v:19$8  [$not]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.012 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=12, conflicts=3, propagations=100
+    Test vector    : N1=1, N2=0, N3=1, N6=0, N7=0
+    Output 'N22': good=1  faulty=1
+    Output 'N23': good=0  faulty=1
+
+  Fault #32: SA1@net17  (wire 'N19')
+    Driving gate   : $not$c17.v:19$8  [$not]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.013 ms
+    CNF size       : 36 vars, 78 clauses
+    Solver stats   : decisions=12, conflicts=4, propagations=95
+    Test vector    : N1=1, N2=0, N3=1, N6=0, N7=1
+    Output 'N22': good=1  faulty=1
+    Output 'N23': good=1  faulty=0
+
+  Fault #33: SA0@net18  (wire '$and$c17.v:21$11_Y')
+    Driving gate   : $and$c17.v:21$11  [$and]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.012 ms
+    CNF size       : 36 vars, 77 clauses
+    Solver stats   : decisions=13, conflicts=4, propagations=114
+    Test vector    : N1=0, N2=1, N3=1, N6=1, N7=1
+    Output 'N22': good=0  faulty=0
+    Output 'N23': good=0  faulty=1
+
+  Fault #34: SA1@net18  (wire '$and$c17.v:21$11_Y')
+    Driving gate   : $and$c17.v:21$11  [$and]  ← clauses skipped in faulty copy
+    Status         : DETECTABLE
+    Solve time     : 0.012 ms
+    CNF size       : 36 vars, 77 clauses
+    Solver stats   : decisions=12, conflicts=3, propagations=65
+    Test vector    : N1=0, N2=1, N3=0, N6=0, N7=0
+    Output 'N22': good=1  faulty=1
+    Output 'N23': good=1  faulty=0
+
+
+================================================================================
+4. KEY INSIGHTS FOR LLM GUIDANCE LAYER
+================================================================================
+
+  4.1  SOLVER DIFFICULTY (detectable faults)
+  ────────────────────────────────────────────────────────
+    Avg solve time : 0.013 ms
+    Avg decisions  : 9.0
+    Avg conflicts  : 2.7
+
+    Hardest fault  : SA1@net6  (decisions=16)
+    → LLM hints would help most on high-decision faults like this.
+
+  4.2  REDUNDANT FAULTS
+  ────────────────────────────────────────────────────────
+    No redundant faults found.
+
+  4.3  HOW LLM HINTS MAP TO PYSAT MECHANISMS
+  ────────────────────────────────────────────────────────
+
+    Option A — ASSUMPTIONS  (soft, per-query, retractable)
+      Best for partial input assignments the LLM is unsure about.
+      The solver can still backtrack past them.
+
+        from pysat.solvers import Glucose3
+        solver = Glucose3()
+        for clause in all_clauses:
+            solver.add_clause(clause)
+        # LLM predicts net "2" is likely 1:
+        guess_var = good_map["2"]
+        sat = solver.solve(assumptions=[guess_var])
+
+    Option B — HARD CLAUSES  (permanent, strongest bias)
+      Only for high-confidence LLM predictions.
+      Incorrect unit clauses will cause UNSAT immediately.
+
+        solver.add_clause([good_map["2"]])   # force net "2" = 1
+
+    Recommended hybrid: use assumptions first; escalate to hard
+    clauses only if the LLM confidence score exceeds a threshold.
+
+  4.4  BASELINE METRICS FOR STEP 2 COMPARISON
+  ────────────────────────────────────────────────────────
+    Record per fault: decisions, conflicts, propagations,
+    solve_time_sec, status.  Step 2 will compare these
+    against LLM-guided runs to measure improvement.
+
+5. RAW DATA TABLE
+------------------------------------------------------------
+  Fault                Status         Time(ms)   Dec      Conf     Test Vector
+  ────────────────────────────────────────────────────────────────────────────
+  SA0@net2             DETECTABLE     0.033      7        0        {N1:1, N2:0, N3:1, N6:1, N7:0}
+  SA1@net2             DETECTABLE     0.016      6        1        {N1:0, N2:0, N3:1, N6:0, N7:0}
+  SA0@net3             DETECTABLE     0.013      6        2        {N1:0, N2:1, N3:1, N6:0, N7:1}
+  SA1@net3             DETECTABLE     0.013      8        2        {N1:1, N2:0, N3:0, N6:1, N7:1}
+  SA0@net4             DETECTABLE     0.008      5        0        {N1:1, N2:0, N3:1, N6:0, N7:0}
+  SA1@net4             DETECTABLE     0.008      6        1        {N1:1, N2:0, N3:0, N6:0, N7:0}
+  SA0@net5             DETECTABLE     0.021      11       7        {N1:0, N2:0, N3:1, N6:1, N7:1}
+  SA1@net5             DETECTABLE     0.023      13       8        {N1:0, N2:0, N3:1, N6:0, N7:1}
+  SA0@net6             DETECTABLE     0.016      12       5        {N1:0, N2:0, N3:1, N6:0, N7:1}
+  SA1@net6             DETECTABLE     0.027      16       11       {N1:1, N2:0, N3:1, N6:0, N7:0}
+  SA0@net7             DETECTABLE     0.008      7        0        {N1:1, N2:0, N3:1, N6:1, N7:0}
+  SA1@net7             DETECTABLE     0.009      10       1        {N1:0, N2:0, N3:1, N6:1, N7:0}
+  SA0@net8             DETECTABLE     0.014      12       3        {N1:0, N2:1, N3:0, N6:0, N7:0}
+  SA1@net8             DETECTABLE     0.012      9        3        {N1:0, N2:0, N3:1, N6:0, N7:0}
+  SA0@net9             DETECTABLE     0.007      7        0        {N1:1, N2:0, N3:1, N6:1, N7:0}
+  SA1@net9             DETECTABLE     0.007      7        0        {N1:0, N2:0, N3:1, N6:1, N7:0}
+  SA0@net10            DETECTABLE     0.017      11       7        {N1:0, N2:0, N3:1, N6:1, N7:1}
+  SA1@net10            DETECTABLE     0.016      9        2        {N1:0, N2:1, N3:1, N6:0, N7:0}
+  SA0@net11            DETECTABLE     0.012      8        2        {N1:0, N2:0, N3:1, N6:0, N7:1}
+  SA1@net11            DETECTABLE     0.015      11       7        {N1:0, N2:0, N3:1, N6:1, N7:1}
+  SA0@net12            DETECTABLE     0.009      6        2        {N1:0, N2:1, N3:1, N6:0, N7:1}
+  SA1@net12            DETECTABLE     0.008      6        1        {N1:0, N2:0, N3:1, N6:0, N7:1}
+  SA0@net13            DETECTABLE     0.013      12       5        {N1:0, N2:0, N3:1, N6:0, N7:1}
+  SA1@net13            DETECTABLE     0.012      11       3        {N1:0, N2:0, N3:1, N6:0, N7:0}
+  SA0@net14            DETECTABLE     0.007      7        0        {N1:0, N2:0, N3:1, N6:1, N7:0}
+  SA1@net14            DETECTABLE     0.007      7        0        {N1:1, N2:0, N3:1, N6:1, N7:0}
+  SA0@net15            DETECTABLE     0.008      6        1        {N1:0, N2:0, N3:1, N6:0, N7:1}
+  SA1@net15            DETECTABLE     0.009      6        2        {N1:0, N2:1, N3:1, N6:0, N7:1}
+  SA0@net16            DETECTABLE     0.008      9        1        {N1:0, N2:0, N3:1, N6:1, N7:0}
+  SA1@net16            DETECTABLE     0.006      7        0        {N1:1, N2:0, N3:1, N6:1, N7:0}
+  SA0@net17            DETECTABLE     0.012      12       3        {N1:1, N2:0, N3:1, N6:0, N7:0}
+  SA1@net17            DETECTABLE     0.013      12       4        {N1:1, N2:0, N3:1, N6:0, N7:1}
+  SA0@net18            DETECTABLE     0.012      13       4        {N1:0, N2:1, N3:1, N6:1, N7:1}
+  SA1@net18            DETECTABLE     0.012      12       3        {N1:0, N2:1, N3:0, N6:0, N7:0}
+
+================================================================================
+  END OF REPORT
+================================================================================

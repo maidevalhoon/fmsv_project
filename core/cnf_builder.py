@@ -82,8 +82,25 @@ def build_circuit_cnf(cells, var_offset=0, skip_gate=None):
         return net_to_var[nid]
     # ------------------------------------------------------------------
 
+    # Map Yosys RTL/behavioral cell names → structural names used below.
+    # Yosys emits "$and", "$or", "$not", "$xor" etc. (no underscores) when
+    # reading RTL Verilog, but "$_AND_", "$_OR_" etc. (with underscores) when
+    # using its standard-cell tech-mapping pass.  Both must be handled.
+    _GATE_ALIASES: dict = {
+        "$and":  "$_AND_",
+        "$or":   "$_OR_",
+        "$not":  "$_NOT_",
+        "$buf":  "$_BUF_",
+        "$nand": "$_NAND_",
+        "$nor":  "$_NOR_",
+        "$xor":  "$_XOR_",
+        "$xnor": "$_XNOR_",
+        "$mux":  "$_MUX_",
+    }
+
     for cell_name, cell_data in cells.items():
         gate_type = cell_data["type"]
+        gate_type = _GATE_ALIASES.get(gate_type, gate_type)   # normalise
         conn      = cell_data["connections"]
 
         # ── $_AND_  ────────────────────────────────────────────────────
