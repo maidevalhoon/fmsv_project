@@ -142,10 +142,12 @@ def run_full_sweep(json_file: str) -> list:
     print(f"{'='*60}")
 
     results = []
+    t_sweep_start = time.perf_counter()
     for fault_net, fault_value in faults:
         result = run_single_fault(module_data, fault_net, fault_value,
                                   verbose=True)
         results.append(result)
+    total_elapsed = time.perf_counter() - t_sweep_start
 
     # ── Summary ──────────────────────────────────────────────────────────
     detectable   = sum(1 for r in results if r["status"] == "DETECTABLE")
@@ -160,6 +162,7 @@ def run_full_sweep(json_file: str) -> list:
     print(f"  Undetectable : {undetectable}")
     print(f"  Skipped      : {skipped}")
     print(f"  Fault coverage: {coverage:.1f}%  ({detectable}/{tested} tested faults)")
+    print(f"  Total time   : {total_elapsed*1000:.2f} ms  ({total_elapsed:.4f}s)")
     print(f"{'='*60}\n")
 
     return results

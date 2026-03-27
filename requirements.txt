@@ -1,3 +1,4 @@
 python-sat==1.9.dev2
 six==1.17.0
 PyPDF2>=3.0.0
+google-genai>=1.0.0

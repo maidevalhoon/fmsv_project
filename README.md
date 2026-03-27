@@ -94,7 +94,29 @@ See [`walkthrough.md`](walkthrough.md) for full run commands.
 ```bash
 python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
+```
 
+### API Key Setup (Step 2 — LLM layer)
+
+1. Copy the env file and fill in your key:
+   ```bash
+   cp .env.example .env   # or just edit .env directly
+   ```
+2. Open `.env` and replace `your_api_key_here` with your key from [https://aistudio.google.com/apikey](https://aistudio.google.com/apikey):
+   ```
+   GEMINI_API_KEY=AIzaSy...
+   ```
+3. Load it before running Step 2:
+   ```bash
+   export $(cat .env | xargs)
+   python llm/run_llm_atpg.py --verbose
+   ```
+
+> **Note:** `.env` is in `.gitignore` — your key will never be committed.
+
+### Step 1 — SAT-ATPG (no API key needed)
+
+```bash
 # Single fault
 python run_atpg.py --json benchmarks/json/circuit.json --net 6 --val 0
 
@@ -112,6 +134,6 @@ python run_insights.py --json benchmarks/json/c17.json --out reports/c17_insight
 | Step | Status |
 |---|---|
 | Step 1 — SAT-based ATPG baseline | ✅ Complete |
-| Step 2 — LLM guidance layer | 🔲 Not started |
+| Step 2 — LLM guidance layer (Gemini) | ✅ Complete |
 
-**Step 2 plan:** Design LLM prompt templates, translate LLM predictions into PySAT assumptions, implement UNSAT-core feedback loop, compare baseline vs LLM-guided metrics.
+**Step 2:** Prompts Gemini with circuit topology + fault info → translates LLM response to PySAT assumptions → two-phase guided solve → writes `reports/c17_llm_comparison.txt` with decision reduction %.

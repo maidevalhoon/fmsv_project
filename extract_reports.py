@@ -1,24 +1,9 @@
 """
-extract_reports.py
-------------------
-Extracts the most important information from each *_insights.txt report
-and writes compact summary files to reports/summaries/.
-
-What is kept:
-  - Section 1: Circuit Overview (full)
-  - Section 2: Fault Coverage Summary (full)
-  - Section 3: Per-Fault Results — only TOP 10 HARDEST faults by decisions
-  - Section 4: Key Insights for LLM Guidance Layer (full)
-  - Section 5: Raw Data Table — top 10 hardest + top 10 slowest rows + stats row
-
-What is dropped:
-  - All the per-fault entries in Section 3 except the hardest 10
-  - The full Section 5 raw-data table (only top rows kept)
+extract_reports.py — Condenses *_insights.txt → compact *_summary.txt.
+Keeps: top-10 hardest faults (decisions), top-10 slowest, redundant list,
+       Section 1 (circuit overview), Section 2 (coverage), Section 4 (LLM hints).
 """
-
-import os
-import re
-import sys
+import os, re, sys
 
 REPORTS_DIR = os.path.join(os.path.dirname(__file__), "reports")
 OUT_DIR     = os.path.join(REPORTS_DIR, "summaries")
@@ -126,7 +111,7 @@ def parse_raw_table(section5_text: str) -> list:
     return rows
 
 
-def format_fault_block(f: dict, rank: int = None, reason: str = "") -> str:
+def format_fault_block(f: dict, rank: int | None = None, reason: str = "") -> str:
     tag = f"  [{rank}] " if rank else "  "
     reason_tag = f"  ← {reason}" if reason else ""
     return (
@@ -178,9 +163,9 @@ def extract(report_path: str, out_path: str, top_n: int = 10):
     raw_rows    = parse_raw_table(sections.get("5", ""))
 
     # top N by decisions (hardest for SAT solver)
-    top_hard = sorted(faults, key=lambda x: x["decisions"], reverse=True)[:top_n]
+    top_hard = list(sorted(faults, key=lambda x: x["decisions"], reverse=True))[:top_n]
     # top N by solve time (slowest)
-    top_slow = sorted(faults, key=lambda x: x["solve_ms"],  reverse=True)[:top_n]
+    top_slow = list(sorted(faults, key=lambda x: x["solve_ms"],  reverse=True))[:top_n]
     # undetectable faults (redundant)
     redundant = [f for f in faults if f["status"] == "UNDETECTABLE"]
 
