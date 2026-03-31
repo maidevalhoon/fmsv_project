@@ -2,67 +2,38 @@
   STEP 2: LLM-GUIDED SAT-ATPG — COMPARISON REPORT
   Circuit : c17
   LLM     : gemini-2.0-flash-lite
-  Date    : 2026-03-27 04:27
+  Date    : 2026-03-27 14:19
 ================================================================================
 
 1. FAULT COVERAGE
 ------------------------------------------------------------
-  Total faults   : 34
-  Detectable     : 34
+  Total faults   : 5
+  Detectable     : 5
   Undetectable   : 0
   Skipped        : 0
-  Coverage       : 100.0%  (34/34)
+  Coverage       : 100.0%  (5/5)
 
 2. LLM HINT EFFECTIVENESS
 ------------------------------------------------------------
   Hints accepted (SAT on Phase 1)  : 0
-  Hints rejected (forced fallback)  : 34
+  Hints rejected (forced fallback)  : 5
   No hints given (empty response)   : 0
 
 3. DECISION COUNT COMPARISON  (Step 1 baseline vs Step 2 LLM-guided)
 ------------------------------------------------------------
-  Step 1 (baseline) avg decisions : 9.03
-  Step 2 (LLM-guided) avg decisions: 9.97
-  Mean decision reduction         : -10.4%  ↑
+  Step 1 (baseline) avg decisions : 6.40
+  Step 2 (LLM-guided) avg decisions: 7.40
+  Mean decision reduction         : -15.6%  ↑
 
 4. PER-FAULT RESULTS
 ------------------------------------------------------------
   Fault                  Status         Mode        S1 Dec  S2 Dec    S2 ms  Hint
   ────────────────────────────────────────────────────────────────────────────
-  SA0@net2               DETECTABLE     FALLBACK         7       8     0.47  
-  SA1@net2               DETECTABLE     FALLBACK         6       7     0.05  
-  SA0@net3               DETECTABLE     FALLBACK         6       7     0.32  
-  SA1@net3               DETECTABLE     FALLBACK         8       9     0.14  
-  SA0@net4               DETECTABLE     FALLBACK         5       6     0.21  
-  SA1@net4               DETECTABLE     FALLBACK         6       7     0.19  
-  SA0@net5               DETECTABLE     FALLBACK        11      12     0.19  
-  SA1@net5               DETECTABLE     FALLBACK        13      14     0.08  
-  SA0@net6               DETECTABLE     FALLBACK        12      13     0.15  
-  SA1@net6               DETECTABLE     FALLBACK        16      17     0.14  
-  SA0@net7               DETECTABLE     FALLBACK         7       8     0.14  
-  SA1@net7               DETECTABLE     FALLBACK        10      11     0.05  
-  SA0@net8               DETECTABLE     FALLBACK        12      13     0.21  
-  SA1@net8               DETECTABLE     FALLBACK         9      14     1.41  
-  SA0@net9               DETECTABLE     FALLBACK         7       8     2.35  
-  SA1@net9               DETECTABLE     FALLBACK         7       8     0.19  
-  SA0@net10              DETECTABLE     FALLBACK        11      12     0.09  
-  SA1@net10              DETECTABLE     FALLBACK         9       9     2.55  
-  SA0@net11              DETECTABLE     FALLBACK         8      10     0.11  
-  SA1@net11              DETECTABLE     FALLBACK        11      12     0.19  
-  SA0@net12              DETECTABLE     FALLBACK         6       7     0.08  
-  SA1@net12              DETECTABLE     FALLBACK         6       7     0.12  
-  SA0@net13              DETECTABLE     FALLBACK        12      13     0.06  
-  SA1@net13              DETECTABLE     FALLBACK        11      11     0.17  
-  SA0@net14              DETECTABLE     FALLBACK         7       8     0.02  
-  SA1@net14              DETECTABLE     FALLBACK         7       8     0.18  
-  SA0@net15              DETECTABLE     FALLBACK         6       7     0.11  
-  SA1@net15              DETECTABLE     FALLBACK         6       7     0.16  
-  SA0@net16              DETECTABLE     FALLBACK         9      10     0.08  
-  SA1@net16              DETECTABLE     FALLBACK         7       8     0.27  
-  SA0@net17              DETECTABLE     FALLBACK        12      12     0.08  
-  SA1@net17              DETECTABLE     FALLBACK        12      13     0.16  
-  SA0@net18              DETECTABLE     FALLBACK        13      10     0.08  
-  SA1@net18              DETECTABLE     FALLBACK        12      13     0.22  
+  SA0@net2               DETECTABLE     FALLBACK         7       8     0.06  
+  SA1@net2               DETECTABLE     FALLBACK         6       7     0.12  
+  SA0@net3               DETECTABLE     FALLBACK         6       7     0.07  
+  SA1@net3               DETECTABLE     FALLBACK         8       9     0.09  
+  SA0@net4               DETECTABLE     FALLBACK         5       6     0.02  
 
 ================================================================================
   END OF REPORT

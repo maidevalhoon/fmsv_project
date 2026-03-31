@@ -156,7 +156,9 @@ def find_driving_gate(module_data: dict, fault_net: str):
         net is a primary input (i.e. not driven by any gate).
     """
     for cell_name, cell_data in module_data.get("cells", {}).items():
-        output_bits = cell_data.get("connections", {}).get("Y", [])
+        conn = cell_data.get("connections", {})
+        # Check both 'Y' (generic/RTL gates) and 'ZN' (Nangate inverting cells)
+        output_bits = conn.get("Y", []) or conn.get("ZN", [])
         if fault_net in [str(b) for b in output_bits]:
             return cell_name
     return None
@@ -186,10 +188,40 @@ def validate_netlist(module_data: dict) -> list[str]:
         warnings.append("No cells (gates) found — netlist may be empty")
 
     known_types = {
+        # ── Yosys generic / RTL names ──────────────────────────────────────
         "$_AND_", "$_OR_", "$_NOT_", "$_BUF_",
         "$_NAND_", "$_NOR_", "$_XOR_", "$_XNOR_", "$_MUX_",
         "$and", "$or", "$not", "$buf",
         "$nand", "$nor", "$xor", "$xnor", "$mux",
+        # ── Nangate standard cells (all drive strengths) ────────────────────
+        "AND2_X1", "AND2_X2", "AND2_X4",
+        "AND3_X1", "AND3_X2", "AND3_X4",
+        "AND4_X1", "AND4_X2", "AND4_X4",
+        "OR2_X1",  "OR2_X2",  "OR2_X4",
+        "OR3_X1",  "OR3_X2",  "OR3_X4",
+        "OR4_X1",  "OR4_X2",  "OR4_X4",
+        "INV_X1",  "INV_X2",  "INV_X4",  "INV_X8",  "INV_X16", "INV_X32",
+        "BUF_X1",  "BUF_X2",  "BUF_X4",  "BUF_X8",  "BUF_X16", "BUF_X32",
+        "NAND2_X1", "NAND2_X2", "NAND2_X4",
+        "NAND3_X1", "NAND3_X2", "NAND3_X4",
+        "NAND4_X1", "NAND4_X2", "NAND4_X4",
+        "NOR2_X1",  "NOR2_X2",  "NOR2_X4",
+        "NOR3_X1",  "NOR3_X2",  "NOR3_X4",
+        "NOR4_X1",  "NOR4_X2",  "NOR4_X4",
+        "XOR2_X1",  "XOR2_X2",
+        "XNOR2_X1", "XNOR2_X2",
+        "MUX2_X1",  "MUX2_X2",
+        "AOI21_X1", "AOI21_X2", "AOI21_X4",
+        "AOI22_X1", "AOI22_X2", "AOI22_X4",
+        "AOI211_X1", "AOI211_X2", "AOI211_X4",
+        "AOI221_X1", "AOI221_X2", "AOI221_X4",
+        "AOI222_X1", "AOI222_X2", "AOI222_X4",
+        "OAI21_X1", "OAI21_X2", "OAI21_X4",
+        "OAI22_X1", "OAI22_X2", "OAI22_X4",
+        "OAI211_X1", "OAI211_X2", "OAI211_X4",
+        "OAI221_X1", "OAI221_X2", "OAI221_X4",
+        "OAI222_X1", "OAI222_X2", "OAI222_X4",
+        "OAI33_X1",
     }
     unknown = set()
     for cell_name, cell_data in cells.items():
