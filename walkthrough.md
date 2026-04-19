@@ -27,6 +27,8 @@
 7. [Step 2 Results & Explanation](#7-step-2-results--explanation)
 8. [All Run Commands](#8-all-run-commands)
 9. [Known Issues & Limitations](#9-known-issues--limitations)
+10. [Detailed End-to-End Trace: c17.v Through Every Function](#10-detailed-end-to-end-trace-c17v-through-every-function)
+11. [Guidelines Compliance Audit & Gap Analysis](#11-guidelines-compliance-audit--gap-analysis)
 
 ---
 
