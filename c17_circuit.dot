@@ -1,0 +1,36 @@
+digraph "c17" {
+label="c17";
+rankdir="LR";
+remincross=true;
+n5 [ shape=octagon, label="N23", color="black", fontcolor="black"];
+n6 [ shape=octagon, label="N22", color="black", fontcolor="black"];
+n7 [ shape=octagon, label="N7", color="black", fontcolor="black"];
+n8 [ shape=octagon, label="N6", color="black", fontcolor="black"];
+n9 [ shape=octagon, label="N3", color="black", fontcolor="black"];
+n10 [ shape=octagon, label="N2", color="black", fontcolor="black"];
+n11 [ shape=octagon, label="N1", color="black", fontcolor="black"];
+c14 [ shape=record, label="{{<p12> A}|$108\nINV_X1|{<p13> ZN}}",  ];
+c15 [ shape=record, label="{{<p12> A}|$109\nINV_X1|{<p13> ZN}}",  ];
+c18 [ shape=record, label="{{<p16> A1|<p17> A2}|$110\nAND2_X1|{<p13> ZN}}",  ];
+c21 [ shape=record, label="{{<p12> A|<p19> B1|<p20> B2}|$111\nAOI21_X1|{<p13> ZN}}",  ];
+c22 [ shape=record, label="{{<p16> A1|<p17> A2}|$112\nNAND2_X1|{<p13> ZN}}",  ];
+c23 [ shape=record, label="{{<p12> A|<p19> B1|<p20> B2}|$113\nOAI21_X1|{<p13> ZN}}",  ];
+n1 [ shape=point ];
+c18:p13:e -> n1:w [color="black", fontcolor="black", label=""];
+n1:e -> c21:p12:w [color="black", fontcolor="black", label=""];
+n1:e -> c23:p19:w [color="black", fontcolor="black", label=""];
+n10:e -> c14:p12:w [color="black", fontcolor="black", label=""];
+n11:e -> c22:p17:w [color="black", fontcolor="black", label=""];
+c22:p13:e -> c23:p12:w [color="black", fontcolor="black", label=""];
+n3 [ shape=point ];
+c14:p13:e -> n3:w [color="black", fontcolor="black", label=""];
+n3:e -> c21:p20:w [color="black", fontcolor="black", label=""];
+n3:e -> c23:p20:w [color="black", fontcolor="black", label=""];
+c15:p13:e -> c21:p19:w [color="black", fontcolor="black", label=""];
+c21:p13:e -> n5:w [color="black", fontcolor="black", label=""];
+c23:p13:e -> n6:w [color="black", fontcolor="black", label=""];
+n7:e -> c15:p12:w [color="black", fontcolor="black", label=""];
+n8:e -> c18:p16:w [color="black", fontcolor="black", label=""];
+n9:e -> c18:p17:w [color="black", fontcolor="black", label=""];
+n9:e -> c22:p16:w [color="black", fontcolor="black", label=""];
+}

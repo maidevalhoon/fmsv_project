@@ -232,6 +232,26 @@ def build_circuit_cnf(cells, var_offset=0, skip_gate=None):
                 clauses.append([-a,  y])
                 clauses.append([ a, -y])
 
+        # ── $_ANDNOT_  ───────────────────────────────────────────────────
+        # Boolean: Y = A ∧ ¬B   (produced by Yosys ABC optimizer)
+        # Tseitin: (A ∨ ¬Y) ∧ (¬B ∨ ¬Y) ∧ (¬A ∨ B ∨ Y)
+        elif gate_type == "$_ANDNOT_":
+            a, b, y = get_var(conn["A"]), get_var(conn["B"]), get_var(conn["Y"])
+            if cell_name != skip_gate:
+                clauses.append([ a, -y])
+                clauses.append([-b, -y])
+                clauses.append([-a,  b,  y])
+
+        # ── $_ORNOT_  ────────────────────────────────────────────────────
+        # Boolean: Y = A ∨ ¬B   (produced by Yosys ABC optimizer)
+        # Tseitin: (¬A ∨ Y) ∧ (B ∨ Y) ∧ (A ∨ ¬B ∨ ¬Y)
+        elif gate_type == "$_ORNOT_":
+            a, b, y = get_var(conn["A"]), get_var(conn["B"]), get_var(conn["Y"])
+            if cell_name != skip_gate:
+                clauses.append([-a,  y])
+                clauses.append([ b,  y])
+                clauses.append([ a, -b, -y])
+
         # ── $_NAND_  ───────────────────────────────────────────────────────
         # Boolean: Y = ¬(A ∧ B)
         # Tseitin: (¬A ∨ ¬B ∨ ¬Y) ∧ (A ∨ Y) ∧ (B ∨ Y)
@@ -520,6 +540,141 @@ def build_circuit_cnf(cells, var_offset=0, skip_gate=None):
                 clauses.append([ m,           zn])
                 clauses.append([ b,           zn])
                 clauses.append([ a,           zn])
+
+        # ── $_AOI221_  ─────────────────────────────────────────────────────
+        # ZN = ¬((C1 ∧ C2) ∨ (B1 ∧ B2) ∨ A)
+        # Introduce m1 = C1∧C2, m2 = B1∧B2, then ZN = NOR3(m1, m2, A)
+        elif gate_type == "$_AOI221_":
+            a   = get_var(raw_conn.get("A"))
+            b1  = get_var(raw_conn.get("B1"))
+            b2  = get_var(raw_conn.get("B2"))
+            c1  = get_var(raw_conn.get("C1"))
+            c2  = get_var(raw_conn.get("C2"))
+            zn  = get_var(raw_conn.get("ZN", raw_conn.get("Y")))
+            if cell_name != skip_gate:
+                m1 = fresh_var(f"__tseitin_{cell_name}_m1")
+                m2 = fresh_var(f"__tseitin_{cell_name}_m2")
+                clauses.append([ c1,       -m1])
+                clauses.append([ c2,       -m1])
+                clauses.append([-c1, -c2,   m1])
+                clauses.append([ b1,       -m2])
+                clauses.append([ b2,       -m2])
+                clauses.append([-b1, -b2,   m2])
+                clauses.append([-m1,           -zn])
+                clauses.append([-m2,           -zn])
+                clauses.append([-a,            -zn])
+                clauses.append([ m1,  m2,  a,  zn])
+
+        # ── $_OAI221_  ─────────────────────────────────────────────────────
+        # ZN = ¬((C1 ∨ C2) ∧ (B1 ∨ B2) ∧ A)
+        # Introduce m1 = C1∨C2, m2 = B1∨B2, then ZN = NAND3(m1, m2, A)
+        elif gate_type == "$_OAI221_":
+            a   = get_var(raw_conn.get("A"))
+            b1  = get_var(raw_conn.get("B1"))
+            b2  = get_var(raw_conn.get("B2"))
+            c1  = get_var(raw_conn.get("C1"))
+            c2  = get_var(raw_conn.get("C2"))
+            zn  = get_var(raw_conn.get("ZN", raw_conn.get("Y")))
+            if cell_name != skip_gate:
+                m1 = fresh_var(f"__tseitin_{cell_name}_m1")
+                m2 = fresh_var(f"__tseitin_{cell_name}_m2")
+                clauses.append([-c1,  m1])
+                clauses.append([-c2,  m1])
+                clauses.append([ c1, c2, -m1])
+                clauses.append([-b1,  m2])
+                clauses.append([-b2,  m2])
+                clauses.append([ b1, b2, -m2])
+                clauses.append([-m1, -m2,  -a, -zn])
+                clauses.append([ m1,            zn])
+                clauses.append([ m2,            zn])
+                clauses.append([ a,             zn])
+
+        # ── $_AOI222_  ─────────────────────────────────────────────────────
+        # ZN = ¬((A1 ∧ A2) ∨ (B1 ∧ B2) ∨ (C1 ∧ C2))
+        # Introduce m1 = A1∧A2, m2 = B1∧B2, m3 = C1∧C2
+        # Then ZN = NOR3(m1, m2, m3)
+        elif gate_type == "$_AOI222_":
+            a1  = get_var(raw_conn.get("A1"))
+            a2  = get_var(raw_conn.get("A2"))
+            b1  = get_var(raw_conn.get("B1"))
+            b2  = get_var(raw_conn.get("B2"))
+            c1  = get_var(raw_conn.get("C1"))
+            c2  = get_var(raw_conn.get("C2"))
+            zn  = get_var(raw_conn.get("ZN", raw_conn.get("Y")))
+            if cell_name != skip_gate:
+                m1 = fresh_var(f"__tseitin_{cell_name}_m1")
+                m2 = fresh_var(f"__tseitin_{cell_name}_m2")
+                m3 = fresh_var(f"__tseitin_{cell_name}_m3")
+                clauses.append([ a1,       -m1])
+                clauses.append([ a2,       -m1])
+                clauses.append([-a1, -a2,   m1])
+                clauses.append([ b1,       -m2])
+                clauses.append([ b2,       -m2])
+                clauses.append([-b1, -b2,   m2])
+                clauses.append([ c1,       -m3])
+                clauses.append([ c2,       -m3])
+                clauses.append([-c1, -c2,   m3])
+                clauses.append([-m1,              -zn])
+                clauses.append([-m2,              -zn])
+                clauses.append([-m3,              -zn])
+                clauses.append([ m1,  m2,  m3,    zn])
+
+        # ── $_OAI222_  ─────────────────────────────────────────────────────
+        # ZN = ¬((A1 ∨ A2) ∧ (B1 ∨ B2) ∧ (C1 ∨ C2))
+        # Introduce m1 = A1∨A2, m2 = B1∨B2, m3 = C1∨C2
+        # Then ZN = NAND3(m1, m2, m3)
+        elif gate_type == "$_OAI222_":
+            a1  = get_var(raw_conn.get("A1"))
+            a2  = get_var(raw_conn.get("A2"))
+            b1  = get_var(raw_conn.get("B1"))
+            b2  = get_var(raw_conn.get("B2"))
+            c1  = get_var(raw_conn.get("C1"))
+            c2  = get_var(raw_conn.get("C2"))
+            zn  = get_var(raw_conn.get("ZN", raw_conn.get("Y")))
+            if cell_name != skip_gate:
+                m1 = fresh_var(f"__tseitin_{cell_name}_m1")
+                m2 = fresh_var(f"__tseitin_{cell_name}_m2")
+                m3 = fresh_var(f"__tseitin_{cell_name}_m3")
+                clauses.append([-a1,  m1])
+                clauses.append([-a2,  m1])
+                clauses.append([ a1, a2, -m1])
+                clauses.append([-b1,  m2])
+                clauses.append([-b2,  m2])
+                clauses.append([ b1, b2, -m2])
+                clauses.append([-c1,  m3])
+                clauses.append([-c2,  m3])
+                clauses.append([ c1, c2, -m3])
+                clauses.append([-m1, -m2, -m3, -zn])
+                clauses.append([ m1,             zn])
+                clauses.append([ m2,             zn])
+                clauses.append([ m3,             zn])
+
+        # ── $_OAI33_  ──────────────────────────────────────────────────────
+        # ZN = ¬((A1 ∨ A2 ∨ A3) ∧ (B1 ∨ B2 ∨ B3))
+        # Introduce m1 = OR3(A1,A2,A3), m2 = OR3(B1,B2,B3)
+        # Then ZN = NAND(m1, m2)
+        elif gate_type == "$_OAI33_":
+            a1  = get_var(raw_conn.get("A1"))
+            a2  = get_var(raw_conn.get("A2"))
+            a3  = get_var(raw_conn.get("A3"))
+            b1  = get_var(raw_conn.get("B1"))
+            b2  = get_var(raw_conn.get("B2"))
+            b3  = get_var(raw_conn.get("B3"))
+            zn  = get_var(raw_conn.get("ZN", raw_conn.get("Y")))
+            if cell_name != skip_gate:
+                m1 = fresh_var(f"__tseitin_{cell_name}_m1")
+                m2 = fresh_var(f"__tseitin_{cell_name}_m2")
+                clauses.append([-a1,  m1])
+                clauses.append([-a2,  m1])
+                clauses.append([-a3,  m1])
+                clauses.append([ a1, a2, a3, -m1])
+                clauses.append([-b1,  m2])
+                clauses.append([-b2,  m2])
+                clauses.append([-b3,  m2])
+                clauses.append([ b1, b2, b3, -m2])
+                clauses.append([-m1, -m2, -zn])
+                clauses.append([ m1,       zn])
+                clauses.append([ m2,       zn])
 
         else:
             # Allocate wires so downstream code can still reference them,

@@ -15,7 +15,7 @@ import time
 
 from pysat.solvers import Glucose3
 
-from core.circuit_loader import load_circuit, get_port_nets, get_net_name_map
+from core.circuit_loader import load_circuit, get_port_nets, get_net_name_map, enumerate_verilog_nets
 from core.miter import build_miter
 from core.fault_manager import (
     enumerate_stuck_at_faults,
@@ -122,18 +122,19 @@ def run_single_fault(module_data: dict, fault_net: str,
 
 # ── Full sweep ───────────────────────────────────────────────────────────────
 
-def run_full_sweep(json_file: str) -> list:
+def run_full_sweep(json_file: str, verilog_only: bool = True) -> list:
     """Run SAT-ATPG over every stuck-at fault in the circuit.
 
     Args:
-        json_file: Path to Yosys JSON netlist.
+        json_file:    Path to Yosys JSON netlist.
+        verilog_only: If True, only test faults on original Verilog wires.
 
     Returns:
         List of result dicts (one per fault).
     """
     module_name, module_data = load_circuit(json_file)
     net_name_map = get_net_name_map(module_data)
-    faults       = enumerate_stuck_at_faults(module_data)
+    faults       = enumerate_stuck_at_faults(module_data, verilog_only=verilog_only)
 
     print(f"\n{'='*60}")
     print(f"  SAT-ATPG Full Sweep")
@@ -189,6 +190,10 @@ def _parse_args():
         metavar="0|1",
         help="Stuck-at value: 0 = SA0, 1 = SA1 (default: 0)",
     )
+    parser.add_argument(
+        "--all-nets", action="store_true",
+        help="Include Yosys-generated intermediate nets (default: Verilog wires only)",
+    )
     return parser.parse_args()
 
 
@@ -221,7 +226,7 @@ def main():
         print(f"{'='*60}\n")
     else:
         # ── Full-sweep mode ──────────────────────────────────────────────
-        run_full_sweep(args.json)
+        run_full_sweep(args.json, verilog_only=not args.all_nets)
 
 
 if __name__ == "__main__":

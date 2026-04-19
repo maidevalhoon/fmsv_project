@@ -4,26 +4,31 @@ fault_manager.py — Fault enumeration and result extraction for SAT-ATPG.
 Pure functions only; no global state or classes.
 """
 
-from core.circuit_loader import enumerate_all_nets, get_port_nets
+from core.circuit_loader import (
+    enumerate_all_nets,
+    enumerate_verilog_nets,
+    get_port_nets,
+)
 
 
-def enumerate_stuck_at_faults(module_data: dict) -> list:
+def enumerate_stuck_at_faults(module_data: dict, verilog_only: bool = True) -> list:
     """Return all single stuck-at faults for the circuit.
-
-    For every net in the circuit (primary inputs, gate outputs, internal
-    wires) this produces two candidate faults: stuck-at-0 and stuck-at-1.
 
     Args:
         module_data: The module dict returned by ``circuit_loader.load_circuit``.
+        verilog_only: If ``True`` (default), only generate faults on nets
+            that correspond to original Verilog wires (``hide_name: 0``),
+            excluding Yosys-generated intermediate wires from gate
+            decompositions (e.g. NAND → AND + NOT).
+            Set ``False`` for exhaustive coverage of all internal nets.
 
     Returns:
         Sorted list of ``(net_id_str, fault_value)`` tuples where
         *fault_value* is ``0`` (stuck-at-0) or ``1`` (stuck-at-1).
-        Yosys constant tokens (``"0"``, ``"1"``, ``"x"``, ``"z"``) are
-        excluded by ``enumerate_all_nets``.
     """
+    nets = enumerate_verilog_nets(module_data) if verilog_only else enumerate_all_nets(module_data)
     faults = []
-    for net_id in enumerate_all_nets(module_data):
+    for net_id in nets:
         faults.append((net_id, 0))
         faults.append((net_id, 1))
     return faults

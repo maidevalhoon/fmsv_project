@@ -82,11 +82,13 @@ def build_miter(module_data: dict, fault_net: str, fault_value: int):
 
     # ── Step 3 ──────────────────────────────────────────────────────────────
     # Build FAULTY circuit CNF.
-    #   var_offset = good_next  so faulty variables start right after good.
-    #   skip_gate  = driving_gate   so that gate's Tseitin clauses are omitted.
+    #   var_offset = good_next - 1  so faulty variables start right after
+    #   good  (cnf_builder uses _next = [1 + var_offset], so offset of
+    #   good_next - 1 yields _next = good_next — no gap).
+    #   skip_gate = driving_gate  so that gate's Tseitin clauses are omitted.
     faulty_clauses, faulty_map, faulty_next = build_circuit_cnf(
         cells,
-        var_offset=good_next,
+        var_offset=good_next - 1,
         skip_gate=driving_gate,
     )
 

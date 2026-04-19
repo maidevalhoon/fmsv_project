@@ -1,38 +1,19 @@
-# ── Yosys Synthesis Script ─────────────────────────────────────────────────────
-#
 # Usage (run from project root):
-#   yosys -p "tcl synth/synth.ys" -D CIRCUIT=c17
-#   yosys synth/synth.ys          (defaults to c17)
-#
-# FLOW A — Generic cells (current, used by cnf_builder.py directly)
-#   Produces JSON with $-cell types: $_AND_, $_NOT_, etc.
-#
-# FLOW B — Nangate library-mapped (uncomment abc/dfflibmap lines)
-#   Produces JSON with real cell types: AND2_X1, NAND3_X1, AOI21_X1, etc.
-#   REQUIRES cnf_builder.py to be updated with Nangate gate aliases first.
-#   See tech_library_guide.md for required cnf_builder.py changes.
-# ──────────────────────────────────────────────────────────────────────────────
+#   yosys synth/synth.ys                       ← synthesizes c17 (default)
+#   CIRCUIT=c432 yosys -c synth/synth.tcl      ← other circuits (use .tcl version)
 
-# ── Set circuit name (override with -D CIRCUIT=c432 etc.) ────────────────────
-if { [catch {set CIRCUIT $env(CIRCUIT)}] } { set CIRCUIT c17 }
 
-# ── Step 1: Read RTL and library blackboxes ───────────────────────────────────
-read_verilog benchmarks/${CIRCUIT}.v
+# ── Step 1: Read RTL ──────────────────────────────────────────────────────────
+read_verilog benchmarks/c17.v
 
-# FLOW B: uncomment to read Nangate blackbox stubs so Yosys knows those cells
-# read_verilog -lib {Technology Library/NangateOpenCellLibrary.blackbox.v}
+# ── Step 2: Read Nangate technology library ──────────────────────────────────
+read_liberty -lib "Technology Library/NangateOpenCellLibrary_typical.lib"
 
-# ── Step 2: Synthesise ────────────────────────────────────────────────────────
-# FLOW A (generic):
-synth
+# ── Step 3: Synthesise & map to Nangate cells ────────────────────────────────
+synth -top c17
+abc -liberty "Technology Library/NangateOpenCellLibrary_typical.lib"
+clean
 
-# FLOW B: replace `synth` line above with these (enables real tech-mapping):
-# hierarchy -check -top ${CIRCUIT}
-# synth -top ${CIRCUIT}
-# dfflibmap -liberty {Technology Library/NangateOpenCellLibrary_typical.lib}
-# abc      -liberty {Technology Library/NangateOpenCellLibrary_typical.lib}
-# clean
-
-# ── Step 3: Output ────────────────────────────────────────────────────────────
-write_verilog benchmarks/netlists/${CIRCUIT}_netlist.v
-write_json    benchmarks/json/${CIRCUIT}.json
+# ── Step 4: Output ───────────────────────────────────────────────────────────
+write_verilog benchmarks/netlists/c17_netlist.v
+write_json    benchmarks/json/c17.json

@@ -50,7 +50,22 @@ def load_circuit(json_file: str):
     if not modules:
         sys.exit(f"[ERROR] No modules found in {json_file!r}")
 
-    module_name = list(modules.keys())[0]
+    # Find the top-level module: prefer the one with top=1 attribute,
+    # then fall back to the first module that has cells (skip blackboxes).
+    module_name = None
+    for name, mod in modules.items():
+        attrs = mod.get("attributes", {})
+        if attrs.get("top") == 1 or attrs.get("top") == "00000000000000000000000000000001":
+            module_name = name
+            break
+    if module_name is None:
+        for name, mod in modules.items():
+            if mod.get("cells"):
+                module_name = name
+                break
+    if module_name is None:
+        module_name = list(modules.keys())[0]
+
     module_data = modules[module_name]
 
     warnings = validate_netlist(module_data)
@@ -141,11 +156,64 @@ def enumerate_all_nets(module_data: dict) -> list:
     return sorted(nets, key=lambda x: int(x) if x.isdigit() else x)
 
 
+def enumerate_verilog_nets(module_data: dict) -> list:
+    """Return only the net IDs that correspond to original Verilog wires.
+
+    Yosys decomposes complex gates (e.g. NAND → AND + NOT) and creates
+    hidden intermediate wires.  These have ``"hide_name": 1`` in the
+    ``netnames`` section.  This function returns only the nets with
+    ``"hide_name": 0`` — i.e. the user-declared inputs, outputs, and
+    internal wires from the original RTL.
+
+    For c17: returns 11 nets (5 inputs + 2 outputs + 4 wires) instead
+    of the 17 that ``enumerate_all_nets`` would return.
+
+    Args:
+        module_data: The module dict returned by :func:`load_circuit`.
+
+    Returns:
+        Sorted list of net ID strings for user-visible wires only.
+    """
+    visible = set()
+    for _name, info in module_data.get("netnames", {}).items():
+        if info.get("hide_name", 1) == 0:
+            for bit in info.get("bits", []):
+                s = str(bit)
+                if s not in _YOSYS_CONSTANTS:
+                    visible.add(s)
+    return sorted(visible, key=lambda x: int(x) if x.isdigit() else x)
+
+
+def get_signal_name_map(module_data: dict) -> dict:
+    """Build a bi-directional name mapping for user-visible wires only.
+
+    Unlike ``get_net_name_map`` which includes Yosys-generated hidden names,
+    this returns only ``hide_name: 0`` entries — the original Verilog signal
+    names.
+
+    Args:
+        module_data: The module dict returned by :func:`load_circuit`.
+
+    Returns:
+        ``{net_id_str: signal_name}`` for user-visible wires only.
+    """
+    name_map = {}
+    for signal_name, net_info in module_data.get("netnames", {}).items():
+        if net_info.get("hide_name", 1) != 0:
+            continue
+        for bit in net_info.get("bits", []):
+            bit_str = str(bit)
+            if bit_str not in _YOSYS_CONSTANTS:
+                name_map[bit_str] = signal_name
+    return name_map
+
+
 def find_driving_gate(module_data: dict, fault_net: str):
     """Find the cell whose output drives *fault_net*.
 
-    A net is "driven" by a cell when it appears in that cell's ``Y``
-    connection (the standard Yosys output port name for combinational gates).
+    A net is "driven" by a cell when it appears in that cell's output
+    connection.  Checks all three Yosys/Nangate output port conventions:
+    ``Y`` (generic/RTL), ``ZN`` (Nangate inverting), ``Z`` (Nangate BUF/XOR2).
 
     Args:
         module_data: The module dict returned by :func:`load_circuit`.
@@ -157,10 +225,9 @@ def find_driving_gate(module_data: dict, fault_net: str):
     """
     for cell_name, cell_data in module_data.get("cells", {}).items():
         conn = cell_data.get("connections", {})
-        # Check both 'Y' (generic/RTL gates) and 'ZN' (Nangate inverting cells)
-        output_bits = conn.get("Y", []) or conn.get("ZN", [])
-        if fault_net in [str(b) for b in output_bits]:
-            return cell_name
+        for port in ("Y", "ZN", "Z"):
+            if fault_net in [str(b) for b in conn.get(port, [])]:
+                return cell_name
     return None
 
 
@@ -191,6 +258,7 @@ def validate_netlist(module_data: dict) -> list[str]:
         # ── Yosys generic / RTL names ──────────────────────────────────────
         "$_AND_", "$_OR_", "$_NOT_", "$_BUF_",
         "$_NAND_", "$_NOR_", "$_XOR_", "$_XNOR_", "$_MUX_",
+        "$_ANDNOT_", "$_ORNOT_",
         "$and", "$or", "$not", "$buf",
         "$nand", "$nor", "$xor", "$xnor", "$mux",
         # ── Nangate standard cells (all drive strengths) ────────────────────
