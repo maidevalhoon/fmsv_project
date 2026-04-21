@@ -57,20 +57,14 @@ yosys -p 'read_verilog benchmarks/netlists/c432_netlist.v; read_liberty -lib "Te
 ### Generate Circuit SVG from JSON Netlists
 
 ```bash
-# Tech-mapped circuit (Nangate cells: AOI21, OAI21, NAND2, INV, AND2)
-yosys -p 'read_json benchmarks/json/eval_techmap.json; show -format svg -prefix eval_techmap_circuit'
+# Export the deep generic Notech circuit (13 nets -> 26 faults)
+yosys -p "read_json benchmarks/json/c17_notech.json; show -format svg -prefix c17_notech"
 
-# Non-tech-mapped circuit (generic gates: $_AND_, $_NOT_, $_NAND_)
-yosys -p 'read_json benchmarks/json/eval_non_tech.json; show -format svg -prefix eval_non_tech_circuit'
-
-# Original RTL NAND-level circuit (no synthesis, matches Verilog source)
-yosys -p 'read_verilog benchmarks/c17.v; proc; opt; show -format svg -prefix c17_nand'
-
-# Json to svg
-yosys -p 'read_json benchmarks/json/c17.json; show -format svg -prefix c17_circuit'
+# Export the Nangate mapped circuit (11 nets -> 22 faults)
+yosys -p "read_json benchmarks/json/c17_tech.json; read_liberty -lib \"Technology Library/NangateOpenCellLibrary_typical.lib\"; show -format svg -prefix c17_tech"
 ```
 
-**Note:** The `show` command requires `xdot` (install with `brew install xdot`) or use `-format pdf`/`-format svg` to save to file.
+**Note:** The generated images will drop in your project root as `c17_notech.svg` and `c17_tech.svg`. Reading the generated files requires an SVG viewer (like your web browser).
 
 ---
 

@@ -231,25 +231,39 @@ def main() -> None:
         description="SAT-ATPG solver-insight collector — generates LLM guidance report"
     )
     parser.add_argument(
-        "--json", default="benchmarks/json/c17.json",
-        metavar="PATH",
-        help="Path to Yosys JSON netlist (default: benchmarks/json/c17.json)",
+        "--circuit", default="c17",
+        metavar="CIRCUIT",
+        help="Name of the circuit (default: c17). Looks in benchmarks/json/.",
     )
     parser.add_argument(
-        "--out", default="reports/solver_insights_report.txt",
-        metavar="PATH",
-        help="Output report path (default: reports/solver_insights_report.txt)",
+        "--tech", action="store_true",
+        help="Use the tech-mapped version of the circuit",
+    )
+    parser.add_argument(
+        "--notech", action="store_true",
+        help="Use the generic synthesized version of the circuit",
     )
     args = parser.parse_args()
+
+    import sys
+    if args.tech and args.notech:
+        sys.exit("[ERROR] Specify either --tech or --notech, not both.")
+    if not args.tech and not args.notech:
+        args.tech = True # default
+
+    suffix = "tech" if args.tech else "notech"
+    json_path = os.path.join("benchmarks", "json", f"{args.circuit}_{suffix}.json")
+    # For matching llm script, we output to c17_insights.txt and c17_summary.txt inherently
+    out_path = os.path.join("reports", f"{args.circuit}_insights.txt")
 
     print("=" * 60)
     print("  Step 1 — Solver Insights Collector")
     print("=" * 60)
 
-    module_name, module_data = load_circuit(args.json)
+    module_name, module_data = load_circuit(json_path)
     print(f"\n[INFO] Loaded module : {module_name}")
 
-    faults = enumerate_stuck_at_faults(module_data)
+    faults = enumerate_stuck_at_faults(module_data, verilog_only=False)
     print(f"[INFO] Faults to test: {len(faults)}  ({len(faults)//2} nets × SA0/SA1)\n")
 
     insights = []
@@ -264,7 +278,7 @@ def main() -> None:
               f"  {result['status']:<12}"
               f"  {result['solve_time_sec']*1000:6.2f} ms{tv_str}")
 
-    generate_report(module_name, module_data, insights, args.out)
+    generate_report(module_name, module_data, insights, out_path)
 
     det   = len([r for r in insights if r["status"] == "DETECTABLE"])
     undet = len([r for r in insights if r["status"] == "UNDETECTABLE"])
@@ -276,9 +290,8 @@ def main() -> None:
     print(f"  Detectable   : {det}")
     print(f"  Undetectable : {undet}")
     print(f"  Coverage     : {cov:.1f}%  ({det}/{total_tested} tested)")
-    print(f"  Report       : {args.out}")
+    print(f"  Report       : {out_path}")
     print(f"{'='*60}\n")
-
 
 if __name__ == "__main__":
     main()

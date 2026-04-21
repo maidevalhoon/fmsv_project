@@ -582,16 +582,16 @@ pip install -r requirements.txt
 yosys synth/synth.ys
 
 # ── Step 1: Single fault test ───────────────────────────────────
-python run_atpg.py --json benchmarks/json/c17.json --net 6 --val 0
-python run_atpg.py --json benchmarks/json/c17.json --net 6 --val 1
+python run_atpg.py --circuit c17 --tech --net 6 --val 0
+python run_atpg.py --circuit c17 --notech --net 6 --val 1
 
 # ── Step 1: Full fault sweep ─────────────────────────────────────
-python run_atpg.py --json benchmarks/json/c17.json
-python run_atpg.py --json benchmarks/json/circuit.json
+python run_atpg.py --circuit c17 --tech
+python run_atpg.py --circuit c17 --notech
 
 # ── Step 1: Generate insights report (with solver stats) ─────────
-python run_insights.py --json benchmarks/json/c17.json \
-                       --out reports/c17_insights.txt
+python run_insights.py --circuit c17 --tech
+python run_insights.py --circuit c17 --notech
 
 # ── Step 1: Condense report ──────────────────────────────────────
 python extract_reports.py --in  reports/c17_insights.txt \
@@ -601,11 +601,18 @@ python extract_reports.py --in  reports/c17_insights.txt \
 # First: add your Gemini API key to .env
 export $(grep -v '^#' .env | xargs)
 
-# Full run (34 faults, ~15-30 min on free tier due to rate limits)
+# Full run (26 faults, uses notech implicitly)
 python llm/run_llm_atpg.py --verbose
 
 # Quick test with first 5 faults only
 python llm/run_llm_atpg.py --max-faults 5 --verbose
+
+# ── Generate Visual SVGs for Analysis ────────────────────────────
+# Generates c17_notech.svg (13 nets -> 26 faults)
+yosys -p "read_json benchmarks/json/c17_notech.json; show -format svg -prefix c17_notech"
+
+# Generates c17_tech.svg (11 nets -> 22 faults)
+yosys -p "read_json benchmarks/json/c17_tech.json; read_liberty -lib \"Technology Library/NangateOpenCellLibrary_typical.lib\"; show -format svg -prefix c17_tech"
 
 # Use a specific Gemini model
 python llm/run_llm_atpg.py --model gemini-2.0-flash --verbose
