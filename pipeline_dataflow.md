@@ -9,7 +9,7 @@ The overall task of ATPG is mathematical verification. We start with code (`.v`)
 ```mermaid
 graph TD
     A[circuit.v (RTL)] -->|Yosys Tool| B[c17_netlist.v (Gate-Level Verilog)]
-    A -->|Yosys Tool| C[c17.json (Gate-Level JSON)]
+    A -->|Yosys Tool| C[c17_tech.json (Gate-Level JSON)]
     B -->|Human Reference| D[Debugging / Visualization]
     C -->|circuit_loader.py| E[Python In-Memory Graph]
     E -->|cnf_builder.py| F[CNF Clauses In-Memory]
@@ -22,8 +22,8 @@ graph TD
 *   **Use case:** It is primarily a **human-readable reference file**. It allows us to view exactly which hardware logic gates Yosys decided to use, to draw circuit diagrams, and it serves as a fallback input format for other specialized hardware tools.
 
 ## 3. Which function creates the `.json` file?
-*   **Creation:** The JSON file (`benchmarks/json/c17.json`) is **not** created by any Python function in our codebase.
-*   **How it is generated:** Like the netlist, it is generated directly by **Yosys** through the `write_json benchmarks/json/c17.json` command in `synth/synth.ys`.
+*   **Creation:** The JSON file (`benchmarks/json/c17_tech.json`) is **not** created by any Python function in our codebase.
+*   **How it is generated:** Like the netlist, it is generated directly by **Yosys** through the `write_json benchmarks/json/c17_tech.json` command in `synth/synth.ys` (or `synth.tcl`).
 *   **Use case:** It contains the exact same gate-level information as `c17_netlist.v`, but structured in a dictionary format. Parsing a full Verilog file in Python from scratch is incredibly difficult (requiring complex regex and grammar parsing). Parsing JSON, however, is natively supported in Python with 1 line of code (`json.load(f)`), allowing our `core/circuit_loader.py` to easily convert the circuit into Python objects.
 
 ## 4. What is the use of the CNF form?
@@ -36,11 +36,11 @@ graph TD
 *   **Performance:** Since ATPG requires doing this process sequentially for hundreds or thousands of faults, writing the CNF to disk would slow down our tool by orders of magnitude. Using Lists of Integers in RAM allows for lightning-fast execution.
 
 ## 6. Sample CNF Generation (Proof of Concept)
-To demonstrate what the generated data actually looks like, we have explicitly written a script (`dump_cnf.py`) that exports the **in-memory Miter formulation** of an active fault to disk in standard DIMACS format.
+To demonstrate what the generated data actually looks like, running our system automatically extracts the **in-memory Miter formulation** of an active fault to disk in standard DIMACS format.
 
-**Sample File:** `benchmarks/cnf/sample_SA1_net6.cnf`
+**Sample File:** `benchmarks/cnf/c17/SA1_net6.cnf`
 
-This sample corresponds to computing **SA1@net6** on **c17** and looks like this:
+This sample corresponds to computing **SA1@net6** on **c17** (ran via `python run_atpg.py --circuit c17 --tech --net 6 --val 1`) and looks like this:
 ```txt
 c Miter CNF for c17 fault SA1@net6
 p cnf 28 62

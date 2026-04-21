@@ -261,6 +261,10 @@ def main():
     )
     p.add_argument("--circuit", default="c17",
                    help="Name of the circuit to evaluate (default: c17)")
+    p.add_argument("--tech", action="store_true",
+                   help="Use the tech-mapped version of the circuit")
+    p.add_argument("--notech", action="store_true",
+                   help="Use the generic synthesized version of the circuit")
     p.add_argument("--model",   default="gemini-2.0-flash-lite",
                    help=f"Gemini model name (default: gemini-2.0-flash-lite)")
     p.add_argument("--max-faults", type=int, default=0,
@@ -271,8 +275,15 @@ def main():
                    help="Seconds to wait between API calls (default: 4)")
     args = p.parse_args()
 
+    import sys
+    if args.tech and args.notech:
+        sys.exit("[ERROR] Specify either --tech or --notech, not both.")
+    if not args.tech and not args.notech:
+        args.tech = True # default
+
+    suffix = "tech" if args.tech else "notech"
     circuit = args.circuit
-    CIRCUIT_JSON  = f"benchmarks/json/{circuit}.json"
+    CIRCUIT_JSON  = f"benchmarks/json/{circuit}_{suffix}.json"
     SUMMARY_FILE  = f"reports/summaries/{circuit}_summary.txt"
     REPORT_OUT    = f"reports/{circuit}_llm_comparison.txt"
     INSIGHTS_FILE = f"reports/{circuit}_insights.txt"

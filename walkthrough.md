@@ -61,8 +61,8 @@ project/
 │   ├── circuit.v            # Simple 3-gate test circuit
 │   ├── c17.v                # ISCAS-85 c17 (5 inputs, 2 outputs, 6 AND + 6 NOT = 12 gates)
 │   ├── json/
-│   │   ├── circuit.json     # Yosys-synthesized gate-level JSON
-│   │   └── c17.json         # ← primary benchmark used in Steps 1 & 2
+│   │   ├── circuit_tech.json     # Yosys-synthesized gate-level JSON
+│   │   └── c17_tech.json         # ← primary benchmark used in Steps 1 & 2
 │   └── netlists/            # Synthesized Verilog (reference only)
 │
 ├── core/                    # Shared ATPG library (no side-effects, pure functions)
@@ -130,7 +130,7 @@ export $(grep -v '^#' .env | xargs)
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  INPUT: benchmarks/json/c17.json  (Yosys-synthesized JSON)      │
+│  INPUT: benchmarks/json/c17_tech.json  (Yosys-synthesized JSON)      │
 └──────────────────────────┬──────────────────────────────────────┘
                            │
                            ▼
@@ -287,10 +287,10 @@ Steps inside:
 
 ```bash
 # Single fault
-python run_atpg.py --json benchmarks/json/c17.json --net 6 --val 0
+python run_atpg.py --circuit c17 --tech --net 6 --val 0
 
-# Full sweep (all 34 faults on c17)
-python run_atpg.py --json benchmarks/json/c17.json
+# Full sweep (all 22 faults on c17_tech)
+python run_atpg.py --circuit c17 --tech
 ```
 
 **Output (console):**
@@ -307,7 +307,7 @@ Fault: SA0@net6   Status: DETECTABLE   TV: N1=0,N2=0,N3=1,N6=0,N7=1
 **Purpose:** Runs a full fault sweep, collects solver statistics, and writes a structured report.
 
 ```bash
-python run_insights.py --json benchmarks/json/c17.json --out reports/c17_insights.txt
+python run_insights.py --circuit c17 --tech
 ```
 
 **Report sections:**
@@ -659,11 +659,12 @@ The CNF is **never written to disk**. It lives in memory as `list[list[int]]`:
 | Solving | `Glucose3.solve()` | PySAT library | SAT/UNSAT + model |
 
 **Exporting CNF (Proof of Concept):**
-While the system runs entirely in-memory during ATPG to prevent disk I/O bottlenecks, you can dump an actual physical CNF specification in standard DIMACS format for verification.
+While the system runs entirely in-memory during ATPG to prevent disk I/O bottlenecks, it automatically dumps identical CNF copies to disk for verification when running `run_atpg.py`.
+
 ```bash
-python dump_cnf.py
+python run_atpg.py --circuit c17 --tech --net 6 --val 1
 ```
-This generates `benchmarks/cnf/sample_SA1_net6.cnf` representing the active fault.
+This automatically generates `benchmarks/cnf/c17/SA1_net6.cnf` representing the active fault miter.
 
 To quickly inspect the CNF at runtime instead, add after `build_miter()` in `run_atpg.py`:
 ```python
@@ -700,7 +701,7 @@ Total: 28 variables (vars 1–13 good, 14–26 faulty, 27–28 D-vars)
 
 ```
 run_atpg.py: main()
- ├─ circuit_loader.load_circuit("benchmarks/json/c17.json")
+ ├─ circuit_loader.load_circuit("benchmarks/json/c17_tech.json")
  │    → ("c17", module_data)   5 inputs(nets 2-6), 2 outputs(nets 7-8), 6 cells
  │
  ├─ fault_manager.enumerate_stuck_at_faults(module_data, verilog_only=True)

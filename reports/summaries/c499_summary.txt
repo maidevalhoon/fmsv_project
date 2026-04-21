@@ -1,0 +1,564 @@
+================================================================================
+  CONDENSED SUMMARY REPORT
+  Source: c499_insights.txt
+================================================================================
+
+1. CIRCUIT OVERVIEW
+------------------------------------------------------------
+  Module       : c499
+  Input nets   : ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42']
+  Output nets  : ['43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74']
+  Gate count   : 246
+  Gate types   : ['$and', '$not', '$or', '$xor']
+
+  Net ID → Name Mapping:
+    Net    2 → N1                   [IN]
+    Net    3 → N5                   [IN]
+    Net    4 → N9                   [IN]
+    Net    5 → N13                  [IN]
+    Net    6 → N17                  [IN]
+    Net    7 → N21                  [IN]
+    Net    8 → N25                  [IN]
+    Net    9 → N29                  [IN]
+    Net   10 → N33                  [IN]
+    Net   11 → N37                  [IN]
+    Net   12 → N41                  [IN]
+    Net   13 → N45                  [IN]
+    Net   14 → N49                  [IN]
+    Net   15 → N53                  [IN]
+    Net   16 → N57                  [IN]
+    Net   17 → N61                  [IN]
+    Net   18 → N65                  [IN]
+    Net   19 → N69                  [IN]
+    Net   20 → N73                  [IN]
+    Net   21 → N77                  [IN]
+    Net   22 → N81                  [IN]
+    Net   23 → N85                  [IN]
+    Net   24 → N89                  [IN]
+    Net   25 → N93                  [IN]
+    Net   26 → N97                  [IN]
+    Net   27 → N101                 [IN]
+    Net   28 → N105                 [IN]
+    Net   29 → N109                 [IN]
+    Net   30 → N113                 [IN]
+    Net   31 → N117                 [IN]
+    Net   32 → N121                 [IN]
+    Net   33 → N125                 [IN]
+    Net   34 → N129                 [IN]
+    Net   35 → N130                 [IN]
+    Net   36 → N131                 [IN]
+    Net   37 → N132                 [IN]
+    Net   38 → N133                 [IN]
+    Net   39 → N134                 [IN]
+    Net   40 → N135                 [IN]
+    Net   41 → N136                 [IN]
+    Net   42 → N137                 [IN]
+    Net   43 → N724                 [OUT]
+    Net   44 → N725                 [OUT]
+    Net   45 → N726                 [OUT]
+    Net   46 → N727                 [OUT]
+    Net   47 → N728                 [OUT]
+    Net   48 → N729                 [OUT]
+    Net   49 → N730                 [OUT]
+    Net   50 → N731                 [OUT]
+    Net   51 → N732                 [OUT]
+    Net   52 → N733                 [OUT]
+    Net   53 → N734                 [OUT]
+    Net   54 → N735                 [OUT]
+    Net   55 → N736                 [OUT]
+    Net   56 → N737                 [OUT]
+    Net   57 → N738                 [OUT]
+    Net   58 → N739                 [OUT]
+    Net   59 → N740                 [OUT]
+    Net   60 → N741                 [OUT]
+    Net   61 → N742                 [OUT]
+    Net   62 → N743                 [OUT]
+    Net   63 → N744                 [OUT]
+    Net   64 → N745                 [OUT]
+    Net   65 → N746                 [OUT]
+    Net   66 → N747                 [OUT]
+    Net   67 → N748                 [OUT]
+    Net   68 → N749                 [OUT]
+    Net   69 → N750                 [OUT]
+    Net   70 → N751                 [OUT]
+    Net   71 → N752                 [OUT]
+    Net   72 → N753                 [OUT]
+    Net   73 → N754                 [OUT]
+    Net   74 → N755                 [OUT]
+    Net   75 → N554                 [INT]
+    Net   76 → N555                 [INT]
+    Net   77 → $and$benchmarks/c499.v:171$81_Y [INT]
+    Net   78 → N556                 [INT]
+    Net   79 → $and$benchmarks/c499.v:171$82_Y [INT]
+    Net   80 → N393                 [INT]
+    Net   81 → N594                 [INT]
+    Net   82 → N557                 [INT]
+    Net   83 → N558                 [INT]
+    Net   84 → $and$benchmarks/c499.v:172$84_Y [INT]
+    Net   85 → N380                 [INT]
+    Net   86 → $and$benchmarks/c499.v:172$85_Y [INT]
+    Net   87 → N559                 [INT]
+    Net   88 → N595                 [INT]
+    Net   89 → N560                 [INT]
+    Net   90 → N367                 [INT]
+    Net   91 → $and$benchmarks/c499.v:173$87_Y [INT]
+    Net   92 → N561                 [INT]
+    Net   93 → $and$benchmarks/c499.v:173$88_Y [INT]
+    Net   94 → N562                 [INT]
+    Net   95 → N596                 [INT]
+    Net   96 → N354                 [INT]
+    Net   97 → N563                 [INT]
+    Net   98 → $and$benchmarks/c499.v:174$90_Y [INT]
+    Net   99 → N564                 [INT]
+    Net  100 → $and$benchmarks/c499.v:174$91_Y [INT]
+    Net  101 → N565                 [INT]
+    Net  102 → N597                 [INT]
+    Net  103 → N574                 [INT]
+    Net  104 → N575                 [INT]
+    Net  105 → $and$benchmarks/c499.v:175$93_Y [INT]
+    Net  106 → N576                 [INT]
+    Net  107 → $and$benchmarks/c499.v:175$94_Y [INT]
+    Net  108 → N445                 [INT]
+    Net  109 → N598                 [INT]
+    Net  110 → N577                 [INT]
+    Net  111 → N578                 [INT]
+    Net  112 → $and$benchmarks/c499.v:176$96_Y [INT]
+    Net  113 → N432                 [INT]
+    Net  114 → $and$benchmarks/c499.v:176$97_Y [INT]
+    Net  115 → N579                 [INT]
+    Net  116 → N599                 [INT]
+    Net  117 → $and$benchmarks/c499.v:177$99_Y [INT]
+    Net  118 → N581                 [INT]
+    Net  119 → $and$benchmarks/c499.v:177$100_Y [INT]
+    Net  120 → N582                 [INT]
+    Net  121 → N600                 [INT]
+    Net  122 → N580                 [INT]
+    Net  123 → N419                 [INT]
+    Net  124 → N406                 [INT]
+    Net  125 → N583                 [INT]
+    Net  126 → $and$benchmarks/c499.v:178$102_Y [INT]
+    Net  127 → N584                 [INT]
+    Net  128 → $and$benchmarks/c499.v:178$103_Y [INT]
+    Net  129 → N585                 [INT]
+    Net  130 → N601                 [INT]
+    Net  131 → N566                 [INT]
+    Net  132 → $and$benchmarks/c499.v:181$111_Y [INT]
+    Net  133 → $and$benchmarks/c499.v:181$112_Y [INT]
+    Net  134 → N567                 [INT]
+    Net  135 → $and$benchmarks/c499.v:181$113_Y [INT]
+    Net  136 → N602                 [INT]
+    Net  137 → N620                 [INT]
+    Net  138 → N568                 [INT]
+    Net  139 → $and$benchmarks/c499.v:182$115_Y [INT]
+    Net  140 → N569                 [INT]
+    Net  141 → $and$benchmarks/c499.v:182$116_Y [INT]
+    Net  142 → $and$benchmarks/c499.v:182$117_Y [INT]
+    Net  143 → N625                 [INT]
+    Net  144 → N570                 [INT]
+    Net  145 → $and$benchmarks/c499.v:183$119_Y [INT]
+    Net  146 → $and$benchmarks/c499.v:183$120_Y [INT]
+    Net  147 → N571                 [INT]
+    Net  148 → $and$benchmarks/c499.v:183$121_Y [INT]
+    Net  149 → N630                 [INT]
+    Net  150 → N572                 [INT]
+    Net  151 → $and$benchmarks/c499.v:184$123_Y [INT]
+    Net  152 → N573                 [INT]
+    Net  153 → $and$benchmarks/c499.v:184$124_Y [INT]
+    Net  154 → $and$benchmarks/c499.v:184$125_Y [INT]
+    Net  155 → N635                 [INT]
+    Net  156 → N586                 [INT]
+    Net  157 → $and$benchmarks/c499.v:185$127_Y [INT]
+    Net  158 → $and$benchmarks/c499.v:185$128_Y [INT]
+    Net  159 → N587                 [INT]
+    Net  160 → $and$benchmarks/c499.v:185$129_Y [INT]
+    Net  161 → N607                 [INT]
+    Net  162 → N640                 [INT]
+    Net  163 → N588                 [INT]
+    Net  164 → $and$benchmarks/c499.v:186$131_Y [INT]
+    Net  165 → N589                 [INT]
+    Net  166 → $and$benchmarks/c499.v:186$132_Y [INT]
+    Net  167 → $and$benchmarks/c499.v:186$133_Y [INT]
+    Net  168 → N645                 [INT]
+    Net  169 → N590                 [INT]
+    Net  170 → $and$benchmarks/c499.v:187$135_Y [INT]
+    Net  171 → $and$benchmarks/c499.v:187$136_Y [INT]
+    Net  172 → N591                 [INT]
+    Net  173 → $and$benchmarks/c499.v:187$137_Y [INT]
+    Net  174 → N650                 [INT]
+    Net  175 → N592                 [INT]
+    Net  176 → $and$benchmarks/c499.v:188$139_Y [INT]
+    Net  177 → N593                 [INT]
+    Net  178 → $and$benchmarks/c499.v:188$140_Y [INT]
+    Net  179 → $and$benchmarks/c499.v:188$141_Y [INT]
+    Net  180 → N655                 [INT]
+    Net  181 → N692                 [INT]
+    Net  182 → N693                 [INT]
+    Net  183 → N694                 [INT]
+    Net  184 → N695                 [INT]
+    Net  185 → N696                 [INT]
+    Net  186 → N697                 [INT]
+    Net  187 → N698                 [INT]
+    Net  188 → N699                 [INT]
+    Net  189 → N700                 [INT]
+    Net  190 → N701                 [INT]
+    Net  191 → N702                 [INT]
+    Net  192 → N703                 [INT]
+    Net  193 → N704                 [INT]
+    Net  194 → N705                 [INT]
+    Net  195 → N706                 [INT]
+    Net  196 → N707                 [INT]
+    Net  197 → N708                 [INT]
+    Net  198 → N709                 [INT]
+    Net  199 → N710                 [INT]
+    Net  200 → N711                 [INT]
+    Net  201 → N712                 [INT]
+    Net  202 → N713                 [INT]
+    Net  203 → N714                 [INT]
+    Net  204 → N715                 [INT]
+    Net  205 → N716                 [INT]
+    Net  206 → N717                 [INT]
+    Net  207 → N718                 [INT]
+    Net  208 → N719                 [INT]
+    Net  209 → N720                 [INT]
+    Net  210 → N721                 [INT]
+    Net  211 → N722                 [INT]
+    Net  212 → N723                 [INT]
+    Net  213 → N266                 [INT]
+    Net  214 → N267                 [INT]
+    Net  215 → N268                 [INT]
+    Net  216 → N269                 [INT]
+    Net  217 → N270                 [INT]
+    Net  218 → N271                 [INT]
+    Net  219 → N272                 [INT]
+    Net  220 → N273                 [INT]
+    Net  221 → $or$benchmarks/c499.v:179$105_Y [INT]
+    Net  222 → $or$benchmarks/c499.v:179$106_Y [INT]
+    Net  223 → $or$benchmarks/c499.v:180$108_Y [INT]
+    Net  224 → $or$benchmarks/c499.v:180$109_Y [INT]
+    Net  225 → N276                 [INT]
+    Net  226 → N277                 [INT]
+    Net  227 → N315                 [INT]
+    Net  228 → N278                 [INT]
+    Net  229 → N279                 [INT]
+    Net  230 → N316                 [INT]
+    Net  231 → N280                 [INT]
+    Net  232 → N281                 [INT]
+    Net  233 → N317                 [INT]
+    Net  234 → N282                 [INT]
+    Net  235 → N283                 [INT]
+    Net  236 → N318                 [INT]
+    Net  237 → N284                 [INT]
+    Net  238 → N285                 [INT]
+    Net  239 → N319                 [INT]
+    Net  240 → N286                 [INT]
+    Net  241 → N287                 [INT]
+    Net  242 → N320                 [INT]
+    Net  243 → N288                 [INT]
+    Net  244 → N289                 [INT]
+    Net  245 → N321                 [INT]
+    Net  246 → N290                 [INT]
+    Net  247 → N293                 [INT]
+    Net  248 → N338                 [INT]
+    Net  249 → N296                 [INT]
+    Net  250 → N299                 [INT]
+    Net  251 → N339                 [INT]
+    Net  252 → N340                 [INT]
+    Net  253 → N341                 [INT]
+    Net  254 → N302                 [INT]
+    Net  255 → N305                 [INT]
+    Net  256 → N342                 [INT]
+    Net  257 → N308                 [INT]
+    Net  258 → N311                 [INT]
+    Net  259 → N343                 [INT]
+    Net  260 → N344                 [INT]
+    Net  261 → N345                 [INT]
+    Net  262 → N346                 [INT]
+    Net  263 → N347                 [INT]
+    Net  264 → N348                 [INT]
+    Net  265 → N349                 [INT]
+    Net  266 → N350                 [INT]
+    Net  267 → N351                 [INT]
+    Net  268 → N352                 [INT]
+    Net  269 → N353                 [INT]
+    Net  270 → N314                 [INT]
+    Net  271 → N250                 [INT]
+    Net  272 → N251                 [INT]
+    Net  273 → N252                 [INT]
+    Net  274 → N253                 [INT]
+    Net  275 → N254                 [INT]
+    Net  276 → N255                 [INT]
+    Net  277 → N256                 [INT]
+    Net  278 → N257                 [INT]
+    Net  279 → N258                 [INT]
+    Net  280 → N259                 [INT]
+    Net  281 → N260                 [INT]
+    Net  282 → N261                 [INT]
+    Net  283 → N262                 [INT]
+    Net  284 → N263                 [INT]
+    Net  285 → N264                 [INT]
+    Net  286 → N265                 [INT]
+    Net  287 → N274                 [INT]
+    Net  288 → N275                 [INT]
+
+2. FAULT COVERAGE SUMMARY
+------------------------------------------------------------
+  Total faults         : 574
+  Detectable   (SAT)   : 574
+  Undetectable (UNSAT) : 0
+  Skipped              : 0
+  Fault coverage       : 100.0%  (574/574 tested)
+
+================================================================================
+  COMPUTED STATISTICS (from per-fault data)
+================================================================================
+  Detectable faults    : 574
+  Undetectable faults  : 0
+  Coverage             : 100.0%
+
+  Solve time  — avg: 3.536 ms  max: 32.634 ms  min: 0.068 ms
+  Decisions   — avg: 1731.3  max: 9761  min: 73
+  Conflicts   — avg: 659.8  max: 4982  min: 0
+
+--------------------------------------------------------------------------------
+  TOP 10 HARDEST FAULTS  (by SAT decisions)
+--------------------------------------------------------------------------------
+  [1] SA1@net91  (wire '$and$benchmarks/c499.v:173$87_Y')  ← most decisions
+    Gate      : $and$benchmarks/c499.v:173$87  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 32.634 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 9761  Conflicts: 4982  Props: 230706
+    Test vector: N1=1, N5=1, N9=0, N13=1, N17=0, N21=0, N25=1, N29=1, N33=0, N37=0, N41=0, N45=0, N49=0, N53=1, N57=0, N61=1, N65=0, N69=1, N73=1, N77=1, N81=0, N85=0, N89=0, N93=0, N97=1, N101=0, N105=1, N109=0, N113=1, N117=0, N121=1, N125=1, N129=1, N130=0, N131=0, N132=0, N133=1, N134=0, N135=0, N136=1, N137=1
+    Output diff: N724: good=1 faulty=1, N725: good=1 faulty=1, N726: good=0 faulty=0, N727: good=1 faulty=1, N728: good=0 faulty=0, N729: good=0 faulty=0, N730: good=1 faulty=1, N731: good=1 faulty=1, N732: good=0 faulty=0, N733: good=0 faulty=0, N734: good=0 faulty=0, N735: good=0 faulty=0, N736: good=0 faulty=1, N737: good=1 faulty=0, N738: good=0 faulty=0, N739: good=1 faulty=1, N740: good=0 faulty=0, N741: good=1 faulty=1, N742: good=1 faulty=1, N743: good=1 faulty=1, N744: good=0 faulty=0, N745: good=0 faulty=0, N746: good=0 faulty=0, N747: good=0 faulty=0, N748: good=1 faulty=1, N749: good=0 faulty=0, N750: good=1 faulty=1, N751: good=0 faulty=0, N752: good=1 faulty=1, N753: good=0 faulty=0, N754: good=1 faulty=1, N755: good=1 faulty=1
+
+  [2] SA0@net184  (wire 'N695')  ← most decisions
+    Gate      : $and$benchmarks/c499.v:192$146  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 29.833 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 9312  Conflicts: 4942  Props: 220914
+    Test vector: N1=0, N5=0, N9=1, N13=1, N17=1, N21=1, N25=0, N29=1, N33=0, N37=0, N41=1, N45=0, N49=1, N53=1, N57=1, N61=0, N65=0, N69=0, N73=0, N77=0, N81=0, N85=1, N89=0, N93=0, N97=1, N101=1, N105=1, N109=1, N113=1, N117=0, N121=1, N125=0, N129=1, N130=0, N131=1, N132=0, N133=0, N134=0, N135=0, N136=1, N137=1
+    Output diff: N724: good=0 faulty=0, N725: good=0 faulty=0, N726: good=1 faulty=1, N727: good=0 faulty=1, N728: good=1 faulty=1, N729: good=1 faulty=1, N730: good=0 faulty=0, N731: good=1 faulty=1, N732: good=0 faulty=0, N733: good=0 faulty=0, N734: good=1 faulty=1, N735: good=0 faulty=0, N736: good=1 faulty=1, N737: good=1 faulty=1, N738: good=1 faulty=1, N739: good=0 faulty=0, N740: good=0 faulty=0, N741: good=0 faulty=0, N742: good=0 faulty=0, N743: good=0 faulty=0, N744: good=0 faulty=0, N745: good=1 faulty=1, N746: good=0 faulty=0, N747: good=0 faulty=0, N748: good=1 faulty=1, N749: good=1 faulty=1, N750: good=1 faulty=1, N751: good=1 faulty=1, N752: good=1 faulty=1, N753: good=0 faulty=0, N754: good=1 faulty=1, N755: good=0 faulty=0
+
+  [3] SA0@net117  (wire '$and$benchmarks/c499.v:177$99_Y')  ← most decisions
+    Gate      : $and$benchmarks/c499.v:177$99  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 23.450 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 8786  Conflicts: 4029  Props: 172308
+    Test vector: N1=0, N5=0, N9=1, N13=1, N17=0, N21=1, N25=1, N29=1, N33=0, N37=1, N41=1, N45=1, N49=1, N53=0, N57=1, N61=1, N65=0, N69=0, N73=1, N77=1, N81=0, N85=0, N89=0, N93=0, N97=1, N101=0, N105=0, N109=1, N113=1, N117=1, N121=1, N125=1, N129=0, N130=0, N131=0, N132=1, N133=1, N134=0, N135=1, N136=1, N137=1
+    Output diff: N724: good=0 faulty=0, N725: good=0 faulty=0, N726: good=1 faulty=1, N727: good=1 faulty=1, N728: good=0 faulty=0, N729: good=1 faulty=1, N730: good=1 faulty=1, N731: good=1 faulty=1, N732: good=0 faulty=0, N733: good=1 faulty=1, N734: good=1 faulty=1, N735: good=1 faulty=1, N736: good=1 faulty=1, N737: good=0 faulty=0, N738: good=1 faulty=1, N739: good=1 faulty=1, N740: good=0 faulty=0, N741: good=0 faulty=0, N742: good=1 faulty=1, N743: good=1 faulty=1, N744: good=0 faulty=0, N745: good=1 faulty=0, N746: good=0 faulty=0, N747: good=0 faulty=0, N748: good=1 faulty=1, N749: good=0 faulty=0, N750: good=0 faulty=0, N751: good=1 faulty=1, N752: good=1 faulty=1, N753: good=1 faulty=1, N754: good=1 faulty=1, N755: good=1 faulty=1
+
+  [4] SA0@net202  (wire 'N713')  ← most decisions
+    Gate      : $and$benchmarks/c499.v:210$164  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 16.793 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 8581  Conflicts: 2988  Props: 141272
+    Test vector: N1=0, N5=0, N9=0, N13=1, N17=0, N21=1, N25=1, N29=1, N33=1, N37=1, N41=0, N45=1, N49=1, N53=0, N57=0, N61=0, N65=0, N69=1, N73=1, N77=1, N81=0, N85=1, N89=0, N93=1, N97=0, N101=1, N105=1, N109=0, N113=0, N117=0, N121=0, N125=0, N129=0, N130=1, N131=0, N132=0, N133=0, N134=0, N135=0, N136=0, N137=0
+    Output diff: N724: good=0 faulty=0, N725: good=0 faulty=0, N726: good=0 faulty=0, N727: good=1 faulty=1, N728: good=0 faulty=0, N729: good=1 faulty=1, N730: good=1 faulty=1, N731: good=1 faulty=1, N732: good=1 faulty=1, N733: good=1 faulty=1, N734: good=0 faulty=0, N735: good=1 faulty=1, N736: good=1 faulty=1, N737: good=0 faulty=0, N738: good=0 faulty=0, N739: good=0 faulty=0, N740: good=0 faulty=0, N741: good=1 faulty=1, N742: good=1 faulty=1, N743: good=1 faulty=1, N744: good=0 faulty=0, N745: good=0 faulty=1, N746: good=0 faulty=0, N747: good=1 faulty=1, N748: good=0 faulty=0, N749: good=1 faulty=1, N750: good=1 faulty=1, N751: good=0 faulty=0, N752: good=0 faulty=0, N753: good=0 faulty=0, N754: good=0 faulty=0, N755: good=0 faulty=0
+
+  [5] SA0@net176  (wire '$and$benchmarks/c499.v:188$139_Y')  ← most decisions
+    Gate      : $and$benchmarks/c499.v:188$139  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 23.023 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 8537  Conflicts: 3706  Props: 199289
+    Test vector: N1=0, N5=0, N9=0, N13=1, N17=0, N21=0, N25=1, N29=0, N33=1, N37=1, N41=1, N45=1, N49=1, N53=1, N57=1, N61=1, N65=1, N69=1, N73=1, N77=0, N81=0, N85=0, N89=1, N93=0, N97=1, N101=1, N105=1, N109=1, N113=0, N117=0, N121=0, N125=1, N129=1, N130=0, N131=0, N132=0, N133=1, N134=0, N135=0, N136=1, N137=0
+    Output diff: N724: good=0 faulty=0, N725: good=0 faulty=0, N726: good=0 faulty=0, N727: good=1 faulty=1, N728: good=0 faulty=0, N729: good=0 faulty=0, N730: good=1 faulty=1, N731: good=0 faulty=0, N732: good=1 faulty=1, N733: good=1 faulty=1, N734: good=1 faulty=1, N735: good=1 faulty=1, N736: good=1 faulty=1, N737: good=1 faulty=1, N738: good=1 faulty=1, N739: good=1 faulty=1, N740: good=1 faulty=1, N741: good=1 faulty=1, N742: good=1 faulty=1, N743: good=0 faulty=0, N744: good=0 faulty=0, N745: good=0 faulty=0, N746: good=1 faulty=1, N747: good=0 faulty=0, N748: good=1 faulty=1, N749: good=1 faulty=1, N750: good=1 faulty=1, N751: good=1 faulty=1, N752: good=0 faulty=0, N753: good=0 faulty=0, N754: good=0 faulty=0, N755: good=0 faulty=1
+
+  [6] SA0@net177  (wire 'N593')  ← most decisions
+    Gate      : $not$benchmarks/c499.v:170$246  [$not]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 22.674 ms
+    CNF size  : 606 vars, 1814 clauses
+    Decisions : 8537  Conflicts: 3706  Props: 199291
+    Test vector: N1=0, N5=0, N9=0, N13=1, N17=0, N21=0, N25=1, N29=0, N33=1, N37=1, N41=1, N45=1, N49=1, N53=1, N57=1, N61=1, N65=1, N69=1, N73=1, N77=0, N81=0, N85=0, N89=1, N93=0, N97=1, N101=1, N105=1, N109=1, N113=0, N117=0, N121=0, N125=1, N129=1, N130=0, N131=0, N132=0, N133=1, N134=0, N135=0, N136=1, N137=0
+    Output diff: N724: good=0 faulty=0, N725: good=0 faulty=0, N726: good=0 faulty=0, N727: good=1 faulty=1, N728: good=0 faulty=0, N729: good=0 faulty=0, N730: good=1 faulty=1, N731: good=0 faulty=0, N732: good=1 faulty=1, N733: good=1 faulty=1, N734: good=1 faulty=1, N735: good=1 faulty=1, N736: good=1 faulty=1, N737: good=1 faulty=1, N738: good=1 faulty=1, N739: good=1 faulty=1, N740: good=1 faulty=1, N741: good=1 faulty=1, N742: good=1 faulty=1, N743: good=0 faulty=0, N744: good=0 faulty=0, N745: good=0 faulty=0, N746: good=1 faulty=1, N747: good=0 faulty=0, N748: good=1 faulty=1, N749: good=1 faulty=1, N750: good=1 faulty=1, N751: good=1 faulty=1, N752: good=0 faulty=0, N753: good=0 faulty=0, N754: good=0 faulty=0, N755: good=0 faulty=1
+
+  [7] SA0@net183  (wire 'N694')  ← most decisions
+    Gate      : $and$benchmarks/c499.v:191$145  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 20.222 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 8453  Conflicts: 3298  Props: 155659
+    Test vector: N1=0, N5=0, N9=1, N13=0, N17=1, N21=1, N25=1, N29=1, N33=0, N37=1, N41=0, N45=1, N49=1, N53=0, N57=0, N61=1, N65=1, N69=1, N73=1, N77=1, N81=1, N85=0, N89=1, N93=0, N97=0, N101=1, N105=0, N109=0, N113=0, N117=1, N121=1, N125=1, N129=0, N130=0, N131=0, N132=0, N133=0, N134=1, N135=1, N136=0, N137=1
+    Output diff: N724: good=0 faulty=0, N725: good=0 faulty=0, N726: good=0 faulty=1, N727: good=0 faulty=0, N728: good=1 faulty=1, N729: good=1 faulty=1, N730: good=1 faulty=1, N731: good=1 faulty=1, N732: good=0 faulty=0, N733: good=1 faulty=1, N734: good=0 faulty=0, N735: good=1 faulty=1, N736: good=1 faulty=1, N737: good=0 faulty=0, N738: good=0 faulty=0, N739: good=1 faulty=1, N740: good=1 faulty=1, N741: good=1 faulty=1, N742: good=1 faulty=1, N743: good=1 faulty=1, N744: good=1 faulty=1, N745: good=0 faulty=0, N746: good=1 faulty=1, N747: good=0 faulty=0, N748: good=0 faulty=0, N749: good=1 faulty=1, N750: good=0 faulty=0, N751: good=0 faulty=0, N752: good=0 faulty=0, N753: good=1 faulty=1, N754: good=1 faulty=1, N755: good=1 faulty=1
+
+  [8] SA0@net192  (wire 'N703')  ← most decisions
+    Gate      : $and$benchmarks/c499.v:200$154  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 18.471 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 8428  Conflicts: 3262  Props: 145535
+    Test vector: N1=0, N5=1, N9=1, N13=1, N17=0, N21=1, N25=0, N29=0, N33=1, N37=1, N41=0, N45=1, N49=0, N53=1, N57=0, N61=0, N65=1, N69=1, N73=0, N77=1, N81=1, N85=1, N89=0, N93=1, N97=0, N101=0, N105=1, N109=0, N113=0, N117=1, N121=0, N125=1, N129=1, N130=1, N131=1, N132=0, N133=0, N134=0, N135=0, N136=1, N137=1
+    Output diff: N724: good=0 faulty=0, N725: good=1 faulty=1, N726: good=1 faulty=1, N727: good=1 faulty=1, N728: good=0 faulty=0, N729: good=1 faulty=1, N730: good=0 faulty=0, N731: good=0 faulty=0, N732: good=1 faulty=1, N733: good=1 faulty=1, N734: good=0 faulty=0, N735: good=0 faulty=1, N736: good=0 faulty=0, N737: good=1 faulty=1, N738: good=0 faulty=0, N739: good=0 faulty=0, N740: good=1 faulty=1, N741: good=1 faulty=1, N742: good=0 faulty=0, N743: good=1 faulty=1, N744: good=1 faulty=1, N745: good=1 faulty=1, N746: good=0 faulty=0, N747: good=1 faulty=1, N748: good=0 faulty=0, N749: good=0 faulty=0, N750: good=1 faulty=1, N751: good=0 faulty=0, N752: good=0 faulty=0, N753: good=1 faulty=1, N754: good=0 faulty=0, N755: good=1 faulty=1
+
+  [9] SA0@net200  (wire 'N711')  ← most decisions
+    Gate      : $and$benchmarks/c499.v:208$162  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 19.202 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 8424  Conflicts: 3345  Props: 157368
+    Test vector: N1=0, N5=1, N9=1, N13=0, N17=1, N21=1, N25=0, N29=0, N33=0, N37=0, N41=0, N45=0, N49=0, N53=0, N57=0, N61=1, N65=0, N69=0, N73=0, N77=0, N81=0, N85=1, N89=0, N93=1, N97=0, N101=0, N105=0, N109=0, N113=0, N117=0, N121=1, N125=0, N129=0, N130=1, N131=0, N132=0, N133=0, N134=0, N135=1, N136=1, N137=1
+    Output diff: N724: good=0 faulty=0, N725: good=1 faulty=1, N726: good=1 faulty=1, N727: good=0 faulty=0, N728: good=1 faulty=1, N729: good=1 faulty=1, N730: good=0 faulty=0, N731: good=0 faulty=0, N732: good=0 faulty=0, N733: good=0 faulty=0, N734: good=0 faulty=0, N735: good=0 faulty=0, N736: good=0 faulty=0, N737: good=0 faulty=0, N738: good=0 faulty=0, N739: good=1 faulty=1, N740: good=0 faulty=0, N741: good=0 faulty=0, N742: good=0 faulty=0, N743: good=1 faulty=0, N744: good=0 faulty=0, N745: good=1 faulty=1, N746: good=0 faulty=0, N747: good=1 faulty=1, N748: good=0 faulty=0, N749: good=0 faulty=0, N750: good=0 faulty=0, N751: good=0 faulty=0, N752: good=0 faulty=0, N753: good=0 faulty=0, N754: good=1 faulty=1, N755: good=0 faulty=0
+
+  [10] SA0@net89  (wire 'N560')  ← most decisions
+    Gate      : $not$benchmarks/c499.v:137$213  [$not]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 17.668 ms
+    CNF size  : 606 vars, 1814 clauses
+    Decisions : 7704  Conflicts: 3424  Props: 143100
+    Test vector: N1=0, N5=1, N9=0, N13=0, N17=0, N21=1, N25=1, N29=0, N33=1, N37=0, N41=1, N45=1, N49=0, N53=1, N57=1, N61=0, N65=0, N69=1, N73=1, N77=0, N81=0, N85=0, N89=1, N93=1, N97=0, N101=1, N105=1, N109=1, N113=1, N117=1, N121=1, N125=0, N129=1, N130=0, N131=0, N132=0, N133=0, N134=1, N135=0, N136=1, N137=1
+    Output diff: N724: good=0 faulty=0, N725: good=1 faulty=1, N726: good=0 faulty=0, N727: good=0 faulty=0, N728: good=0 faulty=0, N729: good=1 faulty=1, N730: good=1 faulty=1, N731: good=0 faulty=0, N732: good=1 faulty=1, N733: good=0 faulty=0, N734: good=1 faulty=1, N735: good=1 faulty=1, N736: good=0 faulty=0, N737: good=0 faulty=1, N738: good=1 faulty=1, N739: good=0 faulty=0, N740: good=0 faulty=0, N741: good=1 faulty=1, N742: good=1 faulty=1, N743: good=0 faulty=0, N744: good=0 faulty=0, N745: good=0 faulty=0, N746: good=1 faulty=1, N747: good=1 faulty=1, N748: good=0 faulty=0, N749: good=1 faulty=1, N750: good=1 faulty=1, N751: good=1 faulty=1, N752: good=1 faulty=1, N753: good=1 faulty=1, N754: good=1 faulty=1, N755: good=0 faulty=0
+
+
+--------------------------------------------------------------------------------
+  TOP 10 SLOWEST FAULTS  (by solve time)
+--------------------------------------------------------------------------------
+  [1] SA1@net91  (wire '$and$benchmarks/c499.v:173$87_Y')  ← slowest
+    Gate      : $and$benchmarks/c499.v:173$87  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 32.634 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 9761  Conflicts: 4982  Props: 230706
+    Test vector: N1=1, N5=1, N9=0, N13=1, N17=0, N21=0, N25=1, N29=1, N33=0, N37=0, N41=0, N45=0, N49=0, N53=1, N57=0, N61=1, N65=0, N69=1, N73=1, N77=1, N81=0, N85=0, N89=0, N93=0, N97=1, N101=0, N105=1, N109=0, N113=1, N117=0, N121=1, N125=1, N129=1, N130=0, N131=0, N132=0, N133=1, N134=0, N135=0, N136=1, N137=1
+    Output diff: N724: good=1 faulty=1, N725: good=1 faulty=1, N726: good=0 faulty=0, N727: good=1 faulty=1, N728: good=0 faulty=0, N729: good=0 faulty=0, N730: good=1 faulty=1, N731: good=1 faulty=1, N732: good=0 faulty=0, N733: good=0 faulty=0, N734: good=0 faulty=0, N735: good=0 faulty=0, N736: good=0 faulty=1, N737: good=1 faulty=0, N738: good=0 faulty=0, N739: good=1 faulty=1, N740: good=0 faulty=0, N741: good=1 faulty=1, N742: good=1 faulty=1, N743: good=1 faulty=1, N744: good=0 faulty=0, N745: good=0 faulty=0, N746: good=0 faulty=0, N747: good=0 faulty=0, N748: good=1 faulty=1, N749: good=0 faulty=0, N750: good=1 faulty=1, N751: good=0 faulty=0, N752: good=1 faulty=1, N753: good=0 faulty=0, N754: good=1 faulty=1, N755: good=1 faulty=1
+
+  [2] SA0@net184  (wire 'N695')  ← slowest
+    Gate      : $and$benchmarks/c499.v:192$146  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 29.833 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 9312  Conflicts: 4942  Props: 220914
+    Test vector: N1=0, N5=0, N9=1, N13=1, N17=1, N21=1, N25=0, N29=1, N33=0, N37=0, N41=1, N45=0, N49=1, N53=1, N57=1, N61=0, N65=0, N69=0, N73=0, N77=0, N81=0, N85=1, N89=0, N93=0, N97=1, N101=1, N105=1, N109=1, N113=1, N117=0, N121=1, N125=0, N129=1, N130=0, N131=1, N132=0, N133=0, N134=0, N135=0, N136=1, N137=1
+    Output diff: N724: good=0 faulty=0, N725: good=0 faulty=0, N726: good=1 faulty=1, N727: good=0 faulty=1, N728: good=1 faulty=1, N729: good=1 faulty=1, N730: good=0 faulty=0, N731: good=1 faulty=1, N732: good=0 faulty=0, N733: good=0 faulty=0, N734: good=1 faulty=1, N735: good=0 faulty=0, N736: good=1 faulty=1, N737: good=1 faulty=1, N738: good=1 faulty=1, N739: good=0 faulty=0, N740: good=0 faulty=0, N741: good=0 faulty=0, N742: good=0 faulty=0, N743: good=0 faulty=0, N744: good=0 faulty=0, N745: good=1 faulty=1, N746: good=0 faulty=0, N747: good=0 faulty=0, N748: good=1 faulty=1, N749: good=1 faulty=1, N750: good=1 faulty=1, N751: good=1 faulty=1, N752: good=1 faulty=1, N753: good=0 faulty=0, N754: good=1 faulty=1, N755: good=0 faulty=0
+
+  [3] SA1@net15  (wire 'N53')  ← slowest
+    Gate      : —  [PRIMARY_INPUT]
+    Status    : DETECTABLE
+    Solve time: 24.088 ms
+    CNF size  : 606 vars, 1814 clauses
+    Decisions : 6175  Conflicts: 3758  Props: 178496
+    Test vector: N1=0, N5=0, N9=0, N13=0, N17=1, N21=1, N25=1, N29=1, N33=1, N37=1, N41=1, N45=0, N49=0, N53=0, N57=0, N61=1, N65=1, N69=1, N73=0, N77=0, N81=1, N85=1, N89=1, N93=1, N97=0, N101=0, N105=1, N109=0, N113=1, N117=1, N121=1, N125=0, N129=0, N130=1, N131=0, N132=1, N133=1, N134=0, N135=0, N136=0, N137=1
+    Output diff: N724: good=0 faulty=0, N725: good=0 faulty=0, N726: good=0 faulty=0, N727: good=0 faulty=0, N728: good=1 faulty=1, N729: good=1 faulty=1, N730: good=1 faulty=1, N731: good=1 faulty=1, N732: good=1 faulty=1, N733: good=1 faulty=1, N734: good=1 faulty=1, N735: good=0 faulty=0, N736: good=0 faulty=0, N737: good=0 faulty=1, N738: good=0 faulty=0, N739: good=1 faulty=1, N740: good=1 faulty=1, N741: good=1 faulty=1, N742: good=0 faulty=0, N743: good=0 faulty=0, N744: good=1 faulty=1, N745: good=1 faulty=1, N746: good=1 faulty=1, N747: good=1 faulty=1, N748: good=0 faulty=0, N749: good=1 faulty=0, N750: good=1 faulty=1, N751: good=0 faulty=0, N752: good=1 faulty=1, N753: good=1 faulty=1, N754: good=1 faulty=1, N755: good=0 faulty=0
+
+  [4] SA0@net117  (wire '$and$benchmarks/c499.v:177$99_Y')  ← slowest
+    Gate      : $and$benchmarks/c499.v:177$99  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 23.450 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 8786  Conflicts: 4029  Props: 172308
+    Test vector: N1=0, N5=0, N9=1, N13=1, N17=0, N21=1, N25=1, N29=1, N33=0, N37=1, N41=1, N45=1, N49=1, N53=0, N57=1, N61=1, N65=0, N69=0, N73=1, N77=1, N81=0, N85=0, N89=0, N93=0, N97=1, N101=0, N105=0, N109=1, N113=1, N117=1, N121=1, N125=1, N129=0, N130=0, N131=0, N132=1, N133=1, N134=0, N135=1, N136=1, N137=1
+    Output diff: N724: good=0 faulty=0, N725: good=0 faulty=0, N726: good=1 faulty=1, N727: good=1 faulty=1, N728: good=0 faulty=0, N729: good=1 faulty=1, N730: good=1 faulty=1, N731: good=1 faulty=1, N732: good=0 faulty=0, N733: good=1 faulty=1, N734: good=1 faulty=1, N735: good=1 faulty=1, N736: good=1 faulty=1, N737: good=0 faulty=0, N738: good=1 faulty=1, N739: good=1 faulty=1, N740: good=0 faulty=0, N741: good=0 faulty=0, N742: good=1 faulty=1, N743: good=1 faulty=1, N744: good=0 faulty=0, N745: good=1 faulty=0, N746: good=0 faulty=0, N747: good=0 faulty=0, N748: good=1 faulty=1, N749: good=0 faulty=0, N750: good=0 faulty=0, N751: good=1 faulty=1, N752: good=1 faulty=1, N753: good=1 faulty=1, N754: good=1 faulty=1, N755: good=1 faulty=1
+
+  [5] SA0@net176  (wire '$and$benchmarks/c499.v:188$139_Y')  ← slowest
+    Gate      : $and$benchmarks/c499.v:188$139  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 23.023 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 8537  Conflicts: 3706  Props: 199289
+    Test vector: N1=0, N5=0, N9=0, N13=1, N17=0, N21=0, N25=1, N29=0, N33=1, N37=1, N41=1, N45=1, N49=1, N53=1, N57=1, N61=1, N65=1, N69=1, N73=1, N77=0, N81=0, N85=0, N89=1, N93=0, N97=1, N101=1, N105=1, N109=1, N113=0, N117=0, N121=0, N125=1, N129=1, N130=0, N131=0, N132=0, N133=1, N134=0, N135=0, N136=1, N137=0
+    Output diff: N724: good=0 faulty=0, N725: good=0 faulty=0, N726: good=0 faulty=0, N727: good=1 faulty=1, N728: good=0 faulty=0, N729: good=0 faulty=0, N730: good=1 faulty=1, N731: good=0 faulty=0, N732: good=1 faulty=1, N733: good=1 faulty=1, N734: good=1 faulty=1, N735: good=1 faulty=1, N736: good=1 faulty=1, N737: good=1 faulty=1, N738: good=1 faulty=1, N739: good=1 faulty=1, N740: good=1 faulty=1, N741: good=1 faulty=1, N742: good=1 faulty=1, N743: good=0 faulty=0, N744: good=0 faulty=0, N745: good=0 faulty=0, N746: good=1 faulty=1, N747: good=0 faulty=0, N748: good=1 faulty=1, N749: good=1 faulty=1, N750: good=1 faulty=1, N751: good=1 faulty=1, N752: good=0 faulty=0, N753: good=0 faulty=0, N754: good=0 faulty=0, N755: good=0 faulty=1
+
+  [6] SA0@net177  (wire 'N593')  ← slowest
+    Gate      : $not$benchmarks/c499.v:170$246  [$not]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 22.674 ms
+    CNF size  : 606 vars, 1814 clauses
+    Decisions : 8537  Conflicts: 3706  Props: 199291
+    Test vector: N1=0, N5=0, N9=0, N13=1, N17=0, N21=0, N25=1, N29=0, N33=1, N37=1, N41=1, N45=1, N49=1, N53=1, N57=1, N61=1, N65=1, N69=1, N73=1, N77=0, N81=0, N85=0, N89=1, N93=0, N97=1, N101=1, N105=1, N109=1, N113=0, N117=0, N121=0, N125=1, N129=1, N130=0, N131=0, N132=0, N133=1, N134=0, N135=0, N136=1, N137=0
+    Output diff: N724: good=0 faulty=0, N725: good=0 faulty=0, N726: good=0 faulty=0, N727: good=1 faulty=1, N728: good=0 faulty=0, N729: good=0 faulty=0, N730: good=1 faulty=1, N731: good=0 faulty=0, N732: good=1 faulty=1, N733: good=1 faulty=1, N734: good=1 faulty=1, N735: good=1 faulty=1, N736: good=1 faulty=1, N737: good=1 faulty=1, N738: good=1 faulty=1, N739: good=1 faulty=1, N740: good=1 faulty=1, N741: good=1 faulty=1, N742: good=1 faulty=1, N743: good=0 faulty=0, N744: good=0 faulty=0, N745: good=0 faulty=0, N746: good=1 faulty=1, N747: good=0 faulty=0, N748: good=1 faulty=1, N749: good=1 faulty=1, N750: good=1 faulty=1, N751: good=1 faulty=1, N752: good=0 faulty=0, N753: good=0 faulty=0, N754: good=0 faulty=0, N755: good=0 faulty=1
+
+  [7] SA0@net84  (wire '$and$benchmarks/c499.v:172$84_Y')  ← slowest
+    Gate      : $and$benchmarks/c499.v:172$84  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 20.454 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 6531  Conflicts: 3639  Props: 159030
+    Test vector: N1=0, N5=1, N9=1, N13=0, N17=0, N21=0, N25=0, N29=0, N33=1, N37=1, N41=0, N45=1, N49=0, N53=1, N57=0, N61=1, N65=0, N69=1, N73=1, N77=1, N81=0, N85=1, N89=1, N93=1, N97=0, N101=0, N105=1, N109=0, N113=1, N117=0, N121=1, N125=1, N129=1, N130=1, N131=0, N132=0, N133=0, N134=1, N135=0, N136=1, N137=1
+    Output diff: N724: good=0 faulty=0, N725: good=1 faulty=1, N726: good=0 faulty=1, N727: good=0 faulty=0, N728: good=0 faulty=0, N729: good=0 faulty=0, N730: good=0 faulty=0, N731: good=0 faulty=0, N732: good=1 faulty=1, N733: good=1 faulty=1, N734: good=0 faulty=0, N735: good=1 faulty=1, N736: good=0 faulty=0, N737: good=1 faulty=1, N738: good=0 faulty=0, N739: good=1 faulty=1, N740: good=0 faulty=0, N741: good=1 faulty=1, N742: good=1 faulty=1, N743: good=1 faulty=1, N744: good=0 faulty=0, N745: good=1 faulty=1, N746: good=1 faulty=1, N747: good=1 faulty=1, N748: good=0 faulty=0, N749: good=0 faulty=0, N750: good=1 faulty=1, N751: good=0 faulty=0, N752: good=1 faulty=1, N753: good=0 faulty=0, N754: good=1 faulty=1, N755: good=1 faulty=1
+
+  [8] SA0@net183  (wire 'N694')  ← slowest
+    Gate      : $and$benchmarks/c499.v:191$145  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 20.222 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 8453  Conflicts: 3298  Props: 155659
+    Test vector: N1=0, N5=0, N9=1, N13=0, N17=1, N21=1, N25=1, N29=1, N33=0, N37=1, N41=0, N45=1, N49=1, N53=0, N57=0, N61=1, N65=1, N69=1, N73=1, N77=1, N81=1, N85=0, N89=1, N93=0, N97=0, N101=1, N105=0, N109=0, N113=0, N117=1, N121=1, N125=1, N129=0, N130=0, N131=0, N132=0, N133=0, N134=1, N135=1, N136=0, N137=1
+    Output diff: N724: good=0 faulty=0, N725: good=0 faulty=0, N726: good=0 faulty=1, N727: good=0 faulty=0, N728: good=1 faulty=1, N729: good=1 faulty=1, N730: good=1 faulty=1, N731: good=1 faulty=1, N732: good=0 faulty=0, N733: good=1 faulty=1, N734: good=0 faulty=0, N735: good=1 faulty=1, N736: good=1 faulty=1, N737: good=0 faulty=0, N738: good=0 faulty=0, N739: good=1 faulty=1, N740: good=1 faulty=1, N741: good=1 faulty=1, N742: good=1 faulty=1, N743: good=1 faulty=1, N744: good=1 faulty=1, N745: good=0 faulty=0, N746: good=1 faulty=1, N747: good=0 faulty=0, N748: good=0 faulty=0, N749: good=1 faulty=1, N750: good=0 faulty=0, N751: good=0 faulty=0, N752: good=0 faulty=0, N753: good=1 faulty=1, N754: good=1 faulty=1, N755: good=1 faulty=1
+
+  [9] SA1@net175  (wire 'N592')  ← slowest
+    Gate      : $not$benchmarks/c499.v:169$245  [$not]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 19.731 ms
+    CNF size  : 606 vars, 1814 clauses
+    Decisions : 7674  Conflicts: 3278  Props: 146464
+    Test vector: N1=0, N5=1, N9=1, N13=1, N17=1, N21=1, N25=1, N29=1, N33=0, N37=0, N41=1, N45=1, N49=0, N53=1, N57=0, N61=0, N65=1, N69=0, N73=0, N77=1, N81=0, N85=1, N89=0, N93=1, N97=0, N101=0, N105=0, N109=1, N113=1, N117=0, N121=1, N125=0, N129=0, N130=1, N131=0, N132=0, N133=0, N134=0, N135=0, N136=0, N137=1
+    Output diff: N724: good=0 faulty=0, N725: good=1 faulty=1, N726: good=1 faulty=1, N727: good=1 faulty=1, N728: good=1 faulty=1, N729: good=1 faulty=1, N730: good=1 faulty=1, N731: good=1 faulty=1, N732: good=0 faulty=0, N733: good=0 faulty=0, N734: good=1 faulty=1, N735: good=1 faulty=1, N736: good=0 faulty=0, N737: good=1 faulty=1, N738: good=0 faulty=0, N739: good=0 faulty=0, N740: good=1 faulty=1, N741: good=0 faulty=0, N742: good=0 faulty=0, N743: good=1 faulty=1, N744: good=0 faulty=0, N745: good=1 faulty=1, N746: good=0 faulty=0, N747: good=1 faulty=1, N748: good=0 faulty=0, N749: good=0 faulty=0, N750: good=0 faulty=0, N751: good=1 faulty=1, N752: good=1 faulty=0, N753: good=0 faulty=0, N754: good=1 faulty=1, N755: good=0 faulty=0
+
+  [10] SA0@net182  (wire 'N693')  ← slowest
+    Gate      : $and$benchmarks/c499.v:190$144  [$and]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 19.685 ms
+    CNF size  : 606 vars, 1813 clauses
+    Decisions : 7317  Conflicts: 3455  Props: 160838
+    Test vector: N1=1, N5=1, N9=0, N13=1, N17=0, N21=0, N25=0, N29=1, N33=1, N37=0, N41=1, N45=0, N49=0, N53=1, N57=1, N61=1, N65=0, N69=0, N73=0, N77=1, N81=1, N85=0, N89=1, N93=0, N97=0, N101=1, N105=1, N109=1, N113=0, N117=0, N121=1, N125=1, N129=1, N130=0, N131=0, N132=1, N133=0, N134=0, N135=1, N136=1, N137=1
+    Output diff: N724: good=1 faulty=1, N725: good=0 faulty=1, N726: good=0 faulty=0, N727: good=1 faulty=1, N728: good=0 faulty=0, N729: good=0 faulty=0, N730: good=0 faulty=0, N731: good=1 faulty=1, N732: good=1 faulty=1, N733: good=0 faulty=0, N734: good=1 faulty=1, N735: good=0 faulty=0, N736: good=0 faulty=0, N737: good=1 faulty=1, N738: good=1 faulty=1, N739: good=1 faulty=1, N740: good=0 faulty=0, N741: good=0 faulty=0, N742: good=0 faulty=0, N743: good=1 faulty=1, N744: good=1 faulty=1, N745: good=0 faulty=0, N746: good=1 faulty=1, N747: good=0 faulty=0, N748: good=0 faulty=0, N749: good=1 faulty=1, N750: good=1 faulty=1, N751: good=1 faulty=1, N752: good=0 faulty=0, N753: good=0 faulty=0, N754: good=1 faulty=1, N755: good=1 faulty=1
+
+
+--------------------------------------------------------------------------------
+  REDUNDANT (UNDETECTABLE) FAULTS  — 0 total
+--------------------------------------------------------------------------------
+  None — all faults are detectable.
+
+
+4. KEY INSIGHTS FOR LLM GUIDANCE LAYER
+================================================================================
+
+  4.1  SOLVER DIFFICULTY (detectable faults)
+  ────────────────────────────────────────────────────────
+    Avg solve time : 3.536 ms
+    Avg decisions  : 1731.3
+    Avg conflicts  : 659.8
+
+    Hardest fault  : SA1@net91  (decisions=9761)
+    → LLM hints would help most on high-decision faults like this.
+
+  4.2  REDUNDANT FAULTS
+  ────────────────────────────────────────────────────────
+    No redundant faults found.
+
+  4.3  HOW LLM HINTS MAP TO PYSAT MECHANISMS
+  ────────────────────────────────────────────────────────
+
+    Option A — ASSUMPTIONS  (soft, per-query, retractable)
+      Best for partial input assignments the LLM is unsure about.
+      The solver can still backtrack past them.
+
+        from pysat.solvers import Glucose3
+        solver = Glucose3()
+        for clause in all_clauses:
+            solver.add_clause(clause)
+        # LLM predicts net "2" is likely 1:
+        guess_var = good_map["2"]
+        sat = solver.solve(assumptions=[guess_var])
+
+    Option B — HARD CLAUSES  (permanent, strongest bias)
+      Only for high-confidence LLM predictions.
+      Incorrect unit clauses will cause UNSAT immediately.
+
+        solver.add_clause([good_map["2"]])   # force net "2" = 1
+
+    Recommended hybrid: use assumptions first; escalate to hard
+    clauses only if the LLM confidence score exceeds a threshold.
+
+  4.4  BASELINE METRICS FOR STEP 2 COMPARISON
+  ────────────────────────────────────────────────────────
+    Record per fault: decisions, conflicts, propagations,
+    solve_time_sec, status.  Step 2 will compare these
+    against LLM-guided runs to measure improvement.
+
+================================================================================
+  END OF CONDENSED SUMMARY
+================================================================================

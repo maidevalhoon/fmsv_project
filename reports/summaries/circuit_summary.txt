@@ -1,0 +1,282 @@
+================================================================================
+  CONDENSED SUMMARY REPORT
+  Source: circuit_insights.txt
+================================================================================
+
+1. CIRCUIT OVERVIEW
+------------------------------------------------------------
+  Module       : simple
+  Input nets   : ['2', '3', '4']
+  Output nets  : ['5']
+  Gate count   : 2
+  Gate types   : ['$_AND_', '$_OR_']
+
+  Net ID → Name Mapping:
+    Net    2 → a                    [IN]
+    Net    3 → b                    [IN]
+    Net    4 → c                    [IN]
+    Net    5 → y                    [OUT]
+    Net    6 → $abc$80$new_n5       [INT]
+
+2. FAULT COVERAGE SUMMARY
+------------------------------------------------------------
+  Total faults         : 10
+  Detectable   (SAT)   : 10
+  Undetectable (UNSAT) : 0
+  Skipped              : 0
+  Fault coverage       : 100.0%  (10/10 tested)
+
+================================================================================
+  COMPUTED STATISTICS (from per-fault data)
+================================================================================
+  Detectable faults    : 10
+  Undetectable faults  : 0
+  Coverage             : 100.0%
+
+  Solve time  — avg: 0.045 ms  max: 0.377 ms  min: 0.005 ms
+  Decisions   — avg: 3.9  max: 5  min: 3
+  Conflicts   — avg: 0.2  max: 1  min: 0
+
+--------------------------------------------------------------------------------
+  TOP 10 HARDEST FAULTS  (by SAT decisions)
+--------------------------------------------------------------------------------
+  [1] SA0@net4  (wire 'c')  ← most decisions
+    Gate      : —  [PRIMARY_INPUT]
+    Status    : DETECTABLE
+    Solve time: 0.005 ms
+    CNF size  : 11 vars, 22 clauses
+    Decisions : 5  Conflicts: 0  Props: 12
+    Test vector: a=0, b=0, c=1
+    Output diff: y: good=1 faulty=0
+
+  [2] SA1@net4  (wire 'c')  ← most decisions
+    Gate      : —  [PRIMARY_INPUT]
+    Status    : DETECTABLE
+    Solve time: 0.007 ms
+    CNF size  : 11 vars, 22 clauses
+    Decisions : 5  Conflicts: 0  Props: 12
+    Test vector: a=0, b=0, c=0
+    Output diff: y: good=0 faulty=1
+
+  [3] SA1@net5  (wire 'y')  ← most decisions
+    Gate      : $abc$80$auto$blifparse.cc:397:parse_blif$82  [$_OR_]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 0.009 ms
+    CNF size  : 11 vars, 21 clauses
+    Decisions : 5  Conflicts: 0  Props: 12
+    Test vector: a=0, b=0, c=0
+    Output diff: y: good=0 faulty=1
+
+  [4] SA1@net2  (wire 'a')  ← most decisions
+    Gate      : —  [PRIMARY_INPUT]
+    Status    : DETECTABLE
+    Solve time: 0.016 ms
+    CNF size  : 11 vars, 22 clauses
+    Decisions : 4  Conflicts: 1  Props: 13
+    Test vector: a=0, b=1, c=0
+    Output diff: y: good=0 faulty=1
+
+  [5] SA1@net3  (wire 'b')  ← most decisions
+    Gate      : —  [PRIMARY_INPUT]
+    Status    : DETECTABLE
+    Solve time: 0.006 ms
+    CNF size  : 11 vars, 22 clauses
+    Decisions : 4  Conflicts: 1  Props: 13
+    Test vector: a=1, b=0, c=0
+    Output diff: y: good=0 faulty=1
+
+  [6] SA1@net6  (wire '$abc$80$new_n5')  ← most decisions
+    Gate      : $abc$80$auto$blifparse.cc:397:parse_blif$81  [$_AND_]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 0.007 ms
+    CNF size  : 11 vars, 21 clauses
+    Decisions : 4  Conflicts: 0  Props: 12
+    Test vector: a=0, b=0, c=0
+    Output diff: y: good=0 faulty=1
+
+  [7] SA0@net2  (wire 'a')  ← most decisions
+    Gate      : —  [PRIMARY_INPUT]
+    Status    : DETECTABLE
+    Solve time: 0.377 ms
+    CNF size  : 11 vars, 22 clauses
+    Decisions : 3  Conflicts: 0  Props: 12
+    Test vector: a=1, b=1, c=0
+    Output diff: y: good=1 faulty=0
+
+  [8] SA0@net3  (wire 'b')  ← most decisions
+    Gate      : —  [PRIMARY_INPUT]
+    Status    : DETECTABLE
+    Solve time: 0.010 ms
+    CNF size  : 11 vars, 22 clauses
+    Decisions : 3  Conflicts: 0  Props: 12
+    Test vector: a=1, b=1, c=0
+    Output diff: y: good=1 faulty=0
+
+  [9] SA0@net5  (wire 'y')  ← most decisions
+    Gate      : $abc$80$auto$blifparse.cc:397:parse_blif$82  [$_OR_]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 0.007 ms
+    CNF size  : 11 vars, 21 clauses
+    Decisions : 3  Conflicts: 0  Props: 12
+    Test vector: a=1, b=1, c=0
+    Output diff: y: good=1 faulty=0
+
+  [10] SA0@net6  (wire '$abc$80$new_n5')  ← most decisions
+    Gate      : $abc$80$auto$blifparse.cc:397:parse_blif$81  [$_AND_]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 0.006 ms
+    CNF size  : 11 vars, 21 clauses
+    Decisions : 3  Conflicts: 0  Props: 12
+    Test vector: a=1, b=1, c=0
+    Output diff: y: good=1 faulty=0
+
+
+--------------------------------------------------------------------------------
+  TOP 10 SLOWEST FAULTS  (by solve time)
+--------------------------------------------------------------------------------
+  [1] SA0@net2  (wire 'a')  ← slowest
+    Gate      : —  [PRIMARY_INPUT]
+    Status    : DETECTABLE
+    Solve time: 0.377 ms
+    CNF size  : 11 vars, 22 clauses
+    Decisions : 3  Conflicts: 0  Props: 12
+    Test vector: a=1, b=1, c=0
+    Output diff: y: good=1 faulty=0
+
+  [2] SA1@net2  (wire 'a')  ← slowest
+    Gate      : —  [PRIMARY_INPUT]
+    Status    : DETECTABLE
+    Solve time: 0.016 ms
+    CNF size  : 11 vars, 22 clauses
+    Decisions : 4  Conflicts: 1  Props: 13
+    Test vector: a=0, b=1, c=0
+    Output diff: y: good=0 faulty=1
+
+  [3] SA0@net3  (wire 'b')  ← slowest
+    Gate      : —  [PRIMARY_INPUT]
+    Status    : DETECTABLE
+    Solve time: 0.010 ms
+    CNF size  : 11 vars, 22 clauses
+    Decisions : 3  Conflicts: 0  Props: 12
+    Test vector: a=1, b=1, c=0
+    Output diff: y: good=1 faulty=0
+
+  [4] SA1@net5  (wire 'y')  ← slowest
+    Gate      : $abc$80$auto$blifparse.cc:397:parse_blif$82  [$_OR_]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 0.009 ms
+    CNF size  : 11 vars, 21 clauses
+    Decisions : 5  Conflicts: 0  Props: 12
+    Test vector: a=0, b=0, c=0
+    Output diff: y: good=0 faulty=1
+
+  [5] SA1@net4  (wire 'c')  ← slowest
+    Gate      : —  [PRIMARY_INPUT]
+    Status    : DETECTABLE
+    Solve time: 0.007 ms
+    CNF size  : 11 vars, 22 clauses
+    Decisions : 5  Conflicts: 0  Props: 12
+    Test vector: a=0, b=0, c=0
+    Output diff: y: good=0 faulty=1
+
+  [6] SA0@net5  (wire 'y')  ← slowest
+    Gate      : $abc$80$auto$blifparse.cc:397:parse_blif$82  [$_OR_]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 0.007 ms
+    CNF size  : 11 vars, 21 clauses
+    Decisions : 3  Conflicts: 0  Props: 12
+    Test vector: a=1, b=1, c=0
+    Output diff: y: good=1 faulty=0
+
+  [7] SA1@net6  (wire '$abc$80$new_n5')  ← slowest
+    Gate      : $abc$80$auto$blifparse.cc:397:parse_blif$81  [$_AND_]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 0.007 ms
+    CNF size  : 11 vars, 21 clauses
+    Decisions : 4  Conflicts: 0  Props: 12
+    Test vector: a=0, b=0, c=0
+    Output diff: y: good=0 faulty=1
+
+  [8] SA1@net3  (wire 'b')  ← slowest
+    Gate      : —  [PRIMARY_INPUT]
+    Status    : DETECTABLE
+    Solve time: 0.006 ms
+    CNF size  : 11 vars, 22 clauses
+    Decisions : 4  Conflicts: 1  Props: 13
+    Test vector: a=1, b=0, c=0
+    Output diff: y: good=0 faulty=1
+
+  [9] SA0@net6  (wire '$abc$80$new_n5')  ← slowest
+    Gate      : $abc$80$auto$blifparse.cc:397:parse_blif$81  [$_AND_]  ← clauses skipped in faulty copy
+    Status    : DETECTABLE
+    Solve time: 0.006 ms
+    CNF size  : 11 vars, 21 clauses
+    Decisions : 3  Conflicts: 0  Props: 12
+    Test vector: a=1, b=1, c=0
+    Output diff: y: good=1 faulty=0
+
+  [10] SA0@net4  (wire 'c')  ← slowest
+    Gate      : —  [PRIMARY_INPUT]
+    Status    : DETECTABLE
+    Solve time: 0.005 ms
+    CNF size  : 11 vars, 22 clauses
+    Decisions : 5  Conflicts: 0  Props: 12
+    Test vector: a=0, b=0, c=1
+    Output diff: y: good=1 faulty=0
+
+
+--------------------------------------------------------------------------------
+  REDUNDANT (UNDETECTABLE) FAULTS  — 0 total
+--------------------------------------------------------------------------------
+  None — all faults are detectable.
+
+
+4. KEY INSIGHTS FOR LLM GUIDANCE LAYER
+================================================================================
+
+  4.1  SOLVER DIFFICULTY (detectable faults)
+  ────────────────────────────────────────────────────────
+    Avg solve time : 0.045 ms
+    Avg decisions  : 3.9
+    Avg conflicts  : 0.2
+
+    Hardest fault  : SA0@net4  (decisions=5)
+    → LLM hints would help most on high-decision faults like this.
+
+  4.2  REDUNDANT FAULTS
+  ────────────────────────────────────────────────────────
+    No redundant faults found.
+
+  4.3  HOW LLM HINTS MAP TO PYSAT MECHANISMS
+  ────────────────────────────────────────────────────────
+
+    Option A — ASSUMPTIONS  (soft, per-query, retractable)
+      Best for partial input assignments the LLM is unsure about.
+      The solver can still backtrack past them.
+
+        from pysat.solvers import Glucose3
+        solver = Glucose3()
+        for clause in all_clauses:
+            solver.add_clause(clause)
+        # LLM predicts net "2" is likely 1:
+        guess_var = good_map["2"]
+        sat = solver.solve(assumptions=[guess_var])
+
+    Option B — HARD CLAUSES  (permanent, strongest bias)
+      Only for high-confidence LLM predictions.
+      Incorrect unit clauses will cause UNSAT immediately.
+
+        solver.add_clause([good_map["2"]])   # force net "2" = 1
+
+    Recommended hybrid: use assumptions first; escalate to hard
+    clauses only if the LLM confidence score exceeds a threshold.
+
+  4.4  BASELINE METRICS FOR STEP 2 COMPARISON
+  ────────────────────────────────────────────────────────
+    Record per fault: decisions, conflicts, propagations,
+    solve_time_sec, status.  Step 2 will compare these
+    against LLM-guided runs to measure improvement.
+
+================================================================================
+  END OF CONDENSED SUMMARY
+================================================================================

@@ -112,34 +112,27 @@ python run_insights.py
 
 ## 4. Step 2 — LLM-Guided ATPG
 
-### Run LLM-guided ATPG on c17
+### Run LLM-guided ATPG
 
 ```bash
-# Default model (gemini-2.0-flash-lite)
-python -m llm.run_llm_atpg
+# Default model (gemini-2.0-flash-lite) on c17 tech-mapped
+python llm/run_llm_atpg.py --circuit c17 --tech
 
-# With verbose output (shows LLM responses and hint parsing)
-python -m llm.run_llm_atpg --verbose
+# Generic basic gates on c432 with verbose output
+python llm/run_llm_atpg.py --circuit c432 --notech --verbose
 
 # Limit to first N faults (useful for testing/debugging)
-python -m llm.run_llm_atpg --max-faults 5 --verbose
+python llm/run_llm_atpg.py --max-faults 5 --verbose
 
 # Adjust cooldown between API calls (default 4s; increase if hitting rate limits)
-python -m llm.run_llm_atpg --verbose --cooldown 10
+python llm/run_llm_atpg.py --verbose --cooldown 10
 
 # Use a different Gemini model
-python -m llm.run_llm_atpg --model gemini-2.0-flash
-python -m llm.run_llm_atpg --model gemini-1.5-flash
-python -m llm.run_llm_atpg --model gemini-2.5-pro-preview-03-25
+python llm/run_llm_atpg.py --model gemini-2.0-flash
+python llm/run_llm_atpg.py --model gemini-1.5-flash
 ```
 
-**Output:** `reports/c17_llm_comparison.txt`
-
-### Alternative invocation (if module run doesn't work)
-
-```bash
-python llm/run_llm_atpg.py --verbose
-```
+**Output:** `reports/<circuit>_llm_comparison.txt`
 
 ---
 
@@ -166,10 +159,13 @@ yosys -p 'read_verilog benchmarks/netlists/c17_netlist.v; read_liberty -lib "Tec
 python run_atpg.py --circuit c17 --tech
 
 # 4. Generate insights
-python run_insights.py
+python run_insights.py --circuit c17 --tech
 
-# 5. Run LLM-guided ATPG (requires GEMINI_API_KEY)
-python -m llm.run_llm_atpg --verbose
+# 5. Extract compact summaries
+python extract_reports.py
+
+# 6. Run LLM-guided ATPG (requires GEMINI_API_KEY)
+python llm/run_llm_atpg.py --circuit c17 --tech --verbose
 ```
 
 ---
@@ -188,7 +184,7 @@ print(f'{len(nets)} wires → {len(nets)*2} faults')
 # List all Verilog wire names for a circuit
 python -c "
 from core.circuit_loader import load_circuit, get_signal_name_map
-_, m = load_circuit('benchmarks/json/c17.json')
+_, m = load_circuit('benchmarks/json/c17_tech.json')
 for nid, name in sorted(get_signal_name_map(m).items(), key=lambda x: int(x[0])):
     print(f'  net{nid} → {name}')
 "
@@ -198,7 +194,7 @@ python -c "
 from core.circuit_loader import load_circuit
 from core.miter import build_miter
 from llm.query_builder import build_fault_prompt
-_, m = load_circuit('benchmarks/json/c17.json')
+_, m = load_circuit('benchmarks/json/c17_tech.json')
 _, gmap, _, _, _ = build_miter(m, '2', 0)
 print(build_fault_prompt(m, '2', 0, gmap))
 "
@@ -233,10 +229,10 @@ print(build_fault_prompt(m, '2', 0, gmap))
 
 ## 8. Export CNF Formula (Proof of Concept)
 
-While the ATPG system solves CNF entirely in-memory to prevent disk I/O bottlenecks, it now automatically dumps copies of the circuit and any single-faults you test specifically to help you debug. 
+While the ATPG system solves CNF entirely in-memory to prevent disk I/O bottlenecks, it automatically dumps copies of the circuit and any single-faults you test specifically to help you debug or pass to external solvers.
 
-Every time you run `python run_atpg.py --circuit c17 --tech`, it will automatically create and drop the clauses here:
+Every time you run `python run_atpg.py --circuit c17 --tech`, it will automatically extract the exact active CNF and drop the clauses here:
 `benchmarks/cnf/c17/good_circuit.cnf`
 
-If you run single fault mode (e.g. `--net 6 --val 1`), it will drop the fault's explicit miter into:
+If you run single fault mode (e.g. `--net 6 --val 1`), it will dump the fault's specific active miter into:
 `benchmarks/cnf/c17/SA1_net6.cnf`
