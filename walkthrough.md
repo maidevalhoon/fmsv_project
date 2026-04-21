@@ -651,7 +651,14 @@ The CNF is **never written to disk**. It lives in memory as `list[list[int]]`:
 | Full miter assembly | `build_miter()` | `core/miter.py` | 62-clause combined formula |
 | Solving | `Glucose3.solve()` | PySAT library | SAT/UNSAT + model |
 
-To inspect the CNF at runtime, add after `build_miter()` in `run_atpg.py`:
+**Exporting CNF (Proof of Concept):**
+While the system runs entirely in-memory during ATPG to prevent disk I/O bottlenecks, you can dump an actual physical CNF specification in standard DIMACS format for verification.
+```bash
+python dump_cnf.py
+```
+This generates `benchmarks/cnf/sample_SA1_net6.cnf` representing the active fault.
+
+To quickly inspect the CNF at runtime instead, add after `build_miter()` in `run_atpg.py`:
 ```python
 for i, c in enumerate(all_clauses):
     print(f"[{i}]: {c}")

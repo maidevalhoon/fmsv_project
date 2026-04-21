@@ -237,3 +237,17 @@ print(build_fault_prompt(m, '2', 0, gmap))
 | `gemini-2.0-flash` | Fast | Good | Good quota |
 | `gemini-1.5-flash` | Fast | Good | Good quota |
 | `gemini-2.5-pro-preview-03-25` | Slow | Best | Limited |
+
+---
+
+## 8. Export CNF Formula (Proof of Concept)
+
+While the ATPG system solves CNF entirely in-memory to prevent disk I/O bottlenecks, you can dump an actual CNF specification in standard DIMACS format for human verification or test purposes.
+
+```bash
+# Dump the CNF clauses for SA1 on net 6 to the benchmarks/cnf folder
+python dump_cnf.py
+
+# The generated sample will appear at:
+# benchmarks/cnf/sample_SA1_net6.cnf
+```

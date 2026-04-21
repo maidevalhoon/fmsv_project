@@ -6,14 +6,18 @@
 # ── Step 1: Read RTL ──────────────────────────────────────────────────────────
 read_verilog benchmarks/c17.v
 
-# ── Step 2: Read Nangate technology library ──────────────────────────────────
-read_liberty -lib "Technology Library/NangateOpenCellLibrary_typical.lib"
-
-# ── Step 3: Synthesise & map to Nangate cells ────────────────────────────────
+# ── Step 2: Synthesise Basic Gates (No Tech Library) ──────────────────────────
 synth -top c17
+abc -g AND,OR,XOR
+clean
+# Output non-tech mapped files
+write_verilog benchmarks/netlists/c17_notech_netlist.v
+write_json    benchmarks/json/c17_notech.json
+
+# ── Step 3: Technology Mapping (Nangate) ──────────────────────────────────────
+read_liberty -lib "Technology Library/NangateOpenCellLibrary_typical.lib"
 abc -liberty "Technology Library/NangateOpenCellLibrary_typical.lib"
 clean
-
-# ── Step 4: Output ───────────────────────────────────────────────────────────
-write_verilog benchmarks/netlists/c17_netlist.v
-write_json    benchmarks/json/c17.json
+# Output tech mapped files
+write_verilog benchmarks/netlists/c17_tech_netlist.v
+write_json    benchmarks/json/c17_tech.json

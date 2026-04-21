@@ -19,14 +19,16 @@ if { [catch {set CIRCUIT $::env(CIRCUIT)}] } { set CIRCUIT c17 }
 # ── Step 1: Read RTL ──────────────────────────────────────────────────────────
 yosys read_verilog benchmarks/${CIRCUIT}.v
 
-# ── Step 2: Read Nangate technology library ──────────────────────────────────
-yosys read_liberty -lib "Technology Library/NangateOpenCellLibrary_typical.lib"
-
-# ── Step 3: Synthesise & map to Nangate cells ────────────────────────────────
+# ── Step 2: Synthesise Basic Gates (No Tech Library) ──────────────────────────
 yosys synth -top ${CIRCUIT}
+yosys abc -g AND,OR,XOR
+yosys clean
+yosys write_verilog benchmarks/netlists/${CIRCUIT}_notech_netlist.v
+yosys write_json    benchmarks/json/${CIRCUIT}_notech.json
+
+# ── Step 3: Technology Mapping (Nangate) ──────────────────────────────────────
+yosys read_liberty -lib "Technology Library/NangateOpenCellLibrary_typical.lib"
 yosys abc -liberty "Technology Library/NangateOpenCellLibrary_typical.lib"
 yosys clean
-
-# ── Step 4: Output ───────────────────────────────────────────────────────────
-yosys write_verilog benchmarks/netlists/${CIRCUIT}_netlist.v
-yosys write_json    benchmarks/json/${CIRCUIT}.json
+yosys write_verilog benchmarks/netlists/${CIRCUIT}_tech_netlist.v
+yosys write_json    benchmarks/json/${CIRCUIT}_tech.json

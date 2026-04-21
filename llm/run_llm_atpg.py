@@ -60,7 +60,7 @@ from llm.evaluator        import run_guided_fault
 
 
 # ── Config (edit here to change circuit / paths) ─────────────────────────────
-CIRCUIT_JSON    = "benchmarks/json/c17.json"
+CIRCUIT_JSON    = "benchmarks/json/c17_notech.json"
 SUMMARY_FILE    = "reports/summaries/c17_summary.txt"
 REPORT_OUT      = "reports/c17_llm_comparison.txt"
 DEFAULT_MODEL   = "gemini-2.0-flash-lite"   # lowest quota usage on free tier
@@ -313,7 +313,7 @@ def main():
                  f"Run Yosys first: yosys synth/synth.ys")
 
     module_name, module_data = load_circuit(CIRCUIT_JSON)
-    faults = enumerate_stuck_at_faults(module_data, verilog_only=True)
+    faults = enumerate_stuck_at_faults(module_data, verilog_only=False)
     if args.max_faults > 0:
         faults = faults[: args.max_faults]
 

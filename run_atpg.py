@@ -12,8 +12,11 @@ Usage
 
 import argparse
 import time
+import os
 
 from pysat.solvers import Glucose3
+
+from core.export_cnf import dump_good_circuit_cnf, dump_miter_cnf
 
 from core.circuit_loader import load_circuit, get_port_nets, get_net_name_map, enumerate_verilog_nets
 from core.miter import build_miter
@@ -28,7 +31,9 @@ from core.fault_manager import (
 # ── Single-fault runner ──────────────────────────────────────────────────────
 
 def run_single_fault(module_data: dict, fault_net: str,
-                     fault_value: int, verbose: bool = True) -> dict:
+                     fault_value: int, verbose: bool = True,
+                     module_name: str = "unknown",
+                     export_cnf_dir: str = None) -> dict:
     """Run SAT-based ATPG for one stuck-at fault.
 
     Args:
@@ -36,6 +41,8 @@ def run_single_fault(module_data: dict, fault_net: str,
         fault_net:    Yosys net ID string (e.g. ``"6"``).
         fault_value:  ``0`` for SA0, ``1`` for SA1.
         verbose:      If ``True``, print a summary line per fault.
+        module_name:  Circuit name for the export label.
+        export_cnf_dir:  Path to directory for dropping the CNF if requested.
 
     Returns:
         Result dict with keys:
@@ -50,6 +57,9 @@ def run_single_fault(module_data: dict, fault_net: str,
     all_clauses, good_map, faulty_map, next_free_var, meta = build_miter(
         module_data, fault_net, fault_value
     )
+
+    if export_cnf_dir is not None and all_clauses is not None:
+        dump_miter_cnf(module_name, fault_net, fault_value, all_clauses, export_cnf_dir)
 
     base_result = {
         "fault_net":         fault_net,
@@ -133,6 +143,11 @@ def run_full_sweep(json_file: str, verilog_only: bool = True) -> list:
         List of result dicts (one per fault).
     """
     module_name, module_data = load_circuit(json_file)
+    
+    export_cnf_dir = os.path.join("benchmarks", "cnf", module_name)
+    os.makedirs(export_cnf_dir, exist_ok=True)
+    dump_good_circuit_cnf(module_name, module_data, export_cnf_dir)
+    
     net_name_map = get_net_name_map(module_data)
     faults       = enumerate_stuck_at_faults(module_data, verilog_only=verilog_only)
 
@@ -176,9 +191,17 @@ def _parse_args():
         description="SAT-based ATPG — detects stuck-at faults via miter + Glucose3"
     )
     parser.add_argument(
-        "--json", default="benchmarks/json/c17.json",
-        metavar="PATH",
-        help="Path to Yosys JSON netlist (default: benchmarks/json/c17.json)",
+        "--circuit", default="c17",
+        metavar="CIRCUIT",
+        help="Name of the circuit (default: c17). Looks in benchmarks/json/.",
+    )
+    parser.add_argument(
+        "--tech", action="store_true",
+        help="Use the tech-mapped version of the circuit (benchmarks/json/<circuit>_tech.json)",
+    )
+    parser.add_argument(
+        "--notech", action="store_true",
+        help="Use the generic synthesized version of the circuit (benchmarks/json/<circuit>_notech.json)",
     )
     parser.add_argument(
         "--net", default=None,
@@ -190,21 +213,36 @@ def _parse_args():
         metavar="0|1",
         help="Stuck-at value: 0 = SA0, 1 = SA1 (default: 0)",
     )
-    parser.add_argument(
-        "--all-nets", action="store_true",
-        help="Include Yosys-generated intermediate nets (default: Verilog wires only)",
-    )
     return parser.parse_args()
 
 
 def main():
+    import sys
     args = _parse_args()
+
+    if args.tech and args.notech:
+        sys.exit("[ERROR] Specify either --tech or --notech, not both.")
+    if not args.tech and not args.notech:
+        # Default to tech mapping if neither is provided just so it doesn't crash on standard runs
+        args.tech = True
+
+    suffix = "tech" if args.tech else "notech"
+    json_path = os.path.join("benchmarks", "json", f"{args.circuit}_{suffix}.json")
+
+    if not os.path.isfile(json_path):
+        sys.exit(f"[ERROR] Found no JSON at '{json_path}'. Run yosys synth first.")
 
     if args.net is not None:
         # ── Single-fault mode ────────────────────────────────────────────
-        _, module_data = load_circuit(args.json)
+        module_name, module_data = load_circuit(json_path)
+        
+        export_cnf_dir = os.path.join("benchmarks", "cnf", module_name)
+        os.makedirs(export_cnf_dir, exist_ok=True)
+        dump_good_circuit_cnf(module_name, module_data, export_cnf_dir)
+        
         result = run_single_fault(module_data, str(args.net), args.val,
-                                  verbose=False)
+                                  verbose=False, module_name=module_name, 
+                                  export_cnf_dir=export_cnf_dir)
         label = result["fault_label"]
         print(f"\n{'='*60}")
         print(f"  Single fault: {label}")
@@ -226,7 +264,7 @@ def main():
         print(f"{'='*60}\n")
     else:
         # ── Full-sweep mode ──────────────────────────────────────────────
-        run_full_sweep(args.json, verilog_only=not args.all_nets)
+        run_full_sweep(json_path, verilog_only=False)
 
 
 if __name__ == "__main__":
