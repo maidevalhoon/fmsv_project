@@ -36,7 +36,7 @@ for circ in c17 c432 c499 c880 c1355 c3540 c6288; do
 done
 ```
 
-**Output:** `benchmarks/json/<circuit>.json` and `benchmarks/netlists/<circuit>_netlist.v`
+**Output:** \`benchmarks/json/<circuit>_tech.json\`, \`benchmarks/json/<circuit>_notech.json\`, and their respective \`.v\` netlist files.
 
 ### Visualize the Circuit (Yosys `show`)
 
@@ -76,32 +76,29 @@ yosys -p 'read_json benchmarks/json/c17.json; show -format svg -prefix c17_circu
 
 ## 2. Step 1 — SAT-Based ATPG (Baseline)
 
-### Full fault sweep (all Verilog wires, SA0 + SA1)
+### Full fault sweep
 
 ```bash
-# c17 (default)
-python run_atpg.py --json benchmarks/json/c17.json
+# c17 (tech mapped - 22 Faults)
+python run_atpg.py --circuit c17 --tech
+
+# c17 (generic basic gates mapped - 26 Faults)
+python run_atpg.py --circuit c17 --notech
 
 # Other benchmarks
-python run_atpg.py --json benchmarks/json/c432.json
-python run_atpg.py --json benchmarks/json/c880.json
-python run_atpg.py --json benchmarks/json/c1355.json
-```
-
-### Include Yosys intermediate nets (all nets, not just Verilog wires)
-
-```bash
-python run_atpg.py --json benchmarks/json/c17.json --all-nets
+python run_atpg.py --circuit c432 --tech
+python run_atpg.py --circuit c880 --tech
+python run_atpg.py --circuit c1355 --tech
 ```
 
 ### Single fault mode
 
 ```bash
-# Test SA0 on net 6 (N7 in c17)
-python run_atpg.py --json benchmarks/json/c17.json --net 6 --val 0
+# Test SA0 on net 6 (N7 in c17, tech mapped)
+python run_atpg.py --circuit c17 --tech --net 6 --val 0
 
-# Test SA1 on net 7 (N22 in c17)
-python run_atpg.py --json benchmarks/json/c17.json --net 7 --val 1
+# Test SA1 on net 7 (N22 in c17, notech mapped)
+python run_atpg.py --circuit c17 --notech --net 7 --val 1
 ```
 
 ---
@@ -171,8 +168,8 @@ yosys synth/synth.ys
 # 2. View the circuit
 yosys -p 'read_verilog benchmarks/netlists/c17_netlist.v; read_liberty -lib "Technology Library/NangateOpenCellLibrary_typical.lib"; show'
 
-# 3. Run baseline ATPG
-python run_atpg.py --json benchmarks/json/c17.json
+# 3. Run baseline ATPG (tech mapped)
+python run_atpg.py --circuit c17 --tech
 
 # 4. Generate insights
 python run_insights.py
@@ -186,11 +183,11 @@ python -m llm.run_llm_atpg --verbose
 ## 7. Useful One-Liners
 
 ```bash
-# Count faults for a circuit (Verilog wires only)
+# Count faults for a circuit
 python -c "
-from core.circuit_loader import load_circuit, enumerate_verilog_nets
-_, m = load_circuit('benchmarks/json/c17.json')
-nets = enumerate_verilog_nets(m)
+from core.circuit_loader import load_circuit, enumerate_all_nets
+_, m = load_circuit('benchmarks/json/c17_tech.json')
+nets = enumerate_all_nets(m)
 print(f'{len(nets)} wires → {len(nets)*2} faults')
 "
 
@@ -242,12 +239,10 @@ print(build_fault_prompt(m, '2', 0, gmap))
 
 ## 8. Export CNF Formula (Proof of Concept)
 
-While the ATPG system solves CNF entirely in-memory to prevent disk I/O bottlenecks, you can dump an actual CNF specification in standard DIMACS format for human verification or test purposes.
+While the ATPG system solves CNF entirely in-memory to prevent disk I/O bottlenecks, it now automatically dumps copies of the circuit and any single-faults you test specifically to help you debug. 
 
-```bash
-# Dump the CNF clauses for SA1 on net 6 to the benchmarks/cnf folder
-python dump_cnf.py
+Every time you run `python run_atpg.py --circuit c17 --tech`, it will automatically create and drop the clauses here:
+`benchmarks/cnf/c17/good_circuit.cnf`
 
-# The generated sample will appear at:
-# benchmarks/cnf/sample_SA1_net6.cnf
-```
+If you run single fault mode (e.g. `--net 6 --val 1`), it will drop the fault's explicit miter into:
+`benchmarks/cnf/c17/SA1_net6.cnf`

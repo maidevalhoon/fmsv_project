@@ -457,26 +457,26 @@ Wrong LLM hints should not cause a fault to be incorrectly classified as UNDETEC
 
 **Key config (top of file):**
 ```python
-CIRCUIT_JSON  = "benchmarks/json/c17.json"
+CIRCUIT_JSON  = "benchmarks/json/c17_notech.json"
 INSIGHTS_FILE = "reports/c17_insights.txt"   # Step 1 raw data for baseline
 REPORT_OUT    = "reports/c17_llm_comparison.txt"
 DEFAULT_MODEL = "gemini-2.0-flash-lite"      # cheapest model (free tier)
 ```
 
 **Per-fault loop:**
-1. Load circuit, enumerate 34 faults
+1. Load circuit, enumerate 26 faults
 2. `build_miter()` → get `good_map`
 3. `build_fault_prompt()` → structured prompt string
 4. `call_gemini(model, system_prompt, user_prompt)` → response text
    - Retries up to 3× on 429 rate-limit with API-suggested delay
 5. `translate_hints(response, good_map)` → `(assumptions, hint_text)`
 6. `run_guided_fault(module_data, fault_net, fault_value, assumptions)` → result
-7. Progress line: `[  6/34] SA1@net6   GUIDED   dec: 16 → 4   api=340ms`
+7. Progress line: `[  6/26] SA1@net6   GUIDED   dec: 16 → 4   api=340ms`
 
 **Report output** (`reports/c17_llm_comparison.txt`):
 ```
 1. FAULT COVERAGE
-   Coverage: 100.0% (34/34)
+   Coverage: 100.0% (26/26)
 
 2. LLM HINT EFFECTIVENESS
    Hints accepted (SAT on Phase 1): N
