@@ -59,13 +59,8 @@ from llm.hint_translator  import translate_hints
 from llm.evaluator        import run_guided_fault
 
 
-# ── Config (edit here to change circuit / paths) ─────────────────────────────
-CIRCUIT_JSON    = "benchmarks/json/c17_notech.json"
-SUMMARY_FILE    = "reports/summaries/c17_summary.txt"
-REPORT_OUT      = "reports/c17_llm_comparison.txt"
-DEFAULT_MODEL   = "gemini-2.0-flash-lite"   # lowest quota usage on free tier
-# Other options: "gemini-2.0-flash", "gemini-1.5-flash", "gemini-2.5-pro-preview-03-25"
-INSIGHTS_FILE   = "reports/c17_insights.txt"   # Step 1 raw output (for baseline)
+# ── Circuit/paths are resolved dynamically via the --circuit CLI argument ──────
+# Use: python llm/run_llm_atpg.py --circuit c17 --max-faults 4 --verbose
 
 
 # ── Baseline loader ──────────────────────────────────────────────────────────

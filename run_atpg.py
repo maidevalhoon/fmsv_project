@@ -3,11 +3,23 @@ run_atpg.py — Main entry point for SAT-based ATPG (Step 1).
 
 Usage
 -----
-# Full fault sweep (all nets, both SA0 and SA1):
-    python run_atpg.py --json benchmarks/c17.json
+# Full fault sweep on c17 (tech-mapped cells):
+    python run_atpg.py --circuit c17 --tech
 
-# Single fault:
-    python run_atpg.py --json benchmarks/c17.json --net 6 --val 0
+# Full fault sweep on c17 (generic gate-level):
+    python run_atpg.py --circuit c17 --notech
+
+# Full fault sweep on other benchmarks:
+    python run_atpg.py --circuit c432 --tech
+    python run_atpg.py --circuit c880 --tech
+
+# Single fault (SA0 on net 6, tech-mapped):
+    python run_atpg.py --circuit c17 --tech --net 6 --val 0
+
+# Single fault (SA1 on net 7, generic):
+    python run_atpg.py --circuit c17 --notech --net 7 --val 1
+
+Note: CNF files are auto-exported to benchmarks/cnf/<circuit>/ on every run.
 """
 
 import argparse

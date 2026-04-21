@@ -4,7 +4,19 @@ run_insights.py — Collect SAT solver metrics and write a structured report
 
 Usage
 -----
-    python run_insights.py --json benchmarks/c17.json --out reports/solver_insights_report.txt
+# Run on c17 (tech-mapped):
+    python run_insights.py --circuit c17 --tech
+
+# Run on c17 (generic gate-level):
+    python run_insights.py --circuit c17 --notech
+
+# Run on other benchmarks:
+    python run_insights.py --circuit c432 --tech
+    python run_insights.py --circuit c880 --tech
+
+Output:
+    reports/<circuit>_insights.txt      (full per-fault analysis)
+    (Run extract_reports.py to generate  reports/summaries/<circuit>_summary.txt)
 """
 
 import argparse
