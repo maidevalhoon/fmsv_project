@@ -56,7 +56,7 @@ Step 2 — LLM-Guided SAT-ATPG
 ## 2. Directory Structure
 
 ```
-project faltu/
+project/
 ├── benchmarks/
 │   ├── circuit.v            # Simple 3-gate test circuit
 │   ├── c17.v                # ISCAS-85 c17 (5 inputs, 2 outputs, 6 AND + 6 NOT = 12 gates)
@@ -146,15 +146,15 @@ export $(grep -v '^#' .env | xargs)
               34 faults: SA0/SA1 for each of 17 nets
                              │
               ┌──────────────┴──────────────────────┐
-              │  For each fault (net_id, value):     │
-              │                                      │
-              │  build_miter()                       │
-              │  ├── build_circuit_cnf(good_copy)    │
-              │  ├── build_circuit_cnf(faulty_copy)  │
-              │  │    └── fault unit clause added     │
-              │  ├── output XOR clauses               │
-              │  └── returns (clauses, good_map,      │
-              │               faulty_map, meta)        │
+              │  For each fault (net_id, value):    │
+              │                                     │
+              │  build_miter()                      │
+              │  ├── build_circuit_cnf(good_copy)   │
+              │  ├── build_circuit_cnf(faulty_copy) │
+              │  │    └── fault unit clause added   │
+              │  ├── output XOR clauses             │
+              │  └── returns (clauses, good_map,    │
+              │               faulty_map, meta)     │
               │                                      │
               │  [Step 1 only]                       │
               │  Glucose3.solve() → SAT/UNSAT        │

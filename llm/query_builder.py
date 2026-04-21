@@ -28,9 +28,9 @@ Return ONLY valid JSON — no prose:
 {"signal_assignments": {"<signal_name>": <0_or_1>, ...}, "sensitization_hint": "<one sentence>"}
 
 Rules:
-- Only assign PRIMARY INPUT signals.
+- MUST ONLY assign the minimum primary inputs necessary to structurally excite the fault. Do NOT assign variables for path propagation, let the solver compute them.
 - Use integer 0 or 1 as values.
-- You may assign a subset of inputs if unsure about the rest.
+- Leave all other inputs out of the JSON.
 """
 
 
