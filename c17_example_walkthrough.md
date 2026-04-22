@@ -9,17 +9,17 @@ We will walk through the logic file by file, mapping out exactly what happens wh
 Testing starts by invoking the main script for a target fault. Consider the CLI execution to check if net `6` has a stuck-at-0 (SA0) fault in the `c17` circuit:
 
 ```bash
-python run_atpg.py --json benchmarks/c17.json --net 6 --val 0
+python run_atpg.py --circuit c17 --tech --net 6 --val 0
 ```
 
-- **Initialization:** Upon starting in single-fault mode, `run_atpg.py` parses the arguments and invokes `load_circuit("benchmarks/c17.json")` from the `core.circuit_loader` module.
+- **Initialization:** Upon starting in single-fault mode, `run_atpg.py` parses the arguments and invokes `load_circuit("benchmarks/json/c17_tech.json")` from the `core.circuit_loader` module.
 - **Execution Hand-off:** It extracts the Yosys module data and delegates the problem to `run_single_fault(module_data, fault_net="6", fault_value=0)`. This function is responsible for building the miter circuit CNF, invoking the PySAT solver, and returning the test vector if the fault is detectable.
 
 ## 2. `core/circuit_loader.py`: Understanding the Netlist
 
 This file bridges Yosys-synthesized JSON terminology to Python structures.
 
-- **`load_circuit`**: Reads the `c17.json` file. It returns the raw dictionary (`module_data`) representing the circuit's gates (cells), ports (inputs/outputs), and internal wires (nets).
+- **`load_circuit`**: Reads the `c17_tech.json` file. It returns the raw dictionary (`module_data`) representing the circuit's gates (cells), ports (inputs/outputs), and internal wires (nets).
 - **`get_port_nets`**: Called next by `run_single_fault`, it collects all primary input and output net IDs. This is required because inputs must be tied together later, and outputs must be checked for discrepancy.
 - **`find_driving_gate`**: Identifies which specific logic gate physically outputs to `net 6`. For example, it might identify a NAND cell named `gate4`. This information is critical for the fault injection process.
 
@@ -51,4 +51,7 @@ Called twice by `miter.py`, `build_circuit_cnf()` converts gates to basic boolea
 - **Solving:** `solver.solve()` is invoked. 
   - If the solver outputs **SAT** (`True`): It means there is some combination of primary inputs where the good circuit outputs the expected logical result, but the faulty circuit behaves differently due to the net `6` problem. The input parameters are extracted back out using `extract_test_vector`, yielding the ATPG Test Vector (e.g. `n1=0, n2=1, ...`).
   - If the solver outputs **UNSAT** (`False`): No test vector could force a discrepancy at any primary output, meaning the net `6` stuck-at-0 fault is undetectable and logically redundant in `c17`. 
+- **CNF Exporter Trigger:** Following evaluation, the generated constraint instances are automatically dumped into raw files for reference:
+  - `benchmarks/cnf/c17/good_circuit.cnf` (The baseline formulas without any targeted fault clauses applied)
+  - `benchmarks/cnf/c17/SA0_net6.cnf` (The full active formulated miter explicitly evaluated for this single run)
 - **Reporting:** Metrics about constraint variables, solver time, decision rules, and the final Test Vector are cleanly printed mapping directly to the script output.

@@ -36,8 +36,13 @@ for circ in c17 c432 c499 c880 c1355 c3540 c6288; do
 done
 ```
 
-**Output:** \`benchmarks/json/<circuit>_tech.json\`, \`benchmarks/json/<circuit>_notech.json\`, and their respective \`.v\` netlist files.
-
+**Outputs Generated:** 
+- `benchmarks/json/<circuit>_tech.json` (JSON representation using Nangate gates)
+- `benchmarks/json/<circuit>_notech.json` (JSON representation using generic boolean basic gates)
+- `benchmarks/netlists/<circuit>_tech_netlist.v` (Synthesized Verilog matching the tech JSON)
+- `benchmarks/netlists/<circuit>_notech_netlist.v` (Synthesized Verilog matching the notech JSON)
+- `benchmarks/json/eval_techmap.json` (Technology mapping evaluation statistics)
+- `benchmarks/json/eval_non_tech.json` (Generic baseline evaluation statistics)
 ### Visualize the Circuit (Yosys `show`)
 
 ```bash
@@ -64,7 +69,7 @@ yosys -p "read_json benchmarks/json/c17_notech.json; show -format svg -prefix c1
 yosys -p "read_json benchmarks/json/c17_tech.json; read_liberty -lib \"Technology Library/NangateOpenCellLibrary_typical.lib\"; show -format svg -prefix c17_tech"
 ```
 
-**Note:** The generated images will drop in your project root as `c17_notech.svg` and `c17_tech.svg`. Reading the generated files requires an SVG viewer (like your web browser).
+**Note:** The generated images will drop in your project root as `c17_notech.svg`, `c17_notech.dot`, `c17_tech.svg`, and `c17_tech.dot`. Reading the `.svg` generated files requires an SVG viewer (like your web browser).
 
 ---
 
@@ -234,5 +239,6 @@ While the ATPG system solves CNF entirely in-memory to prevent disk I/O bottlene
 Every time you run `python run_atpg.py --circuit c17 --tech`, it will automatically extract the exact active CNF and drop the clauses here:
 `benchmarks/cnf/c17/good_circuit.cnf`
 
-If you run single fault mode (e.g. `--net 6 --val 1`), it will dump the fault's specific active miter into:
-`benchmarks/cnf/c17/SA1_net6.cnf`
+**Outputs Generated:**
+- `benchmarks/cnf/<circuit>/good_circuit.cnf` (The baseline unfaulted circuit constraints)
+- `benchmarks/cnf/<circuit>/SA<val>_net<X>.cnf` (The combined miter formulation forcing the given fault parameter to diverge)

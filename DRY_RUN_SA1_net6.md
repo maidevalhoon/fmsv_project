@@ -5,9 +5,8 @@
 > every clause, every variable ID, and every output value is shown exactly as the code
 > produces it at runtime. No abstraction, no skipping.
 >
-> **Where the CNF lives:** There is no CNF file on disk. The CNF is built in memory as
-> `list[list[int]]` by `core/cnf_builder.py` and assembled by `core/miter.py`.
-> It is fed directly into `pysat.solvers.Glucose3`.
+> **Where the CNF lives:** The CNF is built dynamically in memory as `list[list[int]]` by `core/cnf_builder.py` tracking logic state and assembled by `core/miter.py`.
+> It is fed directly into `pysat.solvers.Glucose3`. For debugging and external solver compatibility, the output is also exported to disk directly inside `benchmarks/cnf/c17/SA1_net6.cnf`.
 
 ---
 
@@ -41,14 +40,14 @@ and this difference reaches at least one primary output.
 
 ## Step 0 — Entry Point: `run_atpg.py`
 
-```
-python run_atpg.py --json benchmarks/json/c17.json --net 6 --val 1
+```bash
+python run_atpg.py --circuit c17 --tech --net 6 --val 1
 ```
 
 Execution path:
 ```
 main()
- └─ load_circuit("benchmarks/json/c17.json")          ← Step 1
+ └─ load_circuit("benchmarks/json/c17_tech.json")          ← Step 1
  └─ enumerate_stuck_at_faults(module_data)              ← generates all faults
  └─ run_single_fault(module_data, "6", 1, verbose=True)
       └─ build_miter(module_data, "6", 1)               ← Step 2
@@ -67,7 +66,7 @@ main()
 
 ## Step 1 — `circuit_loader.load_circuit()` (`core/circuit_loader.py:23`)
 
-**Input:** `"benchmarks/json/c17.json"`
+**Input:** `"benchmarks/json/c17_tech.json"`
 
 **Action:** Opens JSON, finds module with `top=1` attribute → `"c17"`.
 Calls `validate_netlist()` internally — 0 warnings for c17.
@@ -659,7 +658,7 @@ to 0 → AOI21 product (B1∧B2) goes from 1→0 → NOR output flips 0→1 → 
 | Is CNF built? | **Yes** — every run builds it in memory |
 | Which file builds per-gate CNF? | `core/cnf_builder.py:build_circuit_cnf()` |
 | Which file assembles the full miter CNF? | `core/miter.py:build_miter()` |
-| Is CNF ever written to disk? | **No** — it is passed as `list[list[int]]` to the solver |
+| Is CNF ever written to disk? | **Yes** — exported to `benchmarks/cnf/c17/` for reference, though SAT is run purely in-memory |
 | Variable count for c17 miter | **28** (13 good + 13 faulty + 2 D-vars) |
 | Clause count for c17 miter | **62** (22 + 23 + 8 tie + 8 XOR + 1 OR) |
 | SAT solver used | `pysat.solvers.Glucose3` |

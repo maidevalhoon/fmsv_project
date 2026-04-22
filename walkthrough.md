@@ -60,10 +60,15 @@ project/
 ├── benchmarks/
 │   ├── circuit.v            # Simple 3-gate test circuit
 │   ├── c17.v                # ISCAS-85 c17 (5 inputs, 2 outputs, 6 AND + 6 NOT = 12 gates)
+│   ├── cnf/                 # Exported formulated constraint clauses
 │   ├── json/
-│   │   ├── circuit_tech.json     # Yosys-synthesized gate-level JSON
-│   │   └── c17_tech.json         # ← primary benchmark used in Steps 1 & 2
-│   └── netlists/            # Synthesized Verilog (reference only)
+│   │   ├── eval_techmap.json     # Generated baseline metrics for Tech (Nangate) representation
+│   │   ├── eval_non_tech.json    # Generated baseline metrics for Generic representation
+│   │   ├── c17_tech.json         # ← primary benchmark used in Steps 1 & 2
+│   │   └── c17_notech.json       # Generic gate mapping representation
+│   └── netlists/            # Synthesized Yosys outputs
+│       ├── c17_tech_netlist.v
+│       └── c17_notech_netlist.v
 │
 ├── core/                    # Shared ATPG library (no side-effects, pure functions)
 │   ├── __init__.py
