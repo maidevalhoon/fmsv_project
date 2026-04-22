@@ -1,0 +1,46 @@
+================================================================================
+  STEP 2: LLM-GUIDED SAT-ATPG — COMPARISON REPORT
+  Circuit : c1355
+  LLM     : gemini-2.0-flash-lite
+  Date    : 2026-04-21 17:58
+================================================================================
+
+1. FAULT COVERAGE
+------------------------------------------------------------
+  Total faults   : 10
+  Detectable     : 10
+  Undetectable   : 0
+  Skipped        : 0
+  Coverage       : 100.0%  (10/10)
+
+2. LLM HINT EFFECTIVENESS
+------------------------------------------------------------
+  Hints accepted (SAT on Phase 1)  : 10
+  Hints rejected (forced fallback)  : 0
+  No hints given (empty response)   : 0
+
+3. DECISION COUNT COMPARISON  (Step 1 baseline vs Step 2 LLM-guided)
+------------------------------------------------------------
+  Step 1 (baseline) avg decisions : 1199.60
+  Step 2 (LLM-guided) avg decisions: 944.90
+  Mean decision reduction         : +21.2%  ↓
+  Guided-only avg decisions       : 944.90  (10 faults)
+
+4. PER-FAULT RESULTS
+------------------------------------------------------------
+  Fault                  Status         Mode          S1 ms    S2 ms   Hint ms  S1 Cfl  S2 Cfl  Hint
+  ──────────────────────────────────────────────────────────────────────────────────────────────────
+  SA0@net2               DETECTABLE     GUIDED         0.24     0.38   1330.74       2       2  LLM decided N1=1 is required to activate the fault.
+  SA1@net2               DETECTABLE     GUIDED         0.71     0.53   1358.24      20       2  LLM decided N1=0 is required to activate the fault.
+  SA0@net3               DETECTABLE     GUIDED         2.05     4.16   1226.68     140     268  LLM decided N8=1 is required to activate the fault.
+  SA1@net3               DETECTABLE     GUIDED        15.55     4.41   1455.70    1190     237  LLM decided N8=0 is required to activate the fault.
+  SA0@net4               DETECTABLE     GUIDED         3.97     5.99   1224.64     262     302  LLM decided N15=1 is required to activate the fault.
+  SA1@net4               DETECTABLE     GUIDED         4.59     4.86   1199.14     449     261  LLM decided N15=0 is required to activate the fault.
+  SA0@net5               DETECTABLE     GUIDED         3.72     3.75   1487.81     260     198  LLM decided N22=1 is required to activate the fault.
+  SA1@net5               DETECTABLE     GUIDED         1.58     8.03   1389.52     131     353  LLM decided N22=0 is required to activate the fault.
+  SA0@net6               DETECTABLE     GUIDED         3.39    23.91   1383.52     256    1205  LLM decided N29=1 is required to activate the fault.
+  SA1@net6               DETECTABLE     GUIDED         5.50     9.31   1470.46     367     499  LLM decided N29=0 is required to activate the fault.
+
+================================================================================
+  END OF REPORT
+================================================================================

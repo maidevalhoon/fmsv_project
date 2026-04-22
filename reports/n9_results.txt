@@ -1,0 +1,105 @@
+======================================================================
+  ATPG Results — Net 9 (n9), Stuck-at-0 and Stuck-at-1
+  Run date: 2026-03-27
+  (After fix: Nangate gate types now correctly recognized)
+======================================================================
+
+----------------------------------------------------------------------
+[1] eval_techmap.json — SA0 (Stuck at 0)
+Command: python run_atpg.py --json benchmarks/json/eval_techmap.json --net 9 --val 0
+----------------------------------------------------------------------
+
+============================================================
+  Single fault: SA0@net9
+  Status      : DETECTABLE
+  Driving gate: $abc$100$auto$blifparse.cc:397:parse_blif$101 (INV_X1)
+  Variables   : 29
+  Clauses     : 62
+  Solve time  : 0.0001s
+
+  Test Vector (primary inputs):
+    net2 = 1
+    net3 = 0
+    net4 = 1
+    net5 = 0
+    net6 = 0
+
+  Output Divergence:
+    net7: good=1  faulty=1
+    net8: good=0  faulty=1
+============================================================
+
+----------------------------------------------------------------------
+[2] eval_techmap.json — SA1 (Stuck at 1)
+Command: python run_atpg.py --json benchmarks/json/eval_techmap.json --net 9 --val 1
+----------------------------------------------------------------------
+
+============================================================
+  Single fault: SA1@net9
+  Status      : DETECTABLE
+  Driving gate: $abc$100$auto$blifparse.cc:397:parse_blif$101 (INV_X1)
+  Variables   : 29
+  Clauses     : 62
+  Solve time  : 0.0000s
+
+  Test Vector (primary inputs):
+    net2 = 0
+    net3 = 0
+    net4 = 0
+    net5 = 0
+    net6 = 1
+
+  Output Divergence:
+    net7: good=0  faulty=0
+    net8: good=1  faulty=0
+============================================================
+
+----------------------------------------------------------------------
+[3] eval_non_tech.json — SA0 (Stuck at 0)
+Command: python run_atpg.py --json benchmarks/json/eval_non_tech.json --net 9 --val 0
+----------------------------------------------------------------------
+
+============================================================
+  Single fault: SA0@net9
+  Status      : DETECTABLE
+  Driving gate: $abc$107$auto$blifparse.cc:397:parse_blif$108 ($_NAND_)
+  Variables   : 25
+  Clauses     : 53
+  Solve time  : 0.0000s
+
+  Test Vector (primary inputs):
+    net2 = 1
+    net3 = 0
+    net4 = 1
+    net5 = 0
+    net6 = 1
+
+  Output Divergence:
+    net7: good=1  faulty=1
+    net8: good=1  faulty=0
+============================================================
+
+----------------------------------------------------------------------
+[4] eval_non_tech.json — SA1 (Stuck at 1)
+Command: python run_atpg.py --json benchmarks/json/eval_non_tech.json --net 9 --val 1
+----------------------------------------------------------------------
+
+============================================================
+  Single fault: SA1@net9
+  Status      : DETECTABLE
+  Driving gate: $abc$107$auto$blifparse.cc:397:parse_blif$108 ($_NAND_)
+  Variables   : 25
+  Clauses     : 53
+  Solve time  : 0.0000s
+
+  Test Vector (primary inputs):
+    net2 = 0
+    net3 = 1
+    net4 = 1
+    net5 = 1
+    net6 = 0
+
+  Output Divergence:
+    net7: good=0  faulty=1
+    net8: good=0  faulty=1
+============================================================
