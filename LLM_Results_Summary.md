@@ -5,6 +5,9 @@
 ## 1. Execution Commands
 To reproduce these specific metrics, run the following sequence from the root directory:
 
+CIRCUIT=c3540 yosys -c synth/synth.tcl
+
+
 ```bash
 # 1. Ensure core dependencies and the virtual context are active
 source venv/bin/activate

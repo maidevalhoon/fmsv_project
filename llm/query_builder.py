@@ -63,6 +63,8 @@ def _describe_circuit_compact(module_data: dict) -> str:
     input_nets = get_port_nets(module_data, "input")
     output_nets = get_port_nets(module_data, "output")
     visible_nets = set(enumerate_verilog_nets(module_data))
+    from core.circuit_loader import enumerate_all_nets
+    all_nets = set(enumerate_all_nets(module_data))
 
     driver = _build_gate_graph(module_data, name_map)
 
@@ -76,17 +78,34 @@ def _describe_circuit_compact(module_data: dict) -> str:
     lines.append("GATES:")
 
     processed = set()
+    
+    queue = list(output_nets)
+    visited_nets = set(queue)
 
-    sorted_visible = sorted(visible_nets, key=lambda x: int(x) if x.isdigit() else x)
-    for net_id in sorted_visible:
+    gate_lines = []
+
+    while queue:
+        net_id = queue.pop(0)
+
         if net_id in [str(n) for n in input_nets]:
             continue
         if net_id not in driver:
             continue
+
         cell_name, cell_data = driver[net_id]
+
         if cell_name in processed:
             continue
         processed.add(cell_name)
+
+        # Enqueue inputs of this cell for backward traversal
+        for port_name, bits in cell_data["connections"].items():
+            if port_name not in ("Y", "ZN", "Z"):  # only look at inputs
+                for bit in bits:
+                    b_str = str(bit)
+                    if b_str not in visited_nets:
+                        visited_nets.add(b_str)
+                        queue.append(b_str)
 
         gate_type = cell_data["type"]
         conn = cell_data["connections"]
@@ -103,43 +122,54 @@ def _describe_circuit_compact(module_data: dict) -> str:
                 if collapsed and inner_name not in processed:
                     in_a = _get_name(inner_conn["A"][0], name_map)
                     in_b = _get_name(inner_conn["B"][0], name_map)
-                    lines.append(f"  {out_name} = {collapsed}({in_a}, {in_b})")
+                    gate_lines.append(f"  {out_name} = {collapsed}({in_a}, {in_b})")
                     processed.add(inner_name)
+                    # Enqueue the hidden inner gate's inputs
+                    for inner_port_name, inner_bits in inner_conn.items():
+                        if inner_port_name not in ("Y", "ZN", "Z"):
+                            for ib in inner_bits:
+                                ib_str = str(ib)
+                                if ib_str not in visited_nets:
+                                    visited_nets.add(ib_str)
+                                    queue.append(ib_str)
                     continue
-            lines.append(f"  {out_name} = NOT({_get_name(conn['A'][0], name_map)})")
+            gate_lines.append(f"  {out_name} = NOT({_get_name(conn['A'][0], name_map)})")
 
         elif gate_type in ("$and", "$_AND_"):
             in_a = _get_name(conn["A"][0], name_map)
             in_b = _get_name(conn["B"][0], name_map)
-            lines.append(f"  {out_name} = AND({in_a}, {in_b})")
+            gate_lines.append(f"  {out_name} = AND({in_a}, {in_b})")
 
         elif gate_type in ("$or", "$_OR_"):
             in_a = _get_name(conn["A"][0], name_map)
             in_b = _get_name(conn["B"][0], name_map)
-            lines.append(f"  {out_name} = OR({in_a}, {in_b})")
+            gate_lines.append(f"  {out_name} = OR({in_a}, {in_b})")
 
         elif gate_type in ("$nand", "$_NAND_"):
             in_a = _get_name(conn["A"][0], name_map)
             in_b = _get_name(conn["B"][0], name_map)
-            lines.append(f"  {out_name} = NAND({in_a}, {in_b})")
+            gate_lines.append(f"  {out_name} = NAND({in_a}, {in_b})")
 
         elif gate_type in ("$nor", "$_NOR_"):
             in_a = _get_name(conn["A"][0], name_map)
             in_b = _get_name(conn["B"][0], name_map)
-            lines.append(f"  {out_name} = NOR({in_a}, {in_b})")
+            gate_lines.append(f"  {out_name} = NOR({in_a}, {in_b})")
 
         elif gate_type in ("$xor", "$_XOR_"):
             in_a = _get_name(conn["A"][0], name_map)
             in_b = _get_name(conn["B"][0], name_map)
-            lines.append(f"  {out_name} = XOR({in_a}, {in_b})")
+            gate_lines.append(f"  {out_name} = XOR({in_a}, {in_b})")
 
         elif gate_type in ("$xnor", "$_XNOR_"):
             in_a = _get_name(conn["A"][0], name_map)
             in_b = _get_name(conn["B"][0], name_map)
-            lines.append(f"  {out_name} = XNOR({in_a}, {in_b})")
+            gate_lines.append(f"  {out_name} = XNOR({in_a}, {in_b})")
 
         else:
-            lines.append(f"  {out_name} = {gate_type}(...)")
+            gate_lines.append(f"  {out_name} = {gate_type}(...)")
+
+    # Reversing the order to print inputs -> outputs (topological)
+    lines.extend(reversed(gate_lines))
 
     return "\n".join(lines)
 

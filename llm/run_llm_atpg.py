@@ -358,6 +358,7 @@ def main():
         prompt = build_fault_prompt(
             module_data, fault_net, fault_value, good_map, summary_text
         )
+        print(prompt)
 
         # ── Cooldown between API calls (free tier: ~30 RPM) ────────────
         if idx > 1:
@@ -367,7 +368,7 @@ def main():
         llm_response, api_latency = call_gemini(
             args.model, _SYSTEM_PROMPT, prompt, _client=gemini_client
         )
-
+        print(llm_response)
         if args.verbose:
             print(f"\n  [{idx:>3}/{total}] {lbl}")
             print(f"    API latency : {api_latency*1000:.0f} ms")
